@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/_xpopup_round20_top_bg"
+    android:orientation="vertical"
+    android:paddingTop="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RadioGroup
+            android:id="@+id/_xpopup_city_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/_xpopup_domestic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@null"
+                android:drawableBottom="@drawable/_xpopup_selector_bottom_line"
+                android:drawablePadding="6dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/_xpopup_ext_domestic"
+                android:textColor="#DDA031"
+                android:textSize="16sp"
+                tools:checked="true" />
+
+            <RadioButton
+                android:id="@+id/_xpopup_foreign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@null"
+                android:drawableBottom="@drawable/_xpopup_selector_bottom_line"
+                android:drawablePadding="6dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/_xpopup_ext_foreign"
+                android:textColor="#DDA031"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:textSize="16sp"
+            android:textColor="#DDA031"
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/_xpopup_shape_bottom_line_normal"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:text="@string/_xpopup_ok"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/citypicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="160dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.zgzx.metaphysics.city_time_picker.wheel.WheelView
+            android:id="@+id/options1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.zgzx.metaphysics.city_time_picker.wheel.WheelView
+            android:id="@+id/options2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.zgzx.metaphysics.city_time_picker.wheel.WheelView
+            android:id="@+id/options3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="460dp"
+    android:orientation="vertical"
+
+    >
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35"
+        android:background="@color/color_f7f7f7"
+        app:tabIndicatorHeight="4dp"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_gravity="left"
+        android:layout_marginRight="240dp"
+        app:tabPaddingStart="0dp"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicator="@drawable/shape_tab_bg_100"
+        app:tabIndicatorGravity="bottom"
+        app:tabSelectedTextColor="@color/color_80993c"
+        app:tabTextAppearance="@style/tabTextAppearance.Simple"
+        app:tabTextColor="@color/color_bcbec0"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@color/color_e6e6e6" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_7"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@color/color_f7f7f7"/>
+
+</LinearLayout>

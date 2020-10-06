@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelView">
+
+        <attr name="gravity">
+            <enum name="center" value="17" />
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
+        </attr>
+
+        <attr name="textStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+
+        <attr name="textSize" format="dimension" />
+        <attr name="textColorOut" format="color" />
+        <attr name="textColorCenter" format="color" />
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="lineSpacingMultiplier" format="float" />
+        <attr name="fontFamily" format="reference|string" />
+    </declare-styleable>
+
+    <attr name="wheelViewStyle" />
+
+    <style name="wheelViewStyle" parent="android:TextAppearance">
+        <item name="gravity">center</item>
+        <item name="textColorOut">#FFa8a8a8</item>
+        <item name="textColorCenter">#FF2a2a2a</item>
+        <item name="dividerColor">#FFd5d5d5</item>
+        <item name="dividerWidth">0.5dp</item>
+        <item name="lineSpacingMultiplier">1.6</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+</resources>

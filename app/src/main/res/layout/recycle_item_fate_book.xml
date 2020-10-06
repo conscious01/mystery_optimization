@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_book_cover" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="56dp"
+            android:layout_marginRight="56dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?textColorHighlight"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="吴仁宝" />
+
+            <TextView
+                android:id="@+id/tv_constellation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:drawableStart="@drawable/shape_rect_title"
+                android:drawablePadding="4dp"
+                android:textColor="?textColorPrimary"
+                tools:text="星座：双鱼座" />
+
+            <TextView
+                android:id="@+id/tv_constellation_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:textColor="?textColorSecondary"
+                tools:text="合拍星座：巨蟹座，天蝎座，双鱼座" />
+
+            <TextView
+                android:id="@+id/tv_zodiac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:drawableStart="@drawable/shape_rect_title"
+                android:drawablePadding="4dp"
+                android:textColor="?textColorPrimary"
+                tools:text="生肖 ：龙" />
+
+            <TextView
+                android:id="@+id/tv_zodiac_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:textColor="?textColorSecondary"
+                tools:text="合拍生肖：鸡，鼠，猴" />
+
+            <TextView
+                android:id="@+id/tv_seal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:drawableStart="@drawable/shape_rect_title"
+                android:drawablePadding="4dp"
+                android:textColor="?textColorPrimary"
+                tools:text="人命卦 ：6" />
+
+            <TextView
+                android:id="@+id/tv_seal_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:textColor="?textColorSecondary"
+                tools:text="合拍命卦：2，5，8" />
+
+            <TextView
+                android:id="@+id/tv_spirit_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:drawableStart="@drawable/shape_rect_title"
+                android:drawablePadding="4dp"
+                android:textColor="?textColorPrimary"
+                tools:text="生命灵数 ：9" />
+
+            <TextView
+                android:id="@+id/tv_spirit_number_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:textColor="?textColorSecondary"
+                tools:text="合拍命卦：3，4，5" />
+
+            <TextView
+                android:id="@+id/tv_character"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:drawableStart="@drawable/shape_rect_title"
+                android:drawablePadding="4dp"
+                android:textColor="?textColorPrimary"
+                tools:text="八字 ：巳" />
+
+            <TextView
+                android:id="@+id/tv_character_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:textColor="?textColorSecondary"
+                tools:text="合拍八字：丑，酉，申" />
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_decoration"/>
+
+                <TextView
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/tv_enter_fate_book"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_fate_book"
+                    android:textColor="?colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="进入命书" />
+
+                <ImageView
+                    android:rotation="180"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_decoration"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <ImageView
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="14dp"
+        android:id="@+id/iv_delete"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_book"/>
+
+</LinearLayout>

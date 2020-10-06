@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f7f7f7"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/fate_book_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7.5dp"
+            android:layout_weight="1">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/home_fate_book_img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_90"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="8dp"
+                android:background="@drawable/icon_fate_book_bg" />
+
+            <ImageView
+                android:id="@+id/start_fate_book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_55"
+                android:background="@drawable/icon_start_book" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/km_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7.5dp"
+            android:layout_weight="1">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/home_master_img"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="8dp"
+                android:background="@drawable/icon_km_bg" />
+            <ImageView
+                android:id="@+id/start_km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_55"
+                android:background="@drawable/icon_start_bg" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/home_pray_img"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+
+            app:riv_corner_radius="8dp"
+            tools:background="@drawable/shape_member_center_bg" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/home_oneiromancy_img"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:layout_weight="1"
+
+            app:riv_corner_radius="8dp"
+            tools:background="@drawable/shape_member_center_bg" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/home_practise_divination_img"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+
+            app:riv_corner_radius="8dp"
+            tools:background="@drawable/shape_member_center_bg" />
+    </LinearLayout>
+</LinearLayout>

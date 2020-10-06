@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/layout_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/avatar"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/icon_right_more_other" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/nikeName"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:text="安德森" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/icon_right_more_other" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/name"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:hint="@string/hint_setting_name"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:text="安德森" />
+
+                <ImageView
+                    android:id="@+id/iv_name_enter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/ic_enter"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_sex"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sex"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:text="女" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/icon_right_more_other" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_sex_select"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sex"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <RadioGroup
+                    android:id="@+id/group_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_man"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:button="@null"
+
+                        android:drawableEnd="@drawable/selector_radio_button"
+                        android:gravity="center_vertical"
+                        android:text="@string/man"
+                        android:textColor="?textColorPrimary" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_woman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:button="@null"
+                        android:drawableEnd="@drawable/selector_radio_button"
+                        android:gravity="center_vertical"
+
+                        android:text="@string/woman"
+                        android:textColor="?textColorPrimary" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_date_birth"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/date_birth"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_date_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:text="2020-07-06" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/icon_right_more_other"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_birth_place"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birth_place"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_birth_place"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:hint="请选择" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/icon_right_more_other" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_live_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/live_area"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_live_area"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:hint="@string/hint_selected_live_area"
+                    android:textColor="?attr/textColorSecondary" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_enter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_user_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/heart_margin"
+                android:paddingRight="@dimen/heart_margin"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mine_user_id"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/textColorSecondary"
+                    tools:text="123453953884" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_enter"
+                    android:visibility="invisible" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/save_info"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginBottom="@dimen/dp_48"
+                android:layout_marginTop="60dp"
+                tools:text="保存"
+                android:textSize="18sp"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_24"/>
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

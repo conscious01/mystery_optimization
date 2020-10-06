@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:layout_gravity="center"
+    tools:layout_marginLeft="28dp"
+    tools:layout_marginRight="28dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_update_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_c_bg"
+        android:gravity="center_horizontal"
+        android:minHeight="280dp"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/new_version_found"
+            android:textColor="?textColorHighlight"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dialog_tv_update_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.4"
+            tools:text="1、新增师傅主页个人页面显示优化 \n2、优化页面操作流畅性" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@id/versionchecklib_version_dialog_cancel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_but_border"
+                android:text="@string/later"
+                android:textColor="?textColorHighlight" />
+
+            <Space
+                android:id="@+id/space"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@id/versionchecklib_version_dialog_commit"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/update_now"
+                android:textColor="?textColorPrimaryInverse" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+</LinearLayout>

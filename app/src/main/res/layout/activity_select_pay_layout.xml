@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#FAFAFB">
+    <include layout="@layout/include_activity_title"
+        />
+
+<!--    <TextView-->
+<!--        style="@style/textAppearance_bold_22sp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/heart_margin_large"-->
+<!--        android:layout_marginTop="@dimen/dp_37"-->
+<!--        android:text="@string/payment_method" />-->
+
+<!--    <RadioGroup-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        >-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/heart_margin_large"-->
+<!--        android:layout_marginTop="@dimen/heart_margin_large"-->
+<!--        android:layout_marginRight="@dimen/heart_margin_large"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_we_chat_pay" />-->
+
+<!--        <TextView-->
+<!--            style="@style/textViewStyle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginLeft="@dimen/dp_12"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/we_chat" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/radio_wechat_pay"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/heart_margin_large"-->
+<!--        android:layout_marginTop="@dimen/heart_margin_large"-->
+<!--        android:layout_marginRight="@dimen/heart_margin_large"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_alipay" />-->
+
+<!--        <TextView-->
+<!--            style="@style/textViewStyle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginLeft="@dimen/dp_12"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/alipay" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/radio_alipay"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
+<!--    </LinearLayout>-->
+<!--    </RadioGroup>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="?backgroundColor"-->
+<!--        android:orientation="vertical"-->
+<!--        >-->
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:background="#1B1921" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/pay_btn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dp_46"-->
+<!--            android:layout_marginLeft="@dimen/heart_margin_large"-->
+<!--            android:layout_marginTop="@dimen/item_margin"-->
+<!--            android:layout_marginRight="@dimen/heart_margin_large"-->
+<!--            android:layout_marginBottom="@dimen/heart_margin_large"-->
+<!--            tools:text="待支付"-->
+<!--            />-->
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/wechat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginLeft="@dimen/heart_margin_large"
+        android:layout_marginTop="@dimen/heart_margin_large"
+        android:layout_marginRight="@dimen/heart_margin_large"
+        android:gravity="center"
+        android:background="@drawable/ic_but_border_bg_gray"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:src="@drawable/ic_we_chat_pay" />
+
+        <TextView
+            style="@style/textViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_weight="1"
+            android:text="@string/we_chat_pay" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/alipay_layout"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginLeft="@dimen/heart_margin_large"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/heart_margin_large"
+        android:background="@drawable/ic_but_border_bg_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:src="@drawable/ic_alipay" />
+
+        <TextView
+            style="@style/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_weight="1"
+            android:text="@string/alipay_pay" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

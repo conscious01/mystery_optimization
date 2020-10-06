@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/master_detail_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="问题详情："
+        android:textColor="#ff4c5158"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_q_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="#ff4c5158"
+        android:textSize="14sp"
+        tools:text="大师帮我看下手相，我想知道我的财运和感情，请问我什么时候可以脱单呢？谢谢" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_q"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="112dp" />
+
+</LinearLayout>

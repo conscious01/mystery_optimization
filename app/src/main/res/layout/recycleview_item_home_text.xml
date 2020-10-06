@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_4"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_yj_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="卯卯卯卯"
+        android:textColor="#8c6b2c"
+        android:textSize="16sp"
+        />
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_previous_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar_direction" />
+
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="2020" />
+
+        <ImageView
+            android:id="@+id/iv_next_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:src="@drawable/ic_calendar_direction" />
+
+        <ImageView
+            android:id="@+id/iv_previous_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:src="@drawable/ic_calendar_direction" />
+
+        <TextView
+            android:id="@+id/tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="21dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="7月" />
+
+        <ImageView
+            android:id="@+id/iv_next_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:src="@drawable/ic_calendar_direction" />
+
+        <TextView
+            android:id="@+id/tv_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/return_today"
+            android:textColor="?textColorHighlight"
+            android:textSize="14sp"
+            tools:text="返回今天" />
+    </LinearLayout>
+
+    <com.haibin.calendarview.CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:calendar_padding="10dp"
+        app:current_month_lunar_text_color="?textColorSecondary"
+        app:current_month_text_color="?textColorPrimary"
+        app:month_view="com.zgzx.metaphysics.widgets.calendar.CalendarMonthView"
+        app:month_view_scrollable="false"
+        app:month_view_show_mode="mode_all"
+        app:other_month_lunar_text_color="#e1e1e1"
+        app:other_month_text_color="#e1e1e1"
+        app:scheme_text_color="#333"
+        tools:scheme_theme_color="#128c4b"
+        app:selected_lunar_text_color="?textColorPrimaryInverse"
+        app:selected_text_color="?textColorPrimaryInverse"
+        app:selected_theme_color="?colorPrimary"
+        app:week_background="@android:color/transparent"
+        app:week_bar_view="com.zgzx.metaphysics.widgets.calendar.CalendarWeekBar"
+        app:week_start_with="mon"
+        app:week_text_color="?textColorPrimary"
+        app:week_view_scrollable="false"
+        app:year_view_day_text_color="#333333"
+        app:year_view_day_text_size="9sp"
+        app:year_view_month_text_color="#ff0000"
+        app:year_view_month_text_size="20sp"
+        tools:year_view_scheme_color="#f17706" />
+
+</LinearLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f7f7f7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="24dp"
+        android:paddingRight="16dp">
+
+
+        <TextView
+            android:id="@+id/text_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_time_yj"
+            android:textColor="@color/color_20272f"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_share_time_yj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/tv_share"
+            android:drawableRight="@drawable/icon_home_btn_fx"
+            android:drawablePadding="@dimen/dp_4"
+            android:textColor="@color/color_9e9178"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/time_yj_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@drawable/draw_home_yiji_bg"
+        android:orientation="vertical"
+
+        android:paddingBottom="@dimen/dp_24">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_18"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_hour_yj"
+                    android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                tools:text="乙未时"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_24"
+                android:textColor="@color/backgroundColor"
+                android:textSize="18sp"
+                android:background="@drawable/icon_home_scyj_scdb"
+                />
+            <TextView
+                android:id="@+id/tv_yj_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13:00"
+                android:textColor="#899277"
+                android:textSize="12sp"
+               android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_7"
+                android:paddingRight="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_2"
+                android:paddingBottom="@dimen/dp_2"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:background="@drawable/icon_yj_time_bg"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_4"
+                android:textColor="#899277"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/tv_yj_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13:00"
+                android:layout_gravity="center_vertical"
+                android:textColor="#899277"
+                android:textSize="12sp"
+
+                android:paddingLeft="@dimen/dp_7"
+                android:paddingRight="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_2"
+                android:paddingBottom="@dimen/dp_2"
+                android:background="@drawable/fragment_home_time_rotate"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/include_recycle_time_yj_layout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_e6e6e6"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_gan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_8"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="12"
+            tools:listitem="@layout/recycle_gan_item_layout"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_15"
+    android:layout_marginBottom="@dimen/dp_15"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_find_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff20272f"
+        android:textSize="16sp"
+        tools:text="2021年属龙生肖运势走势详解" />
+
+    <TextView
+        android:id="@+id/tv_find_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:textColor="#ff4d5259"
+        android:textSize="14sp"
+        tools:text="明年属龙的人的运势会很好很好很好很好很好很好很好很好很好很好很好很好" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_find_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff899277"
+            android:textSize="12sp"
+            tools:text="35246" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_find_tips"
+            android:textColor="#ff899277"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

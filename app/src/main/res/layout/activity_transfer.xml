@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:background="#F2EFEB">
+
+    <include layout="@layout/include_activity_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/heart_margin"
+       android:background="@drawable/shape_rect_white_8"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/heart_margin"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingRight="@dimen/heart_margin"
+        android:paddingBottom="@dimen/dp_10">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16">
+            <TextView
+                android:id="@+id/tv_paste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/please_fill_transfer_uid"
+                android:textColor="#FF4D5259"
+
+               />
+            <EditText
+                android:maxLength="12"
+                android:id="@+id/et_uid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+
+                android:background="@null"
+                android:hint="@string/please_fill_transfer_uid_1"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textColor="?textColorPrimary" />
+
+
+        </LinearLayout>
+
+      <View android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="@color/color_e6e6e6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF4D5259"
+                android:text="@string/please_fill_transfer_amount" />
+            <EditText
+                android:id="@+id/et_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/hint_enter_amount"
+                android:gravity="right|center_vertical"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_available_balance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="32dp"
+            android:textColor="#FF75797E"
+            tools:text="@string/placeholder_available_balance" />
+
+        <TextView
+            android:id="@+id/tv_handling_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:textColor="#FF75797E"
+            tools:text="@string/placeholder_handling_fee" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/but_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_36"
+       android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:enabled="false"
+        android:text="@string/confirm" />
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+    <TextView
+        style="@style/textViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/item_margin"
+        android:layout_marginTop="@dimen/item_margin"
+        android:text="@string/total_kmz"
+        android:textColor="?textColorSecondary" />
+
+    <TextView
+        android:id="@+id/total_kmz"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/heart_margin_large"
+        android:layout_marginTop="@dimen/dp_6"
+        android:textSize="40sp"
+        tools:text="1000.00" />
+
+    <TextView
+        style="@style/textAppearance_bold_22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/item_margin"
+        android:layout_marginTop="@dimen/heart_margin_large"
+        android:text="@string/kmz_deposit" />
+
+    <and.fast.statelayout.StateLayout
+        android:id="@+id/state_layout"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_rechage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_margin"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_marginRight="@dimen/item_margin"
+
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:itemCount="6"
+            tools:listitem="@layout/recycleview_item_rechage_kmz_layout" />
+
+    </and.fast.statelayout.StateLayout>
+
+    <Button
+        android:id="@+id/recharge_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_46"
+        android:layout_marginLeft="@dimen/heart_margin_large"
+        android:layout_marginTop="@dimen/item_margin"
+        android:layout_marginRight="@dimen/heart_margin_large"
+        android:layout_marginBottom="@dimen/heart_margin_large"
+        tools:text="待支付"
+        />
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+<RelativeLayout
+    android:id="@+id/layout_title_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_80"
+    android:background="#A3AD87"
+    >
+    <ImageView
+        android:id="@+id/iv_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+
+        android:padding="@dimen/heart_margin"
+        android:layout_marginTop="@dimen/dp_30"
+        android:src="@drawable/ic_back_white" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+        android:textColor="@color/backgroundColor"
+        android:layout_marginTop="@dimen/dp_12"
+        android:textSize="18sp"
+        tools:text="这是标题" />
+
+    <TextView
+        android:enabled="false"
+        android:textColor="@color/backgroundColor"
+        android:id="@+id/tv_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_40"
+        android:paddingStart="@dimen/heart_margin"
+        android:paddingEnd="@dimen/heart_margin"
+        tools:text="保存" />
+</RelativeLayout>
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

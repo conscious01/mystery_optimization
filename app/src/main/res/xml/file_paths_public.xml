@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path name="camera_photos" path="/" />
+
+    <external-path
+        name="external_storage_app"
+        path="Android/data/com/zgzx/metaphysics/" />
+
+    <external-path
+        name="external_storage"
+        path="." />
+
+    <external-path
+        name="my_images"
+        path="Android/data/${filesAuthority}/files/Pictures" />
+
+    <external-path
+        name="camera"
+        path="Pictures" />
+
+</paths>

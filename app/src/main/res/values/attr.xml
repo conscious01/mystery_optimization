@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主要文字颜色 -->
+    <attr name="textColorPrimary" format="color" />
+    <attr name="textColorPrimaryInverse" format="color|reference"/>
+
+    <!-- 次要文本颜色 -->
+    <attr name="textColorSecondary" format="color" />
+
+    <!-- 高亮文字颜色 -->
+    <attr name="textColorHighlight" format="color"/>
+
+    <!-- 提示文字颜色 -->
+    <attr name="textColorHint" format="color" />
+
+    <!-- 时间文字颜色-->
+    <attr name="textColorCalendar" format="color" />
+
+    <!-- 分线隔颜色 -->
+    <attr name="dividerColor" format="color" />
+
+    <!-- 背景颜色 -->
+    <attr name="backgroundColor" format="color"/>
+    <attr name="backgroundColorSecondary" format="color"/>
+    <declare-styleable name="RoundImageView">
+        <attr name="type" format="enum">
+            <enum name="circle" value="1"/>
+            <enum name="round" value="2"/>
+        </attr>
+        <attr name="radius" format="dimension"/>ssss
+    </declare-styleable>
+</resources>

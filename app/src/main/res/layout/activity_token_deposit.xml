@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorAccent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title_transparent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/heart_margin"
+        android:background="@drawable/ic_white_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/heart_margin"
+        android:paddingTop="32dp"
+        android:paddingRight="@dimen/heart_margin"
+        android:paddingBottom="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_token"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                tools:src="#123" />
+
+            <TextView
+                android:id="@+id/tv_token_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="?textColorPrimary"
+                tools:text="USDT" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chain_type"
+                android:textColor="?textColorSecondary"
+                tools:text="链类型" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/chain_type_erc_20"
+                android:textColor="?textColorPrimary"
+                tools:text="ERC 20" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_rq_code"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            tools:src="#132" />
+
+        <Button
+            android:background="@drawable/ic_but_border"
+            android:id="@+id/but_save"
+            style="@style/buttonStyle.Border"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/save_rq_code"
+            android:textColor="?textColorHighlight"
+            tools:text="保存二维码" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/deposit_address"
+            android:textColor="?textColorSecondary"
+            tools:text="提币地址" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="?textColorPrimary"
+            tools:text="0x24602722816b6cad0e143ce9fabf31f6026ec6226026ec6226026ec622" />
+
+        <Button
+            android:id="@+id/but_copy"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/copy_link"
+            tools:text="复制链接" />
+    </LinearLayout>
+
+</LinearLayout>

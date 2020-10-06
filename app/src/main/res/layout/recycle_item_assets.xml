@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    tools:layout_marginTop="8dp"
+    tools:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/iv_token"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:background="#123"/>
+
+    <TextView
+        android:id="@+id/tv_token_name"
+        tools:text="ETH"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:textColor="?textColorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_amount"
+        tools:text="120.12343"
+        android:textColor="?textColorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

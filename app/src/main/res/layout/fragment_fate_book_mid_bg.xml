@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_4"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="@dimen/dp_4"
+        android:background="@drawable/icon_fatebook_bg_1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_48"
+            android:ems="1"
+            android:lineSpacingExtra="@dimen/dp_15"
+            android:textColor="#ff202830"
+
+            android:textSize="30sp"
+            tools:text="诺兰兰" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_zodiac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff202830"
+                android:textSize="16sp"
+                tools:text="生肖：兔" />
+
+            <TextView
+                android:id="@+id/tv_zodiac_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textColor="#FF4E525A"
+                android:textSize="16sp"
+                tools:text="合拍生肖：狗，猪，羊" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_36"
+                android:background="#FFA89A85" />
+
+            <TextView
+                android:id="@+id/tv_character"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:textColor="#ff202830"
+                android:textSize="16sp"
+                tools:text="八字：丁卯，丁未，丁未，乙卯" />
+
+            <TextView
+                android:id="@+id/tv_character_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textColor="#FF4E525A"
+                android:textSize="16sp"
+                tools:text="合拍八字：未，戌" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_36"
+                android:background="#FFA89A85" />
+
+            <TextView
+                android:id="@+id/tv_constellation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:textColor="#ff202830"
+                android:textSize="16sp"
+                tools:text="星座：巨蟹座" />
+
+            <TextView
+                android:id="@+id/tv_constellation_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textColor="#FF4E525A"
+                android:textSize="16sp"
+                tools:text="合拍星座：巨蟹座，天蝎座，双鱼座" />
+        </LinearLayout>
+    </LinearLayout>

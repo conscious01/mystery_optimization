@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:background="@drawable/shape_rect_white_8"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/group_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_simplified_chinese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@null"
+                android:drawableEnd="@drawable/selector_radio_button"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/heart_margin_large"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/heart_margin_large"
+                android:paddingBottom="16dp"
+                android:text="@string/simplified_chinese"
+                android:textColor="?textColorPrimary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_16"
+                android:background="#e6e6e6" />
+
+            <RadioButton
+                android:id="@+id/radio_traditional_chinese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@null"
+                android:drawableEnd="@drawable/selector_radio_button"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/heart_margin_large"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/heart_margin_large"
+                android:paddingBottom="16dp"
+                android:text="@string/traditional_chinese"
+                android:textColor="?textColorPrimary" />
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>

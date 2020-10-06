@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:background="#33333333"
+    tools:layout_gravity="center"
+    tools:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialog_tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_c_bg"
+        android:gravity="center_vertical"
+        android:minHeight="113dp"
+        android:padding="30dp"
+        tools:text="有机会与兄弟姐妹偶有争执摩擦，建议多多忍让。出外人缘好、机遇佳，易助提拔。" />
+
+    <ImageView
+        android:id="@+id/dialog_iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_close_white" />
+
+</LinearLayout>

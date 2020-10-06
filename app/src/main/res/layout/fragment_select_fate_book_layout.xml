@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:splitMotionEvents="false"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_14"
+        android:splitMotionEvents="false"
+
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/mImgBook_onselef_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+           >
+
+            <ImageView
+                android:id="@+id/mImgBook_onselef"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                tools:background="@drawable/icon_book" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/icon_book_title_bg"
+                android:gravity="center"
+                android:text="@string/tv_fate_book_oneself"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/mImgBook_love_layout"
+            android:splitMotionEvents="false"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_22"
+
+            >
+
+            <ImageView
+                android:id="@+id/mImgBook_love"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                tools:background="@drawable/icon_book" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@drawable/icon_book_title_bg"
+                android:gravity="center"
+                android:text="@string/tv_fate_book_love"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/mImgBook_case_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:splitMotionEvents="false"
+            android:layout_marginLeft="@dimen/dp_30">
+
+            <ImageView
+                android:id="@+id/mImgBook_case"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                tools:background="@drawable/icon_book" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/icon_book_title_bg"
+                android:gravity="center"
+                android:text="@string/tv_book_case"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginLeft="@dimen/dp_70"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="@dimen/dp_70"
+
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/mImgBook_balance_layout"
+            android:layout_width="wrap_content"
+            android:splitMotionEvents="false"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mImgBook_balance"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                tools:background="@drawable/icon_book" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/icon_book_title_bg"
+                android:gravity="center"
+                android:text="@string/tv_fate_book_balance"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/mImgBook_home_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:splitMotionEvents="true"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_22"
+
+            >
+
+            <ImageView
+                android:id="@+id/mImgBook_home"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+
+                tools:background="@drawable/draw_book_lock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@drawable/icon_book_title_bg"
+                android:gravity="center"
+                android:text="@string/tv_fate_book_home"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+    </LinearLayout>
+</LinearLayout>

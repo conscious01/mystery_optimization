@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/draw_dialog_new_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:background="@drawable/icon_dialog_title_bg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#ffff8335"
+            android:textSize="18sp"
+            tools:text="增运提示" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:background="@drawable/icon_close_circle" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:text="百事皆顺，福清高照，麻烦事都可以迎刃而解"
+        android:textColor="#ff4d5259"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/topicLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/content_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_12"
+            android:textColor="#ff4d5259"
+            android:textSize="14sp"
+
+            tools:text="百事皆顺，福清高照，麻烦事都可以迎刃而解"
+
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/tv_micromorphology"
+            android:textColor="#ff20272f"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_sub_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_12"
+            android:textColor="#ff4d5259"
+            android:textSize="14sp"
+            tools:text="百事皆顺，福清高照，麻烦事都可以迎刃而解" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/tv_caution"
+            android:textColor="#ff20272f"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_caution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_marginBottom="32dp"
+            android:textColor="#ff4d5259"
+            android:textSize="14sp"
+            tools:text="百事皆顺，福清高照，麻烦事都可以迎刃而解" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addFortuneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_48"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_fortune_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ff4d5259"
+                android:textSize="14sp"
+                tools:text="人员位：西" />
+
+            <TextView
+                android:id="@+id/tv_fortune_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff4d5259"
+                android:textSize="14sp"
+                tools:text="人员位：西" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_48"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_fortune_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ff4d5259"
+                android:textSize="14sp"
+                tools:text="人员位：西" />
+
+            <TextView
+                android:id="@+id/tv_fortune_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff4d5259"
+                android:textSize="14sp"
+                tools:text="人员位：西" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_48"
+            android:layout_marginBottom="32dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_fortune_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ff4d5259"
+                android:textSize="14sp"
+                tools:text="人员位：西" />
+
+            <TextView
+                android:id="@+id/tv_fortune_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff4d5259"
+                android:textSize="14sp"
+                tools:text="人员位：西" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

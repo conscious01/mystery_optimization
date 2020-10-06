@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_70"
+    android:layout_height="@dimen/dp_70"
+    android:background="@color/translucent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/add_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_btn_bg"
+        android:gravity="center"
+        android:text="@string/tv_add"
+        android:textColor="#fffcf3c5"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/edit_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_btn_bg"
+        android:gravity="center"
+        android:text="@string/edit"
+        android:textColor="#fffcf3c5"
+        android:textSize="16sp" />
+</LinearLayout>

@@ -1,0 +1,218 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.didi.dokit'
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        versionName rootProject.ext.android.versionName
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+
+        // 占位符
+        manifestPlaceholders = [
+                UMENG_APP_KEY: "${rootProject.ext.config.umengAppKey}"
+        ]
+
+        // 配置
+        multiDexEnabled true
+        renderscriptTargetApi rootProject.ext.android.targetSdkVersion as int
+        renderscriptSupportModeEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias "zgzx"
+            keyPassword "zgzx^200730*"
+            storePassword "zgzx^200730*"
+            storeFile file("../keyStore/app.jks")
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug {
+//            applicationIdSuffix ".debug"
+
+//            minifyEnabled true
+//            shrinkResources true
+//            zipAlignEnabled true
+            signingConfig signingConfigs.release
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // 应用名称
+            resValue("string", "app_name", "${rootProject.ext.config.appName}-测试")
+
+            // 网络环境  debugDomain
+            buildConfigField 'String', 'DOMAIN', "\"${rootProject.ext.config.debugDomain}\""
+
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 应用名称
+            resValue("string", "app_name", "${rootProject.ext.config.appName}")
+            // 网络环境
+            buildConfigField 'String', 'DOMAIN', "\"${rootProject.ext.config.releaseDomain}\""
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
+
+    lintOptions {
+        abortOnError false
+        disable 'GoogleAppIndexingWarning'
+    }
+
+    flavorDimensions rootProject.ext.android.versionName
+    productFlavors {
+        web {}
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL: name]
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "${variant.buildType.name}-${variant.versionName}(${variant.versionCode}).apk"
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libRSSupport.so'
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+}
+
+dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // 雷达图
+    implementation project(path: ':rade-view')
+    // 时间
+    implementation project(path: ':city-time-picker')
+    // apng动图加载menta
+    implementation project(path: ":apng")
+    implementation project(path: ':library')
+    implementation(name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
+    implementation(name: 'open_ad_sdk', ext: 'aar')
+    implementation files('libs\\miPush_SDK_Client_3_8_0.jar')
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
+    // androidx
+    implementation rootProject.ext.androidx["palette"]
+    implementation rootProject.ext.androidx["multidex"]
+    implementation rootProject.ext.androidx["material"]
+    implementation rootProject.ext.androidx["appcompat"]
+    implementation rootProject.ext.androidx["legacy-support"]
+
+    // ui
+    implementation rootProject.ext.dependencies["banner"]
+    implementation rootProject.ext.dependencies["xpopup"]
+    implementation rootProject.ext.dependencies["calendar"]
+    implementation rootProject.ext.dependencies["auto-size"]
+    implementation rootProject.ext.dependencies["flow-layout"]
+    implementation rootProject.ext.dependencies["state-layout"]
+    implementation rootProject.ext.dependencies["smart-refresh-layout"]
+    implementation rootProject.ext.dependencies["baseRecyclerViewAdapterHelper"]
+    implementation('github.hellocsl:GalleryLayoutManager:1.0.6') {
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+
+    // image
+    implementation rootProject.ext.dependencies["image-util"]
+    implementation rootProject.ext.dependencies["rounded-image"]
+    implementation rootProject.ext.dependencies["picture-selector"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    implementation rootProject.ext.dependencies["glide-transformations"]
+    implementation rootProject.ext.dependencies["glide-okhttp3-integration"]
+    implementation rootProject.ext.dependencies["glide-recyclerview-integration"]
+    implementation(rootProject.ext.dependencies["glide"]) {
+        exclude group: "com.android.support"
+    }
+
+    // util
+    implementation rootProject.ext.dependencies["gson"]
+    implementation rootProject.ext.dependencies["logger"]
+    implementation rootProject.ext.dependencies["status-bar"]
+    implementation rootProject.ext.dependencies["android-util-code"]
+    implementation rootProject.ext.dependencies["version-update"]
+    implementation rootProject.ext.dependencies["eventbus"]
+    implementation rootProject.ext.dependencies["rx-java"]
+    implementation rootProject.ext.dependencies["rx-android"]
+    implementation rootProject.ext.dependencies["rx-binding"]
+    implementation rootProject.ext.dependencies["butterknife"]
+    debugImplementation rootProject.ext.dependencies["doraemonkit"]
+    releaseImplementation rootProject.ext.dependencies["doraemonkit-no-op"]
+    annotationProcessor rootProject.ext.dependencies["butterknifeannotationProcessor"]
+    implementation rootProject.ext.dependencies["easy-permissions"]
+    implementation rootProject.ext.dependencies["qrcode"]
+    // net
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["adapter-rxjava2"]
+    implementation rootProject.ext.dependencies["logging-interceptor"]
+
+    // 友盟
+    implementation rootProject.ext.dependencies["umeng-common"]
+    implementation rootProject.ext.dependencies["umeng-asms"]
+    implementation rootProject.ext.dependencies["umeng-crash"]
+    implementation rootProject.ext.dependencies["umeng-lenovo"]
+    implementation rootProject.ext.dependencies["umeng-mi"]
+    implementation rootProject.ext.dependencies["umeng-oppo"]
+    implementation rootProject.ext.dependencies["umeng-vivo"]
+    implementation rootProject.ext.dependencies["umeng-share"]
+    implementation rootProject.ext.dependencies["umeng-wx"]
+    implementation rootProject.ext.dependencies["umeng-board"]
+
+
+    implementation rootProject.ext.dependencies["flyco"]
+    implementation rootProject.ext.dependencies["RatingBar"]
+
+
+//     implementation rootProject.ext.dependencies["apng"]
+//    implementation  rootProject.ext.dependencies["glide-plugin"]
+    // 支付
+    implementation(name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
+
+    // 融云
+    implementation rootProject.ext.dependencies["im-lib"]
+    implementation rootProject.ext.dependencies["im-kit"]
+
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
+
+    //sp保存的库
+    implementation "com.qbw.spm:spm:1.2"
+
+    //放大图片的库
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    //华为推送
+    implementation 'com.huawei.android.hms:base:2.6.1.301'
+    implementation 'com.huawei.android.hms:push:2.6.1.301'
+
+    //魅族推送
+    implementation 'com.meizu.flyme.internet:push-internal:3.6.+@aar'
+
+    implementation   files("libs/vivo_pushsdk-v2.9.0.0.aar")
+    implementation   files("libs/com.heytap.msp.aar")
+
+    implementation 'com.google.zxing:core:3.2.1'
+
+
+}

@@ -1,0 +1,36 @@
+apply from: "config.gradle"
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.1.8'
+    }
+}
+
+allprojects {
+    repositories {
+
+        flatDir {
+            dirs 'libs'
+        }
+
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://dl.bintray.com/rongcloud/maven" }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+        maven { url 'http://developer.huawei.com/repo/' } //华为推送
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

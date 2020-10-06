@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rect_white_8">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alter_nickname"
+        android:textColor="#ff797d82"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_gravity="center_horizontal"
+        />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/dp_40"
+           android:orientation="horizontal"
+           android:layout_marginLeft="@dimen/dp_16"
+           android:layout_marginRight="@dimen/dp_16"
+           android:layout_marginTop="@dimen/dp_16"
+           android:layout_marginBottom="@dimen/dp_24"
+           android:background="@drawable/shape_rect_ededed_4">
+           <EditText
+               android:id="@+id/et_content"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginLeft="@dimen/dp_12"
+               android:layout_marginRight="@dimen/dp_8"
+               android:hint="@string/hint_alter_nickname"
+               android:maxLength="10"
+               android:background="@null"
+
+             />
+           <ImageView
+               android:id="@+id/clearImg"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/icon_close"
+               android:layout_gravity="center_vertical"
+               android:layout_marginRight="@dimen/dp_12"
+               />
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_42"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rect_cancle_4_bg"
+                android:text="@string/cancel"
+                android:textColor="#747979"/>
+            <Button
+                android:id="@+id/confirm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_42"
+                android:layout_weight="1"
+                android:background="@drawable/shape_confirm_rect_4"
+                android:text="@string/confirm"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+</LinearLayout>

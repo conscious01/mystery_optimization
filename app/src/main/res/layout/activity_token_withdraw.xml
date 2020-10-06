@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:background="#F2EFEB">
+
+    <include layout="@layout/include_activity_title" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/heart_margin"
+        android:background="@drawable/ic_white_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/heart_margin"
+        android:paddingTop="32dp"
+        android:paddingRight="@dimen/heart_margin"
+        android:paddingBottom="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_token"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                tools:src="#123" />
+
+            <TextView
+                android:id="@+id/tv_token_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="?textColorPrimary"
+                tools:text="USDT" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chain_type"
+                android:textColor="?textColorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/chain_type_erc_20"
+                android:textColor="?textColorHighlight"
+                tools:text="ERC 20" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/withdraw_address"
+                android:textColor="?textColorPrimary"
+                tools:text="提币地址" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_rq_code" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_rect_dilute_primary_4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <EditText
+                android:maxLines="2"
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/hint_paste_address"
+                android:textColor="?textColorPrimary"
+                tools:text="0x24602722816b6cad0e143ce9fabf31f6026ec6226026ec6226026ec622" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paste"
+                android:textColor="?textColorHighlight"
+                tools:text="粘贴" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/amount"
+            android:textColor="?textColorPrimary"
+            tools:text="数量" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/hint_input_amount"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:textColor="?textColorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_token_name_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?textColorPrimary"
+                tools:text="USDT ｜ " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all"
+                android:textColor="?textColorHighlight" />
+        </LinearLayout>
+
+        <View
+            style="@style/Divider.Horizontal"
+            android:layout_marginBottom="18dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_available_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_available_balance"
+                android:textColor="?textColorSecondary"
+                tools:text="可用：1240 USDT" />
+
+            <TextView
+                android:id="@+id/tv_handling_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder_handling_fee"
+                android:textColor="?textColorSecondary"
+                tools:text="手续费 1%" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?backgroundColor"
+        android:gravity="center_vertical"
+        android:padding="@dimen/heart_margin">
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_amount"
+            android:text="@string/signed_arrival_quantity"
+            android:textColor="?textColorSecondary"
+            tools:text="到账数量：" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/text_view"
+            android:textColor="?textColorHighlight"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="1240" />
+
+        <TextView
+            android:id="@+id/tv_token_name_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_amount"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toEndOf="@id/tv_amount"
+            android:textColor="?textColorHighlight"
+            tools:text="USDT" />
+
+        <Button
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_but_bg_accent"
+            android:text="@string/withdraw_toekn" />
+    </RelativeLayout>
+</LinearLayout>

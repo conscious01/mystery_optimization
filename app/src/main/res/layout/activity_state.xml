@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/iv_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="start"
+        android:padding="@dimen/heart_margin"
+        android:src="@drawable/ic_back_black" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/iv_state"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:src="@drawable/ic_state_success" />
+
+    <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/payment_successful"
+        android:textColor="?attr/textColorPrimary"
+        android:textSize="22sp"
+        tools:text="支付成功" />
+
+    <TextView
+        android:id="@+id/tv_additional"
+        android:layout_marginTop="8dp"
+        tools:text="师傅前往接单中，请耐心等待"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/but_positive"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="@string/now_ask_questions"
+        tools:text="现在去提问" />
+
+    <Button
+        android:id="@+id/but_negative"
+        style="@style/buttonStyle.Border"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_c_bg"
+        android:text="@string/later"
+        tools:text="稍后" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+</LinearLayout>

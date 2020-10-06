@@ -1,0 +1,398 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- 系统主题样式 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="chipStyle">@style/chipStyle</item>
+        <item name="chipGroupStyle">@style/chipGroupStyle</item>
+        <item name="editTextStyle">@style/editTextStyle</item>
+        <item name="tabStyle">@style/tabStyle</item>
+        <item name="failure_res">@layout/view_state_layout_failure</item>
+        <item name="empty_res">@layout/view_state_layout_empty</item>
+
+        <item name="radarViewStyle">@style/radarViewStyle.Light</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:editTextStyle">@style/editTextStyle</item>
+        <item name="android:textViewStyle">@style/textViewStyle</item>
+        <item name="android:textAppearanceLarge">@style/textAppearanceLarge</item>
+        <item name="android:buttonStyle">@style/buttonStyle</item>
+        <item name="android:buttonStyleSmall">@style/buttonStyle.Small</item>
+        <item name="android:checkboxStyle">@style/checkboxStyle</item>
+        <item name="android:radioButtonStyle">@style/radioButtonStyle</item>
+        <item name="android:ratingBarStyle">@style/ratingBarStyle</item>
+        <item name="ratingBarStyle">@style/ratingBarStyle</item>
+        <!--        <item name="android:switchStyle">@style/switchStyle</item>-->
+        <!--        <item name="android:overScrollMode">never</item>-->
+        <item name="android:scrollbars">none</item>
+
+        <!--        <item name="android:windowBackground">#FFFFFF</item>-->
+        <!--        <item name="dialogCornerRadius">0dp</item>-->
+        <!--        <item name="alertDialogCenterButtons">true</item>-->
+        <!--        <item name="alertDialogTheme">@style/alertDialogTheme</item>-->
+        <!--        <item name="alertDialogStyle">@style/alertDialogStyle</item>-->
+        <item name="buttonBarNegativeButtonStyle">@style/buttonBarNegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/buttonBarPositiveButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/buttonBarNeutralButtonStyle</item>
+
+        <!-- 自定义主题样式 -->
+        <item name="textColorPrimary">#20272f</item>
+        <item name="textColorPrimaryInverse">#FFFFFF</item>
+        <item name="dividerColor">#F1F0EF</item>
+        <item name="textColorHint">#BCBEC0</item>
+        <item name="textColorSecondary">#BCBEC0</item>
+        <item name="textColorHighlight">#80993C</item>
+        <item name="textColorCalendar">#D9D9DC</item>
+        <item name="backgroundColor">@color/backgroundColor</item>
+        <item name="backgroundColorSecondary">@color/backgroundColorSecondary</item>
+    </style>
+
+    <style name="AppTheme.Launch" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/icon_splash_bg</item>
+    </style>
+
+    <!-- 全局文字样式 -->
+    <style name="textViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">?textColorHint</item>
+        <item name="android:textColor">?textColorPrimary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="textAppearance_20sp">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_e2bb74</item>
+    </style>
+
+    <style name="textAppearanceLarge">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textAppearance_bold_22sp" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/textColorPrimary</item>
+    </style>
+    <!-- 全局输入框样式 -->
+    <style name="editTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:minHeight">@dimen/edit_min_height</item>
+        <item name="android:textColorHint">?attr/textColorHint</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/selector_edit_underline</item>
+    </style>
+
+    <!-- 全局按键样式 -->
+    <style name="buttonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/selector_but_bg</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/textColorPrimaryInverse</item>
+        <item name="android:minHeight">46dp</item>
+        <item name="android:maxHeight">46dp</item>
+        <!--        <item name="android:paddingLeft">8dp</item>-->
+        <!--        <item name="android:paddingRight">8dp</item>-->
+    </style>
+
+    <style name="buttonStyle.Small">
+        <item name="android:minHeight">32dp</item>
+        <item name="android:maxHeight">32dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="buttonStyle.Border">
+        <item name="android:background">@drawable/ic_but_border_bg</item>
+        <item name="android:textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="buttonStyle.Border.Small">
+        <item name="android:minHeight">23dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textColor">?attr/textColorHighlight</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="buttonBarNegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#333333</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="buttonBarPositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#DDA031</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="buttonBarNeutralButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <!--        <item name="android:visibility">gone</item>-->
+    </style>
+
+    <!--    <style name="alertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">-->
+    <!--                        <item name="android:background">@drawable/ic_white_bg</item>-->
+    <!--                <item name="android:windowFrame">@drawable/ic_white_bg</item>-->
+    <!--                <item name="android:windowBackground">@drawable/ic_white_bg</item>-->
+    <!--                <item name="android:colorBackground">@android:color/transparent</item>-->
+    <!--        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="alertDialogStyle" parent="AlertDialog.AppCompat.Light">-->
+
+    <!--    </style>-->
+
+    <style name="windowTitleStyle" parent="@style/RtlOverlay.DialogWindowTitle.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?textColorPrimary</item>
+    </style>
+
+    <style name="checkboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/selector_check_box</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="checkboxStyle.Visibility">
+        <item name="android:button">@drawable/selector_radio_button_visibility</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingStart">0dp</item>
+    </style>
+
+
+    <style name="radioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/selector_radio_button</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#575042</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+    </style>
+
+    <style name="radioButtonStyle.Label">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/selector_label</item>
+        <item name="android:textColor">@color/color_secondary_primary_inverse</item>
+        <item name="android:minWidth">52dp</item>
+        <item name="android:maxHeight">23dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
+    <style name="ratingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <!--        <item name="android:progressDrawable">@drawable/layer_rating_bar</item>-->
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">0.5</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
+
+    <style name="switchStyle" parent="Widget.AppCompat.CompoundButton.Switch">
+        <!--        <item name="android:thumb">@drawable/selector_switch_thumb</item>-->
+        <item name="android:showText">false</item>
+        <item name="android:background">@null</item>
+
+        <!--        <item name="colorControlActivated">#F2EFEB</item>-->
+        <!--        <item name="colorSwitchThumbNormal">@color/colorAccent</item>-->
+        <!--        <item name="android:colorForeground">@color/colorPrimaryDark</item>-->
+        <item name="android:thumbTint">?colorPrimary</item>
+        <!--        <item name="android:minWidth">0dp</item>-->
+        <!--        <item name="android:switchMinWidth">0dp</item>-->
+    </style>
+
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="pstsIndicatorColor" format="color" />
+        <attr name="pstsUnderlineColor" format="color" />
+        <attr name="pstsDividerColor" format="color" />
+        <attr name="pstsIndicatorHeight" format="dimension" />
+        <attr name="pstsUnderlineHeight" format="dimension" />
+        <attr name="PagerSliding_pstsDividerPadding" format="dimension" />
+        <attr name="pstsDividerPaddingTopBottom" format="dimension" />
+        <attr name="pstsTabPaddingLeftRight" format="dimension" />
+        <attr name="pstsScrollOffset" format="dimension" />
+        <attr name="pstsTabBackground" format="reference" />
+        <!--该属性表示里面的TAB是否均分整个PagerSlidingTabStrip控件的宽,true是,false不均分,从左到右排列,默认false-->
+        <attr name="pstsShouldExpand" format="boolean" />
+        <attr name="pstsTextAllCaps" format="boolean" />
+        <attr name="pstsTextSelectedColor" format="color" />
+        <!--缩放的最大值,0.3表示放大后最大是原来的0.3倍,默认未0.3-->
+        <attr name="pstsScaleZoomMax" format="float" />
+        <attr name="pstsSmoothScrollWhenClickTab" format="boolean" />
+        <!-- 宽为match_parent ，指示器的宽需手动计算的问题,这个属性设置为true,则指示器的位置和字体的宽一样-->
+        <!--    <attr name="pstsIndicatorWrap" format="boolean" />-->
+    </declare-styleable>
+
+    <style name="chipGroupStyle" parent="Widget.MaterialComponents.ChipGroup">
+        <item name="chipSpacing">10dp</item>
+    </style>
+
+    <style name="chipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <!--        <item name="android:background">@drawable/selector_chip_label_bg</item>-->
+        <item name="android:button">@null</item>
+        <item name="android:textColor">?attr/textColorHighlight</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:minHeight">23dp</item>
+        <item name="android:maxHeight">23dp</item>
+        <item name="android:minWidth">52dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="tabStyle" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabSelectedTextColor">?attr/textColorHighlight</item>
+        <item name="tabIndicatorColor">@color/color_4D5259</item>
+        <item name="tabTextAppearance">@style/tabTextAppearance</item>
+        <item name="tabTextColor">?attr/textColorSecondary</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabRippleColor">@android:color/transparent</item>
+        <item name="tabIndicatorHeight">2dp</item>
+    </style>
+
+    <style name="tabTextAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tabStyle.Simple">
+        <item name="tabSelectedTextColor">?textColorPrimary</item>
+        <item name="tabTextAppearance">@style/tabTextAppearance.Simple</item>
+        <item name="tabTextColor">?textColorSecondary</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorHeight">0dp</item>
+    </style>
+
+    <style name="tabTextAppearance.Simple">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+
+    <!-- 分割线样式 -->
+    <style name="Divider">
+        <item name="android:background">?attr/dividerColor</item>
+    </style>
+
+    <style name="Divider.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+
+    <style name="Divider.Vertical">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+
+    <!-- 图片选择器样式 -->
+    <style name="picture.default.style" parent="Base.Theme.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--标题栏背景色-->
+        <item name="colorPrimary">#FFFFFF</item>
+        <!--状态栏背景色-->
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <!--是否改变图片列表界面状态栏字体颜色为黑色-->
+        <item name="picture.statusFontColor">true</item>
+        <!--返回键图标-->
+        <item name="picture.leftBack.icon">@drawable/ic_back_black</item>
+        <!--标题下拉箭头-->
+        <item name="picture.arrow_down.icon">@drawable/picture_icon_arrow_down</item>
+        <!--标题上拉箭头-->
+        <item name="picture.arrow_up.icon">@drawable/picture_icon_arrow_up</item>
+        <!--标题文字颜色-->
+        <item name="picture.title.textColor">#333333</item>
+        <!--标题栏右边文字-->
+        <item name="picture.right.textColor">#333333</item>
+        <!--图片列表勾选样式-->
+        <item name="picture.checked.style">@drawable/selector_picture</item>
+        <!--开启图片列表勾选数字模式,开启的话勾选样式要换-->
+        <item name="picture.style.checkNumMode">true</item>
+        <!--选择图片样式0/9-->
+        <item name="picture.style.numComplete">true</item>
+        <!--图片列表底部背景色-->
+        <item name="picture.bottom.bg">#FFFFFF</item>
+        <!--图片列表预览文字颜色-->
+        <item name="picture.preview.textColor">@color/picture_list_sina_text_color</item>
+        <!--图片列表已完成文字颜色-->
+        <item name="picture.complete.textColor">@color/picture_list_sina_text_color</item>
+        <!--图片已选数量圆点背景色-->
+        <item name="picture.num.style">@drawable/picture_num_oval</item>
+        <!--预览界面标题栏背景色-->
+        <item name="picture.ac_preview.title.bg">#FFFFFF</item>
+        <!--预览界面标题文字颜色-->
+        <item name="picture.ac_preview.title.textColor">#333333</item>
+        <!--预览界面已完成文字颜色-->
+        <item name="picture.ac_preview.complete.textColor">@color/picture_list_sina_text_color
+        </item>
+        <!--预览界面底部背景色-->
+        <item name="picture.ac_preview.bottom.bg">@color/picture_color_fa</item>
+        <!--预览界面返回箭头-->
+        <item name="picture.preview.leftBack.icon">@drawable/ic_back_black</item>
+        <!--裁剪页面标题背景色-->
+        <item name="picture.crop.toolbar.bg">#FFFFFF</item>
+        <!--裁剪页面状态栏颜色-->
+        <item name="picture.crop.status.color">#FFFFFF</item>
+        <!--裁剪页面标题文字颜色-->
+        <item name="picture.crop.title.color">#333333</item>
+        <!--相册文件夹列表选中图标-->
+        <item name="picture.folder_checked_dot">@drawable/picture_orange_oval</item>
+    </style>
+
+
+    <!-- 滚轮样式 -->
+    <style name="wheelViewStyle">
+        <item name="gravity">center</item>
+        <item name="textSize">20sp</item>
+        <item name="textColorOut">#FFC0C0C0</item>
+        <item name="textColorCenter">#FF333333</item>
+        <item name="dividerColor">#FFc0c0c0</item>
+        <item name="dividerWidth">1px</item>
+        <item name="lineSpacingMultiplier">1.6</item>
+        <item name="fontFamily">@font/font_family</item>
+        <item name="textStyle">bold</item>
+    </style>
+
+    <!--    雷达样式 -->
+    <style name="radarViewStyle.Light">
+        <item name="fontFamily">@font/font_family</item>
+    </style>
+
+    <!-- 版本更新样式 -->
+    <style name="versionUpdateDialogStyle" parent="AppTheme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+    <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+    <style name="ViewPagerStyle">
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">#00000000</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

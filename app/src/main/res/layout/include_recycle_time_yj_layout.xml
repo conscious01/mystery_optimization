@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@drawable/icon_home_scyj_ydb"
+            android:gravity="center"
+            android:text="@string/tv_yi"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recycle_time_yi"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="24dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:spanCount="4"
+            tools:itemCount="8"
+            tools:listitem="@layout/recycleview_item_home_text" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp_88"
+        android:layout_marginRight="@dimen/dp_24"
+
+        android:background="@color/color_e6e6e6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@drawable/icon_home_scyj_jdb"
+            android:gravity="center"
+            android:text="@string/tv_ji"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_time_ji"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="24dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="4"
+             tools:itemCount="8"
+
+            tools:listitem="@layout/recycleview_item_home_text" />
+
+    </LinearLayout>
+</LinearLayout>

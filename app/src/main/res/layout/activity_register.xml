@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+    <!--  <include layout="@layout/include_activity_title_user" />-->
+
+    <TextView
+        android:id="@+id/tv_region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_72"
+        android:layout_marginBottom="12dp"
+        android:drawableEnd="@drawable/ic_more_black"
+        android:gravity="center"
+        android:text="@string/default_phone_area_code"
+        android:textColor="?attr/textColorPrimary" />
+
+    <EditText
+        android:id="@+id/et_mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:hint="@string/hint_input_mobile_number"
+        android:imeOptions="actionNext"
+        android:inputType="phone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/dp_24">
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/hint_input_verification_code"
+            android:imeOptions="actionNext"
+            android:inputType="number" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/but_verify_code"
+            style="?attr/buttonStyleSmall"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/draw_btn_ebb451_4"
+            android:enabled="false"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/send_verification_code"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/dp_24">
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_register_password"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword" />
+
+        <CheckBox
+            android:id="@+id/check_password"
+            style="@style/checkboxStyle.Visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/dp_24">
+
+        <EditText
+            android:id="@+id/et_verify_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_verify_password"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword" />
+
+        <CheckBox
+            android:id="@+id/check_verify_password"
+            style="@style/checkboxStyle.Visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:layout_marginRight="@dimen/dp_24">
+
+        <EditText
+            android:id="@+id/et_invite_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:hint="@string/hint_input_invite_code"
+            android:imeOptions="actionDone"
+            android:inputType="text" />
+
+        <ImageView
+            android:id="@+id/iv_scan"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_scan" />
+
+    </RelativeLayout>
+
+
+    <CheckBox
+        android:id="@+id/tv_protocol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="@dimen/dp_24"
+        android:textColor="#4D5259"
+        tools:text="我同意《注册服务协议》" />
+
+    <Button
+        android:id="@+id/but_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/button_margin_top"
+        android:layout_marginRight="@dimen/dp_24"
+        android:enabled="false"
+        android:text="@string/register" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_24">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tips_register_login"
+            android:textColor="?attr/textColorSecondary" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_login"
+            android:textColor="?attr/textColorHighlight" />
+
+    </LinearLayout>
+
+</LinearLayout>

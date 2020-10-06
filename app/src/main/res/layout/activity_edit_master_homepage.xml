@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+    <RelativeLayout
+        android:id="@+id/layout_photo_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/heart_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/heart_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/photo_show"
+            android:textColor="?attr/textColorPrimary"
+            android:textSize="20sp"
+            tools:text="照片展示" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_enter" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/heart_margin"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:listitem="@layout/recycle_item_master_photo"
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="3" />
+
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="…" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/heart_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/heart_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/master_introduction"
+            android:textColor="?attr/textColorPrimary"
+            android:textSize="20sp"
+            tools:text="师傅介绍" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_enter" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/heart_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/heart_margin"
+        android:textColor="?attr/textColorPrimary"
+        tools:text="简介：这是一段200字的简介。道家五行学说旨在描述事物运动形式以及转化关系。五行学说是我国古代的取象比类学说，不是五种元素，而是将万事万物按照润下、炎上、曲直、从革、稼穑的性质归属到水火木金土五个项目中，与西方古代的地、水、火、风四元素学说有区别，是集哲学、占卜、算命、历法、中医学、社会学等诸多学于一身的理论。 \n五行系指古人把宇宙万物划分为五种性质的事物，分成木、火、土、金、水五大类，叫它们为“五行”。" />
+
+    <RelativeLayout
+        android:id="@+id/layout_specialty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/heart_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/heart_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/my_specialty"
+            android:textColor="?attr/textColorPrimary"
+            android:textSize="20sp"
+            tools:text="我的擅长" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_enter" />
+    </RelativeLayout>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/flow_specialty"
+        android:layout_marginEnd="@dimen/heart_margin"
+        android:layout_marginStart="@dimen/heart_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_my_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/heart_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/heart_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/my_service"
+            android:textColor="?attr/textColorPrimary"
+            android:textSize="20sp"
+            tools:text="我的服务" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_enter" />
+    </RelativeLayout>
+</LinearLayout>

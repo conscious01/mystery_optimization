@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+
+    <TextView
+        android:id="@+id/tv_refused_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ff20272f"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="您已拒绝xxx用户的问题。" />
+
+    <RelativeLayout
+        android:id="@+id/ll_master_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/master_detail_bg">
+
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/refused_reason_nes"
+            android:textColor="#ff4c5158"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/ll_master_answer"
+            android:layout_width="match_parent"
+            android:layout_height="154dp"
+            android:layout_below="@+id/tv"
+            android:layout_margin="@dimen/dp_16"
+            android:background="@drawable/ask_q__bg"
+
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/et_refused_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="@string/refuse_reason"
+                android:maxLength="250"
+                android:padding="16dp"
+android:background="@null"
+                android:textColor="#ff4c5158"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_input_number"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:text="0/250" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_done"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/comment_selector"
+        android:gravity="center"
+        android:text="@string/confirm"
+        android:textColor="#ffffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>

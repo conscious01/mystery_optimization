@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+
+    <TextView
+        android:id="@+id/tv_mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_16"
+        android:textColor="?attr/textColorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="13027169611" />
+
+    <com.zgzx.metaphysics.widgets.VerificationCodeEditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:v_backgroundColor="#e0e0e0"
+        app:v_bottomLineHeight="0dp"
+        app:v_figures="5"
+        app:v_selectedBackgroundColor="#e0e0e0"
+        app:v_verCodeMargin="16dp"
+        tools:text="12" />
+
+    <LinearLayout
+        android:id="@+id/ll_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/heart_margin_large">
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/heart_margin_large"
+            android:text="@string/get_verification_code"
+            android:textColor="#789A27" />
+
+        <View
+            android:id="@+id/view_divider"
+            android:layout_width="80dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="#789A27"
+            android:visibility="invisible">
+
+        </View>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/but_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/heart_margin_large"
+        android:layout_marginTop="56dp"
+        android:layout_marginRight="@dimen/heart_margin_large"
+        android:enabled="false"
+        android:text="@string/next" />
+
+</LinearLayout>

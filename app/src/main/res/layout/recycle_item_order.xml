@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_order"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_16"
+    android:layout_marginRight="@dimen/dp_16"
+    android:background="@drawable/master_detail_bg"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_16"
+    android:paddingRight="@dimen/dp_16"
+    android:paddingBottom="24dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_no"
+            android:textColor="#ff797d82"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_order_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#ff4d5359"
+            android:textSize="14sp"
+            tools:text="0533205128907" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/order_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff5c7710"
+                android:textSize="14sp"
+                tools:text="待解答" />
+
+            <TextView
+                android:id="@+id/order_countdown_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+
+                android:textColor="#B26868"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:text="01:00:00"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#777B69" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product_name"
+            android:textColor="#ff797d82"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff4d5359"
+            android:textSize="14sp"
+            tools:text="0533205128907" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product_amont"
+            android:textColor="#ff797d82"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/product_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff4d5359"
+            android:textSize="14sp"
+            tools:text="0533205128907" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/creat_time"
+            android:textColor="#ff797d82"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_created_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff4d5359"
+            android:textSize="14sp"
+            tools:text="0533205128907" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_paid_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paid_time"
+            android:textColor="#ff797d82"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/paid_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff4d5359"
+            android:textSize="14sp"
+            tools:text="0533205128907" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_done_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done_time"
+            android:textColor="#ff797d82"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/done_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff4d5359"
+            android:textSize="14sp"
+            tools:text="0533205128907" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_order_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="right"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="104dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/cancle_selector"
+            android:gravity="center"
+            android:text="@string/cancle_order"
+            android:textColor="#ff797d82"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_go2_pay"
+            android:layout_width="88dp"
+            android:layout_height="40dp"
+            android:background="@drawable/pay_selector"
+            android:gravity="center"
+            android:text="@string/go_pay_"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/go_2_comment"
+            android:layout_width="88dp"
+            android:layout_height="40dp"
+            android:background="@drawable/comment_selector"
+            android:gravity="center"
+            android:text="@string/go_2_comment"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

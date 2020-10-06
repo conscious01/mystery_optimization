@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/text_view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_daily_yj"
+            android:textColor="@color/color_20272f"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_share_today_yj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_4"
+            android:drawableRight="@drawable/icon_home_btn_fx"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="@string/tv_share"
+            android:textColor="@color/color_9e9178"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/today_yj_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@drawable/draw_home_yiji_bg"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_24"
+        android:paddingBottom="@dimen/dp_24">
+
+        <include layout="@layout/include_home_yj_recycleview_layout" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/tv_today_chong_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="#b26868"
+            android:textSize="14sp"
+            tools:text="冲：牛日冲羊" />
+        <TextView
+            android:id="@+id/tv_today_sha_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginLeft="@dimen/dp_24"
+            android:textColor="#b26868"
+            android:textSize="14sp"
+            tools:text="冲：牛日冲羊" />
+    </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

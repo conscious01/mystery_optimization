@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/include_activity_title" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_88"
+                android:background="@drawable/master_detail_bg">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ff789a27"
+                        android:textSize="16sp"
+                        tools:text="待解答" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status_des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:textColor="#ff787d81"
+                        android:textSize="12sp"
+                        tools:text="请耐心等待大师接单" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/iv_status"
+                    android:layout_width="134dp"
+                    android:layout_height="match_parent"
+                    tools:background="@color/color_9f1f1b" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_ask_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:textColor="#ff20272f"
+                android:textSize="18sp"
+                tools:text="贝茜的提问" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/master_detail_bg"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_16">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="76dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_name"
+                        android:textColor="#ff797d82"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_q_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#ff4d5359"
+                        android:textSize="14sp"
+                        tools:text="贝茜" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="76dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_gender"
+                        android:textColor="#ff797d82"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_q_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#ff4d5359"
+                        android:textSize="14sp"
+
+                        tools:text="贝茜" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="76dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_birth_day"
+                        android:textColor="#ff797d82"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_q_birth_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ff4d5359"
+                            android:textSize="14sp"
+
+                            tools:text="贝茜" />
+
+                        <TextView
+                            android:id="@+id/tv_q_birth_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:textColor="#ff4d5359"
+                            android:textSize="14sp"
+                            tools:text="贝茜" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="76dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_birth_location"
+                        android:textColor="#ff797d82"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_q_birth_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#ff4d5359"
+                        android:textSize="14sp"
+
+                        tools:text="贝茜" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="#E6E6E6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:text="问题详情："
+                    android:textColor="#ff4c5158"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_q_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#ff4c5158"
+                    android:textSize="14sp"
+                    tools:text="大师帮我看下手相，我想知道我的财运和感情，请问我什么时候可以脱单呢？谢谢" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_q"
+                    android:layout_width="match_parent"
+                    android:layout_height="112dp"
+                    android:layout_marginTop="16dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/tv_master_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff849948"
+                    android:textSize="18sp"
+                    tools:text="陈定邦" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="大师的解答"
+                    android:textColor="#20272F"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_user_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/master_detail_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_16">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="解答详情："
+                        android:textColor="#ff4c5158"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_answer_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:background="@drawable/ask_q__bg"
+                        android:padding="16dp"
+                        android:textColor="#ff4c5158"
+                        android:textSize="16sp"
+                        tools:text="解答详情：" />
+                </LinearLayout>
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_go2_pay"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:layout_marginTop="28dp"-->
+                <!--                    android:background="@drawable/pay_selector"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="@string/go_pay_"-->
+                <!--                    android:textColor="#ffffffff"-->
+                <!--                    android:textSize="16sp"-->
+                <!--                    android:visibility="gone"-->
+                <!--                    tools:visibility="visible" />-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_go_2_comment"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:layout_marginTop="28dp"-->
+                <!--                    android:background="@drawable/comment_selector"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="@string/go_2_comment"-->
+                <!--                    android:textColor="#ffffffff"-->
+                <!--                    android:textSize="16sp"-->
+                <!--                    android:visibility="gone"-->
+                <!--                    tools:visibility="visible" />-->
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/ll_master_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/master_detail_bg"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+
+                <LinearLayout
+                    android:id="@+id/ll_master_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_16">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="解答详情："
+                        android:textColor="#ff4c5158"
+                        android:textSize="16sp" />
+
+
+                    <EditText
+                        android:id="@+id/et_answer_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:background="@drawable/ask_q__bg"
+                        android:hint="@string/answer_hint"
+                        android:padding="16dp"
+                        android:textColor="#ff4c5158"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_master_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_master_answer"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_refuse_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="@dimen/dp_16"
+                        android:text="@string/refuse_2_answer"
+                        android:textColor="#ff9bb26a"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_done_answer"
+                        android:layout_width="160dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/comment_selector"
+                        android:gravity="center"
+                        android:text="@string/done_answer"
+                        android:textColor="#ffffffff"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_go2_pay"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/pay_selector"
+            android:gravity="center"
+            android:text="@string/go_pay_"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/tv_go_2_comment"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/comment_selector"
+            android:gravity="center"
+            android:text="@string/go_2_comment"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

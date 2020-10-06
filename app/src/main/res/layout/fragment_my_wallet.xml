@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+         android:layout_gravity="center_horizontal"
+        android:text="@string/default_currency_name"
+       style="?android:textStyle"/>
+
+<!--    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">-->
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_6"
+            tools:text="1000.00" />
+        <TextView
+            android:id="@+id/tv_recharge"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_but_bg_accent"
+            android:gravity="center"
+
+            android:text="@string/deposit"
+            android:layout_gravity="center_horizontal"
+
+            android:visibility="gone"
+            android:textColor="@color/backgroundColor"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_translate"
+            android:layout_width="178dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/item_margin"
+            android:background="@drawable/ic_but_bg"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginTop="13dp"
+            android:text="@string/translate"
+            android:textColor="@color/backgroundColor"
+            android:textSize="16sp" />
+
+ <!--   </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/layout_property_bill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_dialog_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/financial_records"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/signed_all_records"
+            android:textColor="?textColorHighlight"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <and.fast.statelayout.StateLayout
+        android:id="@+id/state_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/include_smart_refresh_recycler_view" />
+
+    </and.fast.statelayout.StateLayout>
+
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/recycler_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:overScrollMode="never"-->
+    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+    <!--        tools:listitem="@layout/recycle_item_property_bill" />-->
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:background="#ffffff">
+
+    <include layout="@layout/include_activity_title" />
+
+    <TextView
+        android:id="@+id/tv_notice_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="@dimen/heart_margin_large"
+        android:paddingRight="@dimen/heart_margin_large"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="消息标题消息标题消息标题" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="@dimen/heart_margin_large"
+        android:paddingRight="@dimen/heart_margin_large"
+        android:textColor="?textColorSecondary"
+        tools:text="2020-06-20" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingLeft="@dimen/heart_margin_large"
+            android:paddingRight="@dimen/heart_margin_large"
+            tools:text="你有忠贞的心，外表刚毅威严，内在却有着热情的个性，为人正直，个性直来直往，胆识过人，不过难免有高傲自我、对事不对人的潜在阴暗面。你的情绪智商挺高，有非常坚强的意志，能够克服困难、突破危机，不过难免有感性度不足、反应慢半拍、慢条斯理、缺乏远见的潜在阴暗面。" />
+
+
+    </ScrollView>
+
+</LinearLayout>

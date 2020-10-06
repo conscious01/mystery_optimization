@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/include_activity_title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="#A3AD87"
+        android:gravity="center"
+        android:text="@string/wele_to_feed_Back"
+        android:textColor="#ffffffff"
+        android:textSize="12sp" />
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/master_detail_bg">
+
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/hi_feed_is"
+            android:textColor="#ff4c5158"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/ll_master_answer"
+            android:layout_width="match_parent"
+            android:layout_height="154dp"
+            android:layout_below="@+id/tv"
+            android:layout_margin="@dimen/dp_16"
+            android:background="@drawable/ask_q__bg"
+
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/et_refused_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="@string/feed_back_hint"
+                android:maxLength="140"
+                android:padding="16dp"
+                android:textColor="#ff4c5158"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tv_input_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:text="0/140" />
+
+        </RelativeLayout>
+
+        <and.fast.widget.image.add.AddImageLayout
+            android:id="@+id/add_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_master_answer"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:paddingLeft="@dimen/heart_margin_large"
+            android:paddingRight="@dimen/heart_margin_large"
+            app:add_image_layout_res="@layout/view_image_add"
+            app:close_id="@id/iv_close"
+            app:drag_enable="false"
+            app:image_id="@id/iv_image"
+            app:image_layout_res="@layout/ask_question_recycle_item_simple_image"
+            app:lazy_initial="false"
+            app:max_number="3"
+            app:space="12dp"
+            app:span_count="4" />
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="16dp"
+        app:cardBackgroundColor="#9CB26C"
+        app:cardCornerRadius="8dp">
+
+        <TextView
+            android:id="@+id/tv_done"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/send"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

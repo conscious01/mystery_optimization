@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/icon_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_36"
+
+        android:layout_marginTop="@dimen/dp_36"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/iv_arrow_back_layout"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_80"
+            android:paddingLeft="@dimen/dp_16"
+            android:orientation="vertical">
+
+
+
+        <ImageView
+            android:id="@+id/iv_arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/ic_back_white" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:textColor="@color/backgroundColor"
+            android:textSize="18sp"
+            tools:text="这是标题" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/kmImgView_create"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/create_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="@dimen/dp_16"
+            android:background="@drawable/icon_create_book_bg"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingLeft="73dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:text="@string/signed_name"
+                android:textColor="#ff6a381e"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_48"
+                android:layout_marginRight="@dimen/dp_70"
+                android:background="@null"
+                android:hint="@string/hint_input_name"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:textColor="#ff6a381e"
+                android:textColorHint="#FFBEAC95"
+                android:textSize="@dimen/sp_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_80"
+                android:background="#FFCFC9A9" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:text="性别："
+                android:textColor="#ff6a381e"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/group_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_42"
+                android:layout_marginTop="@dimen/dp_24"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_man"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/select_radio_btn_fate_book"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:gravity="center_vertical"
+                    android:text="@string/man"
+                    android:textColor="#FF6A381E" />
+
+                <RadioButton
+                    android:id="@+id/radio_woman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_30"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/select_radio_btn_fate_book"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:gravity="center_vertical"
+                    android:text="@string/woman"
+                    android:textColor="#FF6A381E" />
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_80"
+                android:background="#FFCFC9A9" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/signed_date_birth"
+                android:textColor="#ff6a381e"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/edit_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_70"
+                android:background="@null"
+
+                android:hint="@string/input_date_birth"
+                android:singleLine="true"
+                android:textColor="#ff6a381e"
+                android:textColorHint="#FFBEAC95"
+                android:textSize="@dimen/sp_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/dp_10"
+
+                android:layout_marginRight="@dimen/dp_80"
+                android:background="#FFCFC9A9" />
+
+
+            <Button
+                android:id="@+id/mCreateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@drawable/icon_create_btn_bg"
+                android:paddingTop="@dimen/dp_5"
+                android:text="@string/create"
+                android:textColor="#FFFDF3C5" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/kmImgView_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="200dp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+</LinearLayout>

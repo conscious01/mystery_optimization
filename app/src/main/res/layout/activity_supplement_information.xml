@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/iv_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/heart_margin"
+        android:src="@drawable/ic_back_white" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_header_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/heart_margin"
+        android:layout_marginRight="@dimen/heart_margin"
+        android:layout_weight="7"
+        android:background="@drawable/ic_frame_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="48dp"
+        android:paddingTop="64dp"
+        android:paddingRight="48dp"
+        android:paddingBottom="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signed_name"
+                android:textColor="?attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/hint_input_name"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="10" />
+        </LinearLayout>
+
+        <View style="@style/Divider.Horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signed_sex"
+                android:textColor="?attr/textColorPrimary" />
+
+            <RadioGroup
+                android:id="@+id/group_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/man" />
+
+                <RadioButton
+                    android:id="@+id/radio_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/woman" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View style="@style/Divider.Horizontal" />
+
+        <LinearLayout
+            android:id="@+id/layout_birth_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signed_birth_place"
+                android:textColor="?attr/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_birth_place"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:hint="@string/error_selected_birth_place"
+                tools:hint="中国 广东省 深圳市" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_divider"
+            style="@style/Divider.Horizontal" />
+
+        <LinearLayout
+            android:id="@+id/layout_date_birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signed_date_birth"
+                android:textColor="?attr/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_date_birth"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:hint="@string/error_selected_birth_date"
+                android:singleLine="true"
+                tools:hint="农历 2020-01-01 00:00-00:59" />
+        </LinearLayout>
+
+        <View style="@style/Divider.Horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/tips_supplement_information"
+            android:textColor="?textColorHighlight"
+            android:textSize="12sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/but_complete"
+            style="?buttonStyleSmall"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/ic_but_bg_accent"
+            android:text="@string/enter" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

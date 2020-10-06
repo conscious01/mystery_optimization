@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zgzx.metaphysics.widgets.HorizontalSmoothScrollerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/smooth_scroller_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_safety_verification" />
+
+    <include layout="@layout/include_alter_password"/>
+
+</com.zgzx.metaphysics.widgets.HorizontalSmoothScrollerLayout>

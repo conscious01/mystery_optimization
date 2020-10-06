@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?backgroundColor">
+
+        <include layout="@layout/include_activity_title" />
+
+    </FrameLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?backgroundColor"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/heart_margin"
+        android:paddingTop="8dp"
+        android:paddingEnd="@dimen/heart_margin"
+        android:paddingBottom="8dp">
+
+        <RadioButton
+            style="@style/radioButtonStyle.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all"
+            tools:checked="true" />
+
+        <RadioButton
+            style="@style/radioButtonStyle.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/receiving_order" />
+
+        <RadioButton
+            style="@style/radioButtonStyle.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answering" />
+
+        <RadioButton
+            style="@style/radioButtonStyle.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/completed" />
+
+        <RadioButton
+            style="@style/radioButtonStyle.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/closed" />
+    </RadioGroup>
+
+    <include layout="@layout/include_smart_refresh_recycler_view" />
+
+    <!--    <include layout="@layout/recycle_item_my_questions" />-->
+
+    <!--    <include layout="@layout/include_questions_info"/>-->
+
+</LinearLayout>

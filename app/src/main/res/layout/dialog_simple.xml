@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_rect_white_4"
+    android:minHeight="146dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        tools:text="拒绝接单？" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/dialog_tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#FF4D5359"
+            tools:text="一天内操作3次拒绝问答订单，您将 被限制接单24小时" />
+
+    </FrameLayout>
+
+    <View style="@style/Divider.Horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dialog_tv_negative"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_rect_cancle_4_bg"
+            android:gravity="center"
+
+            android:text="@string/cancel"
+            android:textColor="#747979" />
+
+        <View
+            android:id="@+id/divider"
+            style="@style/Divider.Vertical" />
+
+        <TextView
+            android:id="@+id/dialog_tv_positive"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/draw_94b35f_4"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/backgroundColor" />
+    </LinearLayout>
+</LinearLayout>

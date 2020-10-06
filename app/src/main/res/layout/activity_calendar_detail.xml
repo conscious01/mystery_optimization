@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/heart_margin"
+            android:background="@drawable/ic_c_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="2020年7月3日\t\t\t >" />
+
+                <TextView
+                    android:id="@+id/tv_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="?textColorHighlight"
+                    android:textSize="100sp"
+                    android:textStyle="bold"
+                    tools:text="23" />
+
+                <TextView
+                    android:id="@+id/tv_lunar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textColor="?textColorHighlight"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="农历五月十三日" />
+
+                <TextView
+                    android:id="@+id/tv_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center_vertical"
+                    android:textColor="?textColorHighlight"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="星期五" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/calendar_clash" />
+
+                <TextView
+                    android:id="@+id/tv_lash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical"
+                    android:textColor="?colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="羊日冲牛" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_fitting"
+                        android:gravity="center"
+                        android:text="宜"
+                        android:textColor="?textColorHighlight"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_should"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="?textColorHighlight"
+                        tools:text="除服 治病 捉鬼 嫁娶 栽种 除服 治病 捉鬼 嫁娶 栽种" />
+                </LinearLayout>
+
+                <View
+                    style="@style/Divider.Horizontal"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_avoid"
+                        android:gravity="center"
+                        android:text="忌"
+                        android:textColor="?colorAccent"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_avoid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="?colorAccent"
+                        tools:text="除服 治病 捉鬼 嫁娶 栽种 除服 治病 捉鬼 嫁娶 栽种" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_start_bamboo" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_end_bamboo" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/heart_margin"
+            android:layout_marginRight="@dimen/heart_margin"
+            android:layout_marginBottom="@dimen/heart_margin"
+            android:background="@drawable/ic_c_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <RadioGroup
+                    android:id="@+id/group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_night_28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_but_border2"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="86dp"
+                        android:text="@string/night_28"
+                        android:textColor="@color/color_text_primary_highlight"
+                        tools:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/radio_twelve_gods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/selector_but_border2"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="86dp"
+                        android:text="@string/twelve_gods"
+                        android:textColor="@color/color_text_primary_highlight"
+                        tools:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/radio_character"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/selector_but_border2"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="86dp"
+                        android:text="@string/today_character"
+                        android:textColor="@color/color_text_primary_highlight"
+                        tools:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/radio_peng_zu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/selector_but_border2"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="86dp"
+                        android:text="@string/peng_zu_baiji"
+                        android:textColor="@color/color_text_primary_highlight" />
+                </RadioGroup>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_decoration_primary" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?textColorHighlight"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="二八宿" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="180"
+                    android:src="@drawable/ic_decoration_primary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:textColor="?colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="亢金龙" />
+
+            <TextView
+                android:id="@+id/text_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                tools:text="亢星造作长房当，十日之中主有秧，田地消磨官 失职，具体内容，具体内容具体内容···" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+

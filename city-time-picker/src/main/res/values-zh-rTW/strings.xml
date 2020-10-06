@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="_xpopup_ext_lunar_month">
+        <item />
+        <item>正</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+        <item>七</item>
+        <item>八</item>
+        <item>九</item>
+        <item>十</item>
+        <item>冬</item>
+        <item>臘</item>
+    </string-array>
+
+    <string-array name="_xpopup_ext_lunar_gan">
+        <item>甲</item>
+        <item>乙</item>
+        <item>丙</item>
+        <item>丁</item>
+        <item>戊</item>
+        <item>己</item>
+        <item>庚</item>
+        <item>辛</item>
+        <item>壬</item>
+        <item>癸</item>
+    </string-array>
+
+    <string-array name="_xpopup_ext_lunar_zhi">
+        <item>子</item>
+        <item>醜</item>
+        <item>寅</item>
+        <item>卯</item>
+        <item>辰</item>
+        <item>巳</item>
+        <item>午</item>
+        <item>未</item>
+        <item>申</item>
+        <item>酉</item>
+        <item>戌</item>
+        <item>亥</item>
+    </string-array>
+
+    <string name="_xpopup_ext_leap">閏</string>
+    <string name="_xpopup_ext_year">年</string>
+    <string name="_xpopup_ext_month">月</string>
+    <string name="_xpopup_ext_day">日</string>
+    <string name="_xpopup_ext_hours">時</string>
+    <string name="_xpopup_ext_minutes">分</string>
+    <string name="_xpopup_ext_seconds">秒</string>
+
+    <string name="_xpopup_ext_lunar_calendar">農曆</string>
+    <string name="_xpopup_ext_gregorian_calendar">公曆</string>
+    <string name="_xpopup_ext_domestic">中國</string>
+    <string name="_xpopup_ext_foreign">國外</string>
+    <string name="_xpopup_ext_unknown">未知</string>
+    <string name="_xpopup_ok">確定</string>
+    <string name="_xpopup_placeholder_lunar_hour">%s時%d點</string>
+</resources>

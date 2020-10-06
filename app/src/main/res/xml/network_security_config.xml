@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+
+    <!--    <domain-config cleartextTrafficPermitted="true" >-->
+<!--        <domain includeSubdomains="true">8.210.205.213</domain>-->
+<!--        <domain includeSubdomains="true">192.168.1.20</domain>-->
+<!--        <domain includeSubdomains="true">81.68.176.207</domain>-->
+<!--        <domain includeSubdomains="true">120.76.61.115</domain>-->
+<!--        <domain includeSubdomains="true">192.168.1.53</domain>-->
+<!--        <domain includeSubdomains="true">xuanxue.shuanglong.me</domain>-->
+<!--        <base-config cleartextTrafficPermitted="true" />-->
+<!--    </domain-config>-->
+</network-security-config>

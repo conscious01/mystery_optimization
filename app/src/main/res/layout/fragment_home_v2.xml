@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+
+    <com.zgzx.metaphysics.widgets.ArcView
+        android:id="@+id/arc_view"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
+        tools:background="#123" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/layout_title_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_11"
+            android:layout_marginBottom="@dimen/dp_12"
+            app:layout_collapseMode="pin">
+
+
+            <TextView
+                android:id="@+id/homepage_top_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:paddingTop="@dimen/dp_6"
+                android:paddingBottom="@dimen/dp_6"
+                android:paddingLeft="@dimen/dp_70"
+                android:paddingRight="@dimen/dp_70"
+                android:background="@drawable/icon_home_title"
+                tools:text="2020年9月5日   农历七月十二日   处暑" />
+
+        </FrameLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="1dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="144dp"
+                        app:banner_indicator_margin="6dp"
+                        app:banner_indicator_normal_color="#4DDDA031"
+                        app:banner_indicator_normal_width="4dp"
+                        app:banner_indicator_selected_color="#DDA031"
+                        app:banner_indicator_selected_width="4dp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- 功能分类  -->
+                <include layout="@layout/fragment_home_function_module" />
+                <!-- 今日运势 -->
+                <include layout="@layout/include_home_today_fortune" />
+
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#f7f7f7"
+                  android:orientation="horizontal">
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="34dp"
+                      android:layout_margin="@dimen/dp_16"
+
+                      android:background="@drawable/home_recommend_bg"
+                      android:orientation="horizontal"
+
+                      >
+
+                      <TextView
+
+                          android:layout_width="@dimen/dp_80"
+                          android:layout_height="match_parent"
+                          android:background="@drawable/home_recommend_title_bg"
+                          android:gravity="center"
+                          android:text="@string/tv_daily_recommend"
+                          android:textColor="@color/backgroundColor"
+                          android:textSize="16sp" />
+
+                      <ViewFlipper
+                          android:id="@+id/view_flipper"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="10dp"
+                          android:layout_weight="1"
+                          android:flipInterval="6000"
+                          android:gravity="center"
+                          android:inAnimation="@anim/anim_come_in"
+                          android:outAnimation="@anim/anim_get_out" />
+
+
+                  </LinearLayout>
+              </LinearLayout>
+
+                <!-- 今日宜忌  -->
+                <include layout="@layout/include_home_today_yiji_layout" />
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#f7f7f7"
+                  android:orientation="vertical">
+                  <androidx.cardview.widget.CardView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="16dp"
+                      android:layout_marginTop="@dimen/dp_25"
+                      android:layout_marginRight="16dp"
+
+                      app:cardCornerRadius="8dp"
+                      app:cardElevation="1dp"
+                      app:cardPreventCornerOverlap="true"
+                      app:cardUseCompatPadding="true">
+
+                      <com.youth.banner.Banner
+                          android:id="@+id/banner_tools"
+                          android:layout_width="match_parent"
+                          android:layout_height="100dp"
+                          app:banner_indicator_margin="6dp"
+                          app:banner_indicator_normal_color="#4DDDA031"
+                          app:banner_indicator_normal_width="4dp"
+                          app:banner_indicator_selected_color="#DDA031"
+                          app:banner_indicator_selected_width="4dp" />
+                  </androidx.cardview.widget.CardView>
+              </LinearLayout>
+
+                <!-- 时辰宜忌  -->
+                <include layout="@layout/include_home_time_yiji_layout" />
+                <!-- 每日一问  -->
+                <include layout="@layout/include_home_ask_layout" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

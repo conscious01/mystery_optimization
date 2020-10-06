@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_activity_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <include layout="@layout/layout_q_detail" />
+
+            <include layout="@layout/layout_q_answer" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="@dimen/dp_16"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_master_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comment_master"
+                    android:textColor="#4C5158"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginBottom="74dp"
+                    android:background="@drawable/master_detail_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_16">
+
+                    <com.willy.ratingbar.ScaleRatingBar
+                        android:id="@+id/simpleRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srb_clearRatingEnabled="true"
+                        app:srb_clickable="true"
+                        app:srb_drawableEmpty="@drawable/star_dark"
+                        app:srb_drawableFilled="@drawable/dashi_dszy_star"
+                        app:srb_isIndicator="false"
+                        app:srb_minimumStars="0"
+                        app:srb_numStars="5"
+                        app:srb_scrollable="true"
+                        app:srb_starHeight="24dp"
+                        app:srb_starPadding="8dp"
+                        app:srb_starWidth="24dp"
+                        app:srb_stepSize="1">
+
+                    </com.willy.ratingbar.ScaleRatingBar>
+
+                    <TextView
+                        android:id="@+id/tv_confirm"
+                        android:layout_width="160dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/button_disable"
+                        android:gravity="center"
+                        android:text="提交"
+                        android:textColor="#ffffffff"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

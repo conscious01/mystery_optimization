@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+    <Button
+        android:id="@+id/start_main"
+        android:layout_width="226dp"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="95dp"
+        android:text="@string/start_main"
+        android:textColor="@color/backgroundColor"
+        android:background="@drawable/shape_start_main"
+        tools:visibility="visible"/>
+</FrameLayout>

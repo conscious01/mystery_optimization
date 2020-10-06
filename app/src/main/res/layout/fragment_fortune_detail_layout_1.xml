@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/draw_home_yiji_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_time_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_787c81_2"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_5"
+            android:paddingBottom="@dimen/dp_4"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/tv_time_ge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:background="@drawable/shape_rect_787c81_2"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_5"
+            android:paddingBottom="@dimen/dp_4"
+
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_weight="1"
+            android:textColor="#ff20272f"
+            android:textSize="16sp"
+            tools:text="2020年8月" />
+
+        <TextView
+            android:id="@+id/tv_lunarCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff20272f"
+            android:textSize="16sp"
+            tools:text="农历七月二十三" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:orientation="horizontal">
+
+        <com.zgzx.metaphysics.rade_view.CircleProgress
+            android:id="@+id/circle_progress_bar"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+
+            android:layout_gravity="center_horizontal"
+            app:antiAlias="true"
+            app:arcWidth="5dp"
+            app:bgArcColor="#FDF3D4"
+            app:bgArcWidth="5dp"
+
+            app:hintSize="25sp"
+            app:maxValue="100"
+            app:startAngle="270"
+            app:sweepAngle="360"
+
+            app:unitSize="25sp"
+            app:value="100"
+            app:valueSize="35sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fortune_recycle_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="6"
+            tools:listitem="@layout/recycle_fortune_deatil_item_grade_layout" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvAddFortune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@drawable/icon_add_futune"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:textSize="18sp"
+        tools:text="@string/tv_add_fortune" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="14dp"
+        android:textColor="#ffff8335"
+        android:textSize="18sp"
+        tools:text="@string/tv_fortune_evaluate" />
+
+    <TextView
+        android:id="@+id/tv_fortune_evaluate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:textColor="#ff706d53"
+        android:textSize="16sp"
+        android:singleLine="false"
+        android:maxLines="3"
+        tools:text="百事皆顺，福清高照，麻烦事都可以迎刃而解
+麻烦事都可以迎刃而解麻烦事都可以迎刃而解麻烦事都可以迎刃而解
+麻烦事都可以迎刃而解麻烦事都可以迎刃而解" />
+</LinearLayout>

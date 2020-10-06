@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape >
+            <solid android:color="#ffffffff" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item android:top="@dimen/dp_7" android:left="@dimen/dp_7">
+        <bitmap android:src="@drawable/home_db_wl3"
+            android:gravity="left|top"/>
+    </item>
+    <item android:top="@dimen/dp_7" android:right="@dimen/dp_7">
+        <bitmap android:src="@drawable/home_db_wl4"
+            android:gravity="right|top"/>
+    </item>
+    <item android:left="@dimen/dp_7" android:bottom="@dimen/dp_7">
+        <bitmap android:src="@drawable/home_db_wl5"
+            android:gravity="left|bottom"/>
+    </item>
+    <item android:right="@dimen/dp_7" android:bottom="@dimen/dp_7">
+        <bitmap android:src="@drawable/home_db_wl6"
+            android:gravity="right|bottom"/>
+    </item>
+</layer-list>

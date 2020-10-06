@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VerCodeEditText">
+        <attr name="v_figures" format="integer" />
+        <attr name="v_verCodeMargin" format="dimension" />
+        <attr name="v_bottomLineSelectedColor" format="color" />
+        <attr name="v_bottomLineNormalColor" format="color" />
+        <attr name="v_bottomLineHeight" format="dimension" />
+        <attr name="v_selectedBackgroundColor" format="color" />
+        <attr name="v_backgroundColor" format="color"/>
+    </declare-styleable>
+</resources>

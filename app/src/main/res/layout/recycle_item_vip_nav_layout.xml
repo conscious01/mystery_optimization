@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="18dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="@dimen/dp_4"
+    >
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_gravity="center_horizontal"
+        tools:background="#AA8F5D" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin"
+        android:textColor="#AA8F5D"
+        android:textSize="@dimen/sp_14"
+        tools:text="钻石vip" />
+
+</LinearLayout>

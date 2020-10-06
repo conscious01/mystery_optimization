@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/shape_rect_white_8"
+    android:orientation="horizontal"
+    android:paddingLeft="22dp"
+    android:paddingTop="18dp"
+    android:paddingRight="22dp"
+    android:paddingBottom="18dp">
+
+    <CheckBox
+        android:textSize="16sp"
+        tools:text="爱情"
+        android:id="@+id/check_box"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="@null" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_name"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_weight="1"-->
+<!--        tools:text="爱情" />-->
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="30元" />
+
+</LinearLayout>

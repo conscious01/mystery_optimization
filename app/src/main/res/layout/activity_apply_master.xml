@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:background="#FFFFFF">
+
+    <include layout="@layout/include_activity_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/heart_margin"
+            android:layout_marginRight="@dimen/heart_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/heart_margin"
+            android:layout_marginEnd="@dimen/heart_margin"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="@string/hint_apply_master"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxHeight="200dp"
+                android:minHeight="140dp"
+                android:padding="@dimen/heart_margin" />
+
+            <TextView
+                android:id="@+id/tv_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="@dimen/heart_margin"
+                android:textColor="?attr/textColorSecondary"
+                tools:text="200字" />
+
+            <View style="@style/Divider.Horizontal" />
+
+            <and.fast.widget.image.add.AddImageLayout
+                android:id="@+id/add_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                app:add_image_layout_res="@layout/view_image_add"
+                app:close_id="@id/iv_close"
+                app:drag_enable="true"
+                app:image_id="@id/iv_image"
+                app:image_layout_res="@layout/recycle_item_simple_image"
+                app:lazy_initial="false"
+                app:max_number="3"
+                app:span_count="4" />
+
+            <EditText
+                android:inputType="phone"
+                android:imeOptions="actionDone"
+                android:id="@+id/et_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_contact_information" />
+
+            <Button
+                android:enabled="false"
+                android:id="@+id/but_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/button_margin_top"
+                android:layout_marginBottom="@dimen/heart_margin"
+                android:text="@string/submit_apply" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

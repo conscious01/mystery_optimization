@@ -1,0 +1,120 @@
+ext {
+    android = [
+            compileSdkVersion: 29,
+            minSdkVersion    : 21,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            "versionName"    : "1.0.0",
+            "applicationId"  : "com.zgzx.metaphysics",
+    ]
+
+    config = [
+            "appName"      : "孔明在线",
+
+            // 后台服务域名
+            "debugDomain"  : "http://120.76.61.115:8781",
+//            "debugDomain": "https://api.kongming365.com",
+            "releaseDomain": "https://api.kongming365.com",
+
+            // 友盟
+            "umengAppKey"  : "5f214cddb4b08b653e8f6748",
+
+            // 融云
+            "rongCloudKey" : "sfci50a7sxpfi",
+    ]
+
+    androidx = [
+            "palette"          : "androidx.palette:palette:1.0.0",
+            'appcompat'        : "androidx.appcompat:appcompat:1.1.0",
+            'material'         : "com.google.android.material:material:1.0.0",
+            'cardview'         : 'androidx.cardview:cardview:1.0.0',
+            'constraint-layout': 'androidx.constraintlayout:constraintlayout:1.1.3',
+            "multidex"         : "androidx.multidex:multidex:2.0.1",
+            'legacy-support'   : 'androidx.legacy:legacy-support-v4:1.0.0'
+    ]
+
+    dependencies = [
+            //异步
+            "rx-binding"                    : "com.jakewharton.rxbinding2:rxbinding:2.2.0",
+            "rx-java"                       : "io.reactivex.rxjava2:rxjava:2.2.2",
+            "rx-android"                    : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            //组件通信
+            "eventbus"                      : "org.greenrobot:eventbus:3.1.1",
+            //view注入框架
+            "butterknife"                   : "com.jakewharton:butterknife:10.0.0",
+            "butterknifeannotationProcessor": "com.jakewharton:butterknife-compiler:10.0.0",
+            //RecyclerView万能适配器
+            "baseRecyclerViewAdapterHelper" : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50",
+
+            // 网络
+            "retrofit"                      : "com.squareup.retrofit2:retrofit:2.9.0",
+            "converter-gson"                : "com.squareup.retrofit2:converter-gson:2.9.0",
+            "adapter-rxjava2"               : "com.squareup.retrofit2:adapter-rxjava2:2.9.0",
+            "logging-interceptor"           : "com.squareup.okhttp3:logging-interceptor:4.8.0",
+
+            // util
+            "gson"                          : 'com.google.code.gson:gson:2.8.6',
+            "logger"                        : 'com.gitee.Aletto:android-logger:1.0.8',
+            "android-util-code"             : "com.blankj:utilcodex:1.28.3",
+            "easy-permissions"              : "pub.devrel:easypermissions:3.0.0",
+            //debug调试工具在deubg模式下会打开
+            "doraemonkit"                   : "com.didichuxing.doraemonkit:doraemonkit:3.1.8",
+            "doraemonkit-no-op"             : "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8",
+
+            // 轮播图
+            "banner"                        : 'com.youth.banner:banner:2.1.0',
+            //弹窗
+            "xpopup"                        : "com.lxj:xpopup:2.0.8-rc5",
+            //适配
+            "auto-size"                     : "me.jessyan:autosize:1.1.2",
+            //日历
+            "calendar"                      : "com.haibin:calendarview:3.6.9",
+            //文字排列
+            "flow-layout"                   : "com.hyman:flowlayout-lib:1.1.2",
+            //多状态布局
+            "state-layout"                  : "com.github.and-fast:state-layout:1.0.0",
+            //下拉刷新和上拉加载
+            "smart-refresh-layout"          : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0",
+
+            // 图片
+            "rounded-image"                 : "com.makeramen:roundedimageview:2.3.0",
+            "glide"                         : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"                : "com.github.bumptech.glide:compiler:4.11.0",
+            "glide-okhttp3-integration"     : "com.github.bumptech.glide:okhttp3-integration:4.11.0",
+            "glide-recyclerview-integration": "com.github.bumptech.glide:recyclerview-integration:4.11.0@aar",
+            "glide-transformations"         : "jp.wasabeef:glide-transformations:4.1.0",
+            "picture-selector"              : 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8',
+            "image-util"                    : "com.github.and-fast:images:0.1-alpha05",
+            "qrcode"                        : "com.google.zxing:core:3.3.0",
+            // 版本更新
+            "version-update"                : "com.github.AlexLiuSheng:CheckVersionLib:2.4_appcompat",
+
+            // 状态栏
+            "status-bar"                    : "com.jaeger.statusbarutil:library:1.5.1",
+
+            // 友盟
+            "umeng-common"                  : "com.umeng.umsdk:common:9.1.0",
+            "umeng-asms"                    : "com.umeng.umsdk:asms:1.1.3",
+            "umeng-crash"                   : "com.umeng.umsdk:crash:0.0.4",
+            "umeng-lenovo"                  : "com.umeng.umsdk:oaid_lenovo:1.0.0",
+            "umeng-mi"                      : "com.umeng.umsdk:oaid_mi:1.0.0",
+            "umeng-oppo"                    : "com.umeng.umsdk:oaid_oppo:1.0.4",
+            "umeng-vivo"                    : "com.umeng.umsdk:oaid_vivo:1.0.0.1",
+            "umeng-share"                   : "com.umeng.umsdk:share-core:7.0.2",
+            "umeng-wx"                      : "com.umeng.umsdk:share-wx:7.0.2",
+            "umeng-board"                   : "com.umeng.umsdk:share-board:7.0.2",
+
+            // 融云
+            "im-lib"                        : "cn.rongcloud.sdk:im_lib:2.10.4",
+            "im-kit"                        : "cn.rongcloud.sdk:im_kit:2.10.4",
+
+            "flyco"                         : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "RatingBar"                     : "com.github.ome450901:SimpleRatingBar:1.5.0",
+
+//            "apng"                          : "com.github.penfeizhou.android.animation:apng:2.4.2",
+//            "glide-plugin"                  : "com.github.penfeizhou.android.animation:glide-plugin:2.4.2",
+
+
+    ]
+
+}

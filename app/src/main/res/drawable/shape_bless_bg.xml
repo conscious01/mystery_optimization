@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <item android:top="@dimen/dp_16"-->
+<!--        android:right="@dimen/dp_80"-->
+<!--        android:left="@dimen/dp_5">-->
+<!--      <bitmap android:src="@drawable/icon_triangle"/>-->
+<!--    </item>-->
+
+
+    <item android:bottom="@dimen/dp_7">
+        <shape>
+            <solid android:color="@color/backgroundColor" />
+           <corners android:radius="@dimen/dp_5"/>
+        </shape>
+    </item>
+</layer-list>

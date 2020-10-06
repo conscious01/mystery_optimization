@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A6B670</color>
+    <color name="colorPrimaryDark">#A6B670</color>
+    <color name="colorAccent">#B84F33</color>
+
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="backgroundColorSecondary">#F2EFEB</color>
+    <color name="color_DDA031">#DDA031</color>
+    <color name="color_B84F33">#B84F33</color>
+    <color name="color_e2bb74">#e2bb74</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_C0C0C0">#C0C0C0</color>
+    <color name="color_f1f0ef">#F1F0EF</color>
+    <color name="state_layout_background_color">@android:color/transparent</color>
+    <color name="color_a3ad87">#A3AD87</color>
+    <color name="color_20272f">#20272F</color>
+    <color name="color_9e9178">#9e9178</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_e6e6e6">#e6e6e6</color>
+    <color name="color_80993c">#80993C</color>
+    <color name="color_4d5259">#4D5259</color>
+    <color name="color_21221f">#21221F</color>
+    <color name="color_21221e">#21221e</color>
+    <color name="color_121212">#121212</color>
+    <color name="color_f7f7f7">#f7f7f7</color>
+    <color name="color_bcbec0">#BCBEC0</color>
+    <color name="color_4D5259">#4D5259</color>
+
+    <color name="color_e9d9cf">#E9D9CF</color>
+    <color name="color_f39689">#F39689</color>
+    <color name="color_6ebde1">#6EBDE1</color>
+    <color name="color_e3d3a5">#E3D3A5</color>
+    <color name="color_f5ab7a">#F5AB7A</color>
+    <color name="color_78c792">#78C792</color>
+    <color name="color_b9a17b">#B9A17B</color>
+    <color name="color_9f1f1b">#9F1F1B</color>
+    <color name="color_79757e">#79757e</color>
+    <color name="translucent">#00000000</color>
+    <color name="color_888787">#888787</color>
+
+    <!-- QRCode scanner color begin -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="corner_color">#00FF00</color>
+    <color name="color_FF222222">#FF222222</color>
+    <color name="color_ffffff">#FFFFFFFF</color>
+    <!-- QRCode scanner color end -->
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/heart_margin"
+    android:paddingEnd="@dimen/heart_margin">
+
+    <TextView
+        android:id="@+id/tv_title"
+        tools:text="消息标题消息标题消息标题"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_marginTop="10dp"
+        android:textColor="?textColorSecondary"
+        tools:text="2020-06-20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
