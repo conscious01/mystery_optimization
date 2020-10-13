@@ -15,14 +15,13 @@ public class BlessDialog extends AttachPopupView {
 
     private String text;
 
-    public static void show(Context context, View view,int x,int y,String text) {
+    public static void show(Context context, View view,PopupPosition popupPosition,String text) {
         new XPopup.Builder(context)
                 .hasShadowBg(false)
                 .isDestroyOnDismiss(true)
-                .offsetX(x)
-                .offsetY(y)
-                .atView(view)
 
+                .atView(view)
+                .popupPosition(popupPosition)
                 .asCustom(new BlessDialog(context, text))
                 .show();
     }

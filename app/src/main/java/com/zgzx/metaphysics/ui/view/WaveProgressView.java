@@ -1,6 +1,7 @@
 package com.zgzx.metaphysics.ui.view;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,6 +12,7 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -92,11 +94,12 @@ public class WaveProgressView extends View {
         mPathPaint = new Paint();
         mPathPaint.setAntiAlias(true);
         mPathPaint.setStyle(Paint.Style.FILL);
-
+        AssetManager mgr = getContext().getAssets();
+        Typeface typeface = Typeface.createFromAsset(mgr, "din_bold.otf");
         mTextPaint = new Paint();
         mTextPaint.setAntiAlias(true);
         mTextPaint.setFakeBoldText(true);
-
+        mTextPaint.setTypeface(typeface);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
 
         handler.sendEmptyMessageDelayed(INVALIDATE,100);

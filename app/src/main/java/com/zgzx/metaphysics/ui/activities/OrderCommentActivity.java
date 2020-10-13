@@ -17,6 +17,7 @@ import com.zgzx.metaphysics.controller.OrderController;
 import com.zgzx.metaphysics.model.entity.QDetailEntity;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
+import com.zgzx.metaphysics.utils.AppToast;
 import com.zgzx.metaphysics.utils.image.GlideApp;
 import com.zgzx.metaphysics.utils.item.EvenItemDecoration;
 
@@ -122,6 +123,8 @@ public class OrderCommentActivity extends BaseRequestActivity implements OrderCo
     public void onViewClicked() {
         if (mRatting > 0 && mData != null) {
             mPresenter.doComment(mData.getId(), (int) mRatting);
+        } else {
+            AppToast.showShort(getString(R.string.pls_give_ratting));
         }
     }
 

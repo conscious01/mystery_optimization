@@ -49,6 +49,7 @@ public class ApngLoader {
 
     }
     public  void stopApng(ApngImageView view){
+
         view.stop();
     }
 

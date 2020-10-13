@@ -273,16 +273,12 @@ public class ScanActivity extends BaseActivity implements EasyPermissions.Permis
     private void parseScanResult(String result) {
         LogUtils.aTag(TAG, "parseScanResult--> " + result);
         if (result != null && !result.isEmpty()) {
-            if (result.contains("invite_code")) {
-                String inviteCode = result.substring(result.length() - 4, result.length());
+            if (result.contains("invite_code")&& result.length()>6) {
+                String inviteCode = result.substring(result.length() - 6, result.length());
                 LogUtils.aTag(TAG, "inviteCode--> " + inviteCode);
                 finish(Activity.RESULT_OK, new Intent().putExtra(Constants.EXTRA_AREA_CODE, inviteCode));
-
             }
-
         }
-
-
     }
 
 

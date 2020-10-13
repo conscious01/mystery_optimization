@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6CC9ED"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="2017年7月"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <TextView
+            style="@style/week"
+            android:text="日" />
+
+        <TextView
+            style="@style/week"
+            android:text="一" />
+
+        <TextView
+            style="@style/week"
+            android:text="二" />
+
+        <TextView
+            style="@style/week"
+            android:text="三" />
+
+        <TextView
+            style="@style/week"
+            android:text="四" />
+
+        <TextView
+            style="@style/week"
+            android:text="五" />
+
+        <TextView
+            style="@style/week"
+            android:text="六" />
+    </LinearLayout>
+
+
+    <com.zgzx.metaphysics.widgets.sign.view.SignGridView
+        android:id="@+id/gvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="1dp"
+        android:numColumns="7"
+        android:padding="1dp"
+        android:scrollbars="none"
+
+        android:verticalSpacing="10dp"></com.zgzx.metaphysics.widgets.sign.view.SignGridView>
+</LinearLayout>

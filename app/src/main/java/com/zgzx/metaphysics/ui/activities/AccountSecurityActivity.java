@@ -13,7 +13,6 @@ import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.zgzx.metaphysics.ui.activities.SafetyVerificationActivity.ASSETS_PASSWORD;
 import static com.zgzx.metaphysics.ui.activities.SafetyVerificationActivity.CREATE_ASSETS_PASSWORD;
 import static com.zgzx.metaphysics.ui.activities.SafetyVerificationActivity.LOGIN_PASSWORD;
 
@@ -52,11 +51,11 @@ public class AccountSecurityActivity extends BaseActivity {
         switch (view.getId()) {
 
             case R.id.layout_account_security:
-                startActivity(SafetyVerificationActivity.newIntent(this, LOGIN_PASSWORD));
+                startActivityAndFinish(SafetyVerificationActivity.newIntent(this, LOGIN_PASSWORD));
                 break;
 
             case R.id.layout_fund_security:
-                startActivity(SafetyVerificationActivity.newIntent(this, mPageType));
+                startActivityAndFinish(SafetyVerificationActivity.newIntent(this, mPageType));
                 break;
         }
     }

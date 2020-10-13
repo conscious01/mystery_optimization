@@ -301,13 +301,18 @@
 
     -ignorewarnings
     -keep class com.zgzx.metaphysics.SealNotificationReceiver {*;}
+-dontwarn com.xiaomi.push.**
 
+#OPPO
+-keep public class * extends android.app.Service
+-keep class com.heytap.msp.** { *;}
+-keep class io.rong.push.platform.mi.MiMessageReceiver {*;}
 #sp 工具类
 -keep class com.qbw.spm.*
 -keep class com.github.chrisbanes.photoview.*
 
 #华为推送
--ignorewarning
+
 -keepattributes *Annotation*
 -keepattributes Exceptions
 -keepattributes InnerClasses
@@ -322,3 +327,37 @@
 -keep public class com.huawei.android.hms.agent.** extends android.app.Activity { public *; protected *; }
 -keep interface com.huawei.android.hms.agent.common.INoProguard {*;}
 -keep class * extends com.huawei.android.hms.agent.common.INoProguard {*;}
+
+## ----------------------------------
+##      Picasso相关
+## ----------------------------------
+-keep class com.squareup.picasso.Picasso { *; }
+-dontwarn com.squareup.okhttp.**
+-dontwarn com.squareup.picasso.**
+
+## ----------------------------------
+##      xUtils3相关
+## ----------------------------------
+-keepattributes Signature,*Annotation*
+-keep public class org.xutils.** {
+    public protected *;
+}
+-keep public interface org.xutils.** {
+    public protected *;
+}
+-keepclassmembers class * extends org.xutils.** {
+    public protected *;
+}
+-keepclassmembers @org.xutils.db.annotation.* class * {*;}
+-keepclassmembers @org.xutils.http.annotation.* class * {*;}
+-keepclassmembers class * {
+    @org.xutils.view.annotation.Event <methods>;
+}
+-dontwarn org.xutils.**
+
+## ----------------------------------
+##      UIL相关
+## ----------------------------------
+-keep class com.nostra13.universalimageloader.** { *; }
+-keepclassmembers class com.nostra13.universalimageloader.** {*;}
+-dontwarn com.nostra13.universalimageloader.**

@@ -178,10 +178,10 @@
                 android:id="@+id/mCreateBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_marginLeft="@dimen/dp_25"
                 android:layout_marginTop="@dimen/dp_30"
                 android:background="@drawable/icon_create_btn_bg"
-                android:paddingTop="@dimen/dp_5"
+                android:paddingTop="3dp"
                 android:text="@string/create"
                 android:textColor="#FFFDF3C5" />
 

@@ -9,7 +9,6 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,6 +19,7 @@ import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.ui.core.BaseActivity;
 import com.zgzx.metaphysics.utils.DateUtils;
+import com.zgzx.metaphysics.utils.MyWebViewCLient;
 import com.zgzx.metaphysics.utils.StringUtil;
 import com.zgzx.metaphysics.widgets.JavaScriptinterface;
 
@@ -94,18 +94,8 @@ public class WebViewVipCenter extends BaseActivity {
             }
         });
 
-        mWebView.setWebViewClient(new WebViewClient() {
+        mWebView.setWebViewClient(new MyWebViewCLient(this,mWebView));
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Build.VERSION.SDK_INT < 26 && mWebView != null) {
-                    mWebView.loadUrl(url);
-                    return true;
-                }
-
-                return false;
-            }
-        });
     }
 
 

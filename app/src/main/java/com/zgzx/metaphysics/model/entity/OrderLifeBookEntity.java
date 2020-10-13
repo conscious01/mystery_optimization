@@ -1,8 +1,9 @@
 package com.zgzx.metaphysics.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class OrderLifeBookEntity {
+public class OrderLifeBookEntity implements Serializable {
 
     /**
      * order_no : 20092210555354942604
@@ -10,8 +11,18 @@ public class OrderLifeBookEntity {
      * origin_amount : 999
      * discount_rate : 0.8
      * coin_available : 0
-     * discount_list : [{"id":1,"discount":70},{"id":2,"discount":60},{"id":3,"discount":50},{"id":4,"discount":40},{"id":5,"discount":30},{"id":6,"discount":20},{"id":7,"discount":10}]
+     * discount_list : [{"id":1,"discount":70},{"id":2,"discount":60},{"id":3,"discount":50},{"id
+     * ":4,"discount":40},{"id":5,"discount":30},{"id":6,"discount":20},{"id":7,"discount":10}]
      */
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     private String order_no;
     private String subject;
@@ -77,7 +88,7 @@ public class OrderLifeBookEntity {
         this.discount_list = discount_list;
     }
 
-    public static class DiscountListBean {
+    public static class DiscountListBean implements Serializable {
         /**
          * id : 1
          * discount : 70

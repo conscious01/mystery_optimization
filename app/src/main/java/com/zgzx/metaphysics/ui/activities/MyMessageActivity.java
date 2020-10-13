@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.zgzx.metaphysics.utils.DateUtils.PATTERN_2;
+import static com.zgzx.metaphysics.utils.DateUtils.PATTERN_5;
 
 public class MyMessageActivity extends BaseRequestActivity implements OnRefreshLoadMoreListener {
     @BindView(R.id.iv_arrow_back)
@@ -104,7 +104,7 @@ public class MyMessageActivity extends BaseRequestActivity implements OnRefreshL
         @Override
         protected void convert(@NonNull BaseViewHolder helper, MessageEntity.ItemsBean item) {
             helper.setText(R.id.tv_title, item.getTitle());
-            helper.setText(R.id.tv_time, DateUtils.getTime(item.getCreate_time(), PATTERN_2));
+            helper.setText(R.id.tv_time, DateUtils.getTime(item.getCreate_time(), PATTERN_5));
             helper.getView(R.id.ll_item).setOnClickListener(v -> {
 
                 if (!item.getUrl().isEmpty()) {

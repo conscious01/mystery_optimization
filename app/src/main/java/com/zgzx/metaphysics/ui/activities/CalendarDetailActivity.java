@@ -7,11 +7,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarView;
 import com.jaeger.library.StatusBarUtil;
 import com.lxj.xpopup.XPopup;
-
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.presenters.CalendarDetailPresenter;
 import com.zgzx.metaphysics.controller.views.core.ICallbackResult;
@@ -22,10 +22,7 @@ import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.AndroidUtil;
 import com.zgzx.metaphysics.utils.AppToast;
 
-import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 日历详情
@@ -189,6 +186,8 @@ public class CalendarDetailActivity extends BaseRequestActivity implements
 
         } else {
             AppToast.showLong(throwable.getMessage());
+            LogUtils.i(throwable.getMessage());
+
         }
     }
 

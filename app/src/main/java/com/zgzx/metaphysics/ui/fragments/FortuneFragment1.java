@@ -44,10 +44,12 @@ public class FortuneFragment1 extends BaseRequestFragment implements FortuneCont
     TextView tvAddFortune_1;//增运
     @BindView(R.id.tv_fortune_evaluate)
     TextView mFortuneEvaluate;//运势总评
+
     private FortuneController.Presenter mPresenter;
     private Calendar calendar;
     private int pos;
-    private final static int[] COLORS = new int[]{Color.parseColor("#FFDD88"), Color.parseColor("#FF7F2A")};
+    private final static int[] COLORS = new int[]{Color.parseColor("#FF7F2A"), Color.parseColor(
+            "#FFDD88")};
 
     public static Fragment instance(int pos) {
         FortuneFragment1 fragment = new FortuneFragment1();
@@ -83,7 +85,6 @@ public class FortuneFragment1 extends BaseRequestFragment implements FortuneCont
         tvAddFortune_1.setText(getResources().getString(R.string.tv_add_fortune_in));
 
 
-
     }
 
     private void initCalendar() {
@@ -103,7 +104,7 @@ public class FortuneFragment1 extends BaseRequestFragment implements FortuneCont
             tv_time_ten.setText("0");
             tv_time_ge.setText(day + "");
         }
-        tv_lunarCalendar.setText(LunarCalendarUtil.get(getResources(),calendar));
+        tv_lunarCalendar.setText(LunarCalendarUtil.get(getResources(), calendar));
     }
 
 
@@ -117,7 +118,8 @@ public class FortuneFragment1 extends BaseRequestFragment implements FortuneCont
             fortuneGradeEntityList.add(entity);
         }
 
-        mRecycleFortuneGrade.setAdapter(new FortuneDeatailAdapter(fortuneGradeEntityList, getActivity()));
+        mRecycleFortuneGrade.setAdapter(new FortuneDeatailAdapter(fortuneGradeEntityList,
+                getActivity()));
     }
 
     @Override
@@ -135,12 +137,18 @@ public class FortuneFragment1 extends BaseRequestFragment implements FortuneCont
     }
 
     @Override
+    public void renderPersonalFortune(FortuneEntity.GeneralCommentBean generalCommentBean) {
+
+    }
+
+    @Override
     public void renderMoudleImg(List<String> imgs) {
 
     }
 
     @Override
-    public void renderTrend(List<String> xDateValue, List<String> yTipValue, List<Integer> xKeyValue, List<Float> yNumberValue) {
+    public void renderTrend(List<String> xDateValue, List<String> yTipValue,
+                            List<Integer> xKeyValue, List<Float> yNumberValue) {
 
     }
 

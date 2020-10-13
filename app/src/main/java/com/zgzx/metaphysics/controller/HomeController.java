@@ -7,6 +7,7 @@ import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.controller.core.RequestPresenter;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.model.DataRepository;
+import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.ArticleEntity;
 import com.zgzx.metaphysics.model.entity.ArticleListEntity;
 import com.zgzx.metaphysics.model.entity.BannerEntity;
@@ -47,7 +48,7 @@ public interface HomeController {
                     {
                         mView.renderNomalFouncation(entity.getData().getIcon1());
                         mView.renderToolsFouncation(entity.getData().getIcon2());
-                        mView.renderFouncationBanner(entity.getData().getBanner());
+                        mView.renderFouncationBanner(entity.getData().getBanner().get(0));
                     }
                     ));
 
@@ -87,10 +88,17 @@ public interface HomeController {
 
 
         }
-
+//        public void getAddfortuneData(int timestamp) {
+//            DataRepository.getInstance()
+//                    .getAddfortuneData(timestamp)
+//                    .compose(SchedulersTransformer.transformer(mView))
+//                    .subscribe(new ResponseObserver<>(this, mView, entity -> {
+//                        mView.onAddFourtune(entity.getData());
+//                    }));
+//        }
         public void fortune() {
             DataRepository.getInstance()
-                    .personalFortune((int) (new Date().getTime() / 1000), LocalConfigStore.getInstance().isCompletedInfo() ? 2 : 1)
+                    .personalFortune((int) (new Date().getTime() / 1000), 2)
                     .compose(SchedulersTransformer.transformer(mView))
                     .subscribe(new ResponseObserver<>(this, mView, entity -> {
 
@@ -141,7 +149,7 @@ public interface HomeController {
         void renderToolsFouncation(List<HomeFouncationEntity.Icon2Bean> data);
 
         // 工能模块banner
-        void renderFouncationBanner(List<HomeFouncationEntity.BannerBean> data);
+        void renderFouncationBanner(HomeFouncationEntity.BannerBean data);
 
         // 今日宜忌
         void renderCalendarDay(CalendarDayEntity data);

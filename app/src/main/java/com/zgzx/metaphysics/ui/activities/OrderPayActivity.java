@@ -170,7 +170,7 @@ public class OrderPayActivity extends BaseRequestActivity implements BuyQuestion
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
-                mPresenter.request(mSelectPayType, mOrderResultEntity.getId(), LocalConfigStore.getInstance().getAk(), time + LocalConfigStore.getInstance().getTimestamp(), sign);
+//                mPresenter.request(mSelectPayType, mOrderResultEntity.getId(), LocalConfigStore.getInstance().getAk(), time + LocalConfigStore.getInstance().getTimestamp(), sign);
                 break;
             case R.id.iv_arrow_back:
                 showLeaveDialog();

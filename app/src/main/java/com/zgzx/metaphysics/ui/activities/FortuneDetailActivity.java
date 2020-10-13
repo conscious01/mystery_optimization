@@ -13,7 +13,6 @@ import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.FortuneController;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.FortuneEntity;
-
 import com.zgzx.metaphysics.model.event.PlayCompleteEvent;
 import com.zgzx.metaphysics.rade_view.LineView;
 import com.zgzx.metaphysics.ui.adapters.SimpleFragmentStatePagerAdapter;
@@ -26,8 +25,8 @@ import com.zgzx.metaphysics.ui.fragments.FortuneFragment2;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.image.GlideApp;
 
-
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,9 +80,17 @@ public class FortuneDetailActivity extends BaseActivity implements FortuneContro
     }
 
     @Override
+    protected boolean useEventBus() {
+        return true;
+    }
+
+    @Override
     protected int getContentLayoutId() {
         return R.layout.activity_fortune_detail;
     }
+
+
+
 
     @Override
     protected void initialize(Bundle savedInstanceState) {
@@ -99,16 +106,10 @@ public class FortuneDetailActivity extends BaseActivity implements FortuneContro
 
         iniPersonalInfo();
 
-
         initFragment();
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.getAddfortuneData((int) (new Date().getTime() / 1000));
-    }
 
     /**
      * 个人信息
@@ -140,25 +141,38 @@ public class FortuneDetailActivity extends BaseActivity implements FortuneContro
                 .add(FortuneFragment.instance(0), titles[0])
                 .add(FortuneFragment1.instance(1), titles[1])
                 .add(FortuneFragment2.instance(2), titles[2]));
-
-
     }
 
-    @Subscribe
+
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(PlayCompleteEvent event) {
         if (event.getType() == 2) {
-            LocalConfigStore.getInstance().setJnType_7(true);
+//            LocalConfigStore.getInstance().setJnType();
+//            LocalConfigStore.getInstance().setJnType_7(true);
             FortuneEntity.TopicBean topicBean = mFortuneEntity.getTopic();
-            CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic), 2, topicBean.getDesc(), topicBean.getShort_desc(), topicBean.getCaution(), "", "", "");
+            CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic), 2,
+                    topicBean.getDesc(), topicBean.getShort_desc(), topicBean.getCaution(), "",
+                    "", "");
         } else if (event.getType() == 3) {
-            LocalConfigStore.getInstance().setJnType_8(true);
-            String fortuneText1 = getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
-            String fortuneText2 = getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
-            String fortuneText3 = getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
-            String fortuneText4 = getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
-            String fortuneText5 = getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
-            String fortuneText6 = getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
-            CurrencyDialog.show(this, getResources().getString(R.string.fortune_add_fortune), 3, fortuneText1, fortuneText2, fortuneText3, fortuneText4, fortuneText5, fortuneText6);
+//            LocalConfigStore.getInstance().setJnType();
+//            LocalConfigStore.getInstance().setJnType_8(true);
+            String fortuneText1 =
+                    getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
+            String fortuneText2 =
+                    getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
+            String fortuneText3 =
+                    getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
+            String fortuneText4 =
+                    getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
+            String fortuneText5 =
+                    getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
+            String fortuneText6 =
+                    getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
+            CurrencyDialog.show(this, getResources().getString(R.string.fortune_add_fortune), 3,
+                    fortuneText1, fortuneText2, fortuneText3, fortuneText4, fortuneText5,
+                    fortuneText6);
         }
 
     }
@@ -167,64 +181,91 @@ public class FortuneDetailActivity extends BaseActivity implements FortuneContro
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.img_subject:
-                FortuneEntity.TopicBean topicBean = mFortuneEntity.getTopic();
-                CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic), 2,
-                        topicBean.getDesc(), topicBean.getShort_desc(), topicBean.getCaution(),
-                        "", "", "");
-
-                if (LocalConfigStore.getInstance().getJnType() < 6) {
-                    if (LocalConfigStore.getInstance().getJnType7()) {
-                       topicBean = mFortuneEntity.getTopic();
-                        CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic), 2, topicBean.getDesc(), topicBean.getShort_desc(), topicBean.getCaution(), "", "", "");
-                    } else {
-                        AdVertiseMentDialog.show(FortuneDetailActivity.this, 0, FortuneDetailActivity.this, 2);
-                    }
-                } else {
-                    topicBean = mFortuneEntity.getTopic();
-                    CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic), 2, topicBean.getDesc(), topicBean.getShort_desc(), topicBean.getCaution(), "", "", "");
-                }
+                //              FortuneEntity.TopicBean topicBean = mFortuneEntity.getTopic();
+//                CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic), 2,
+//                        topicBean.getDesc(), topicBean.getShort_desc(), topicBean.getCaution(),
+//                        "", "", "");
+                AdVertiseMentDialog.show(FortuneDetailActivity.this, 0,
+                        FortuneDetailActivity.this, 2);
+//                if (LocalConfigStore.getInstance().getJnType() < 10) {
+//                    if (LocalConfigStore.getInstance().getJnType7()) {
+//                        FortuneEntity.TopicBean topicBean1 = mFortuneEntity.getTopic();
+//                        CurrencyDialog.show(this,
+//                                getResources().getString(R.string.fortune_toptic), 2,
+//                                topicBean1.getDesc(), topicBean1.getShort_desc(),
+//                                topicBean1.getCaution(), "", "", "");
+//                    } else {
+//                        AdVertiseMentDialog.show(FortuneDetailActivity.this, 0,
+//                                FortuneDetailActivity.this, 2);
+//                    }
+//                } else {
+//                    FortuneEntity.TopicBean topicBean2 = mFortuneEntity.getTopic();
+//                    CurrencyDialog.show(this, getResources().getString(R.string.fortune_toptic),
+//                            2, topicBean2.getDesc(), topicBean2.getShort_desc(),
+//                            topicBean2.getCaution(), "", "", "");
+//                }
 
 
                 break;
             case R.id.img_add_fortune:
-                String fortuneText1 =
-                        getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
-                String fortuneText2 =
-                        getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
-                String fortuneText3 =
-                        getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
-                String fortuneText4 =
-                        getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
-                String fortuneText5 =
-                        getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
-                String fortuneText6 =
-                        getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
-                CurrencyDialog.show(this, getResources().getString(R.string.fortune_add_fortune),
-                        3, fortuneText1, fortuneText2, fortuneText3, fortuneText4, fortuneText5,
-                        fortuneText6);
-
-                if (LocalConfigStore.getInstance().getJnType() < 6) {
-                    if (LocalConfigStore.getInstance().getJnType8()){
-                         fortuneText1 = getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
-                         fortuneText2 = getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
-                         fortuneText3 = getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
-                         fortuneText4 = getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
-                         fortuneText5 = getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
-                         fortuneText6 = getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
-                        CurrencyDialog.show(this, getResources().getString(R.string.fortune_add_fortune), 3, fortuneText1, fortuneText2, fortuneText3, fortuneText4, fortuneText5, fortuneText6);
-                    }else {
-                        AdVertiseMentDialog.show(FortuneDetailActivity.this, 0, FortuneDetailActivity.this, 3);
-
-                    }
-                } else {
-                     fortuneText1 = getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
-                     fortuneText2 = getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
-                     fortuneText3 = getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
-                     fortuneText4 = getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
-                     fortuneText5 = getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
-                     fortuneText6 = getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
-                    CurrencyDialog.show(this, getResources().getString(R.string.fortune_add_fortune), 3, fortuneText1, fortuneText2, fortuneText3, fortuneText4, fortuneText5, fortuneText6);
-                }
+//                String fortuneText1 =
+//                        getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
+//                String fortuneText2 =
+//                        getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
+//                String fortuneText3 =
+//                        getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
+//                String fortuneText4 =
+//                        getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
+//                String fortuneText5 =
+//                        getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
+//                String fortuneText6 =
+//                        getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
+//                CurrencyDialog.show(this, getResources().getString(R.string.fortune_add_fortune),
+//                        3, fortuneText1, fortuneText2, fortuneText3, fortuneText4, fortuneText5,
+//                        fortuneText6);
+                AdVertiseMentDialog.show(FortuneDetailActivity.this, 0,
+                        FortuneDetailActivity.this, 3);
+//                if (LocalConfigStore.getInstance().getJnType() < 10) {
+//                    if (LocalConfigStore.getInstance().getJnType8()) {
+//                        String fortuneText12 =
+//                                getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
+//                        String fortuneText22 =
+//                                getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
+//                        String fortuneText32 =
+//                                getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
+//                        String fortuneText42 =
+//                                getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
+//                        String fortuneText52 =
+//                                getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
+//                        String fortuneText62 =
+//                                getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
+//                        CurrencyDialog.show(this,
+//                                getResources().getString(R.string.fortune_add_fortune), 3,
+//                                fortuneText12, fortuneText22, fortuneText32, fortuneText42,
+//                                fortuneText52, fortuneText62);
+//                    } else {
+//                        AdVertiseMentDialog.show(FortuneDetailActivity.this, 0,
+//                                FortuneDetailActivity.this, 3);
+//
+//                    }
+//                } else {
+//                    String fortuneText11 =
+//                            getResources().getString(R.string.tv_lucky_wreck) + mFortuneEntity.getPosition().getAviodance();
+//                    String fortuneText21 =
+//                            getResources().getString(R.string.tv_fortune) + mFortuneEntity.getPosition().getFinance();
+//                    String fortuneText31 =
+//                            getResources().getString(R.string.tv_lucky_popularity) + mFortuneEntity.getPosition().getPeople();
+//                    String fortuneText41 =
+//                            getResources().getString(R.string.tv_lucky_color) + mFortuneEntity.getColor();
+//                    String fortuneText51 =
+//                            getResources().getString(R.string.tv_lucky_hospital_bed) + mFortuneEntity.getPosition().getSickness();
+//                    String fortuneText61 =
+//                            getResources().getString(R.string.tv_lucky_number) + mFortuneEntity.getNumber();
+//                    CurrencyDialog.show(this,
+//                            getResources().getString(R.string.fortune_add_fortune), 3,
+//                            fortuneText11, fortuneText21, fortuneText31, fortuneText41,
+//                            fortuneText51, fortuneText61);
+//                }
                 break;
         }
     }
@@ -252,6 +293,11 @@ public class FortuneDetailActivity extends BaseActivity implements FortuneContro
     }
 
     @Override
+    public void renderPersonalFortune(FortuneEntity.GeneralCommentBean generalCommentBean) {
+
+    }
+
+    @Override
     public void renderMoudleImg(List<String> imgs) {
         GlideApp.with(mImgSubject)
                 .load(imgs.get(0))
@@ -274,6 +320,13 @@ public class FortuneDetailActivity extends BaseActivity implements FortuneContro
 
     @Override
     public void onAddFourtune(AddfortuneDataEntity addfortuneDataEntity) {
+        System.out.println("addfortuneDataEntity");
+//        if (addfortuneDataEntity != null) {
+//            P.putInt(Constants.add_fortune_times, addfortuneDataEntity.getAdd_fortune_times());
+//            EventBus.getDefault().post(new OnGetFourtuneEvent(addfortuneDataEntity));
+////            EventBus.getDefault().post(new OnGetFourtuneEvent(new AddfortuneDataEntity(4,5,3,2)));
+//
+//        }
 
     }
 

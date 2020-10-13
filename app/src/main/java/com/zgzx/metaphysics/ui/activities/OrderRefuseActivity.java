@@ -18,9 +18,12 @@ import com.zgzx.metaphysics.controller.OrderController;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.controller.views.impl.ToastRequestStatusView;
 import com.zgzx.metaphysics.model.entity.OrderResultEntity;
+import com.zgzx.metaphysics.model.event.RefreshOrderEvent;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.encrypt.HMacMD5Util;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -147,7 +150,7 @@ public class OrderRefuseActivity extends BaseRequestActivity implements OrderCon
     @Override
     public void onRefused() {
         ToastUtils.showShort(getResources().getString(R.string.successful));
-//        EventBus.getDefault().post(new RefreshOrderEvent());
+        EventBus.getDefault().post(new RefreshOrderEvent());
         finish();
     }
 }

@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.blankj.utilcode.util.ToastUtils;
@@ -17,18 +13,15 @@ import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.BuyMemberController;
-
 import com.zgzx.metaphysics.controller.views.impl.ToastRequestStatusView;
 import com.zgzx.metaphysics.model.LocalDataManager;
 import com.zgzx.metaphysics.model.entity.PayResult;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.ui.dialogs.PayMethodDialog;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
-import com.zgzx.metaphysics.utils.NumberUtil;
 
 import java.util.Map;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -51,14 +44,14 @@ public class SelectePayActivity extends BaseRequestActivity implements BuyMember
             PayResult result = new PayResult((Map<String, String>) msg.obj);
 
             if ("9000".equals(result.getResultStatus())) {
-                ToastUtils.showShort(getText(R.string.pay_ok));
+//                ToastUtils.showShort(getText(R.string.pay_ok));
                 startActivity(VipCenterActivity.newIntent(SelectePayActivity.this));
                 new LocalDataManager().clearUserCache();
                 finish();
             } else if ("4000".equals(result.getResultStatus())) {
-                ToastUtils.showShort(getText(R.string.pay_failed));
+//                ToastUtils.showShort(getText(R.string.pay_failed));
             } else {
-                ToastUtils.showShort(getText(R.string.pay_ex));
+//                ToastUtils.showShort(getText(R.string.pay_ex));
             }
         }
     };

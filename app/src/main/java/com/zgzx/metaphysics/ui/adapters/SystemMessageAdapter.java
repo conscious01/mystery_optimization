@@ -17,7 +17,7 @@ public class SystemMessageAdapter extends BaseQuickAdapter<SystemMessageEntity, 
     @Override
     protected void convert(@NonNull BaseViewHolder helper, SystemMessageEntity item) {
         helper.setText(R.id.tv_title, item.getTitle())
-                .setText(R.id.tv_date, DateUtils.getTime(item.getCreate_time(), DateUtils.PATTERN_2));
+                .setText(R.id.tv_date, DateUtils.getTime(item.getCreate_time(), DateUtils.PATTERN_5));
     }
 
 }

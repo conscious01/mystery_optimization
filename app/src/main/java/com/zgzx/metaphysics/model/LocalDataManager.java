@@ -6,11 +6,11 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
-import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
 import com.mondo.logger.Logger;
 import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.MetaphysicsApplication;
+import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
+import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
 import com.zgzx.metaphysics.model.entity.AreaCodeEntity;
 import com.zgzx.metaphysics.model.entity.BasicResponseEntity;
 import com.zgzx.metaphysics.model.entity.CalendarDetailEntity;
@@ -21,7 +21,6 @@ import com.zgzx.metaphysics.model.entity.FortuneEntity;
 import com.zgzx.metaphysics.model.entity.HomeDataEntity;
 import com.zgzx.metaphysics.model.entity.UserDetailEntity;
 import com.zgzx.metaphysics.network.WebApiConstants;
-
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -565,6 +564,11 @@ public class LocalDataManager {
     public void clearUserDetail(){
         String key = String.format(USER_DETAIL_KEY, LocalConfigStore.getInstance().getUserId());
         mPreferences.edit().remove(key).apply();
+
+
+
+
+
     }
 
     /**
@@ -576,6 +580,10 @@ public class LocalDataManager {
         for (Map.Entry<String, ?> entry : entries) {
             mPreferences.edit().remove(entry.getKey()).apply();
         }
+
+        SharedPreferences  sSharedPreferences = MetaphysicsApplication.sInstance.getSharedPreferences(
+                "P_qbw", Context.MODE_PRIVATE);
+        sSharedPreferences.edit().clear().commit();
     }
 
 }

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.zgzx.metaphysics.LocalConfigStore;
@@ -16,6 +15,7 @@ import com.zgzx.metaphysics.ui.core.BaseRequestFragment;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.AndroidUtil;
 import com.zgzx.metaphysics.utils.DateUtils;
+import com.zgzx.metaphysics.utils.MyWebViewCLient;
 import com.zgzx.metaphysics.utils.StringUtil;
 import com.zgzx.metaphysics.widgets.JavaScriptinterface;
 
@@ -72,19 +72,8 @@ public class CalculationFragment extends BaseRequestFragment {
             }
         });
 
+        web_view.setWebViewClient(new MyWebViewCLient(getActivity(), web_view));
 
-        web_view.setWebViewClient(new WebViewClient() {
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Build.VERSION.SDK_INT < 26 && web_view != null) {
-                    web_view.loadUrl(cesuanURL);
-                    return true;
-                }
-
-                return false;
-            }
-        });
 
     }
 

@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
 
     >
-
-    <com.apng.view.ApngImageView
+    <ImageView
         android:id="@+id/kmImgView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+
         />
+
     <ImageView
         android:id="@+id/kmImgView_start"
         android:layout_width="match_parent"

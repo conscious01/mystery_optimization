@@ -24,6 +24,7 @@ public abstract class BaseFragment extends Fragment {
     private Unbinder mUnbinder;
 
     private boolean initialDisplay = true; // 初次显示
+    protected final String TAG = this.getClass().getSimpleName();
 
     @Override
     public void onAttach(Context context) {

@@ -20,7 +20,8 @@ public class OrderResultEntity implements Serializable {
     public int create_time;
     public int pay_time;
     public int trans_time;
-    public int  status , end_time;
+    public int status;
+    public int end_time;
 
     public int getStatus() {
         return status;

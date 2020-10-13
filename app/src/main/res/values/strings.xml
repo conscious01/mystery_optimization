@@ -162,6 +162,8 @@
     <string name="clear_cache">清除缓存</string>
     <string name="apply_master">申请师傅</string>
     <string name="not_applied">未申请</string>
+    <string name="tv_customer_service">联系客服</string>
+
     <string name="dialog_confirm_clear">确定要清除缓存吗？</string>
     <string name="language">语言</string>
     <string name="simplified_chinese">简体中文</string>
@@ -322,23 +324,23 @@
 
     <string name="member_center_tips">开通会员，尊享待遇</string>
     <string name="expire">到期</string>
-    <string name="diamonds_vip">钻石VIP</string>
-    <string name="gold_vip">黄金VIP</string>
-    <string name="silver_vip">白银VIP</string>
-    <string name="bronze_vip">青铜VIP</string>
-    <string name="diamonds_vip_1">钻石权益</string>
-    <string name="gold_vip_1">黄金权益</string>
-    <string name="silver_vip_1">白银权益</string>
-    <string name="bronze_vip_1">青铜权益</string>
+    <string name="diamonds_vip">终身会员</string>
+    <string name="gold_vip">年度会员</string>
+    <string name="silver_vip">季度会员</string>
+    <string name="bronze_vip">月度会员</string>
+    <string name="diamonds_vip_1">终身权益</string>
+    <string name="gold_vip_1">年度权益</string>
+    <string name="silver_vip_1">季度权益</string>
+    <string name="bronze_vip_1">月度权益</string>
     <string name="vip_txt_expire">终身尊享</string>
     <string name="vip_center">会员中心  ></string>
     <string name="share_friends">分享好友</string>
     <string name="pay_detail_pay">付款详细</string>
 
-    <string name="vip_tips_txt_1">恭喜您已成为尊贵的青铜VIP</string>
-    <string name="vip_tips_txt_2">恭喜您已成为尊贵的白银VIP</string>
-    <string name="vip_tips_txt_3">恭喜您已成为尊贵的黄金VIP</string>
-    <string name="vip_tips_txt_4">恭喜您已成为尊贵的钻石VIP</string>
+    <string name="vip_tips_txt_1">恭喜您已成为尊贵的月度VIP</string>
+    <string name="vip_tips_txt_2">恭喜您已成为尊贵的季度VIP</string>
+    <string name="vip_tips_txt_3">恭喜您已成为尊贵的年度VIP</string>
+    <string name="vip_tips_txt_4">恭喜您已成为尊贵的终身VIP</string>
     <!--邀请-->
     <string name="invite">邀请</string>
     <string name="signed_my_id">我的ID:</string>
@@ -462,7 +464,7 @@
     <string name="view_fortune_complete_information">查看运势详情需要先完善资料哦～</string>
     <string name="perfect_information_1">完善资料</string>
 
-
+    <string name="cancle_pay">你确定要取消支付吗？</string>
     <!--新增 -->
     <string name="tv_daily_recommend">每日推荐</string>
     <string name="tv_share">分享</string>
@@ -608,10 +610,10 @@
     <string name="tv_share_name_1">%s篇</string>
     <string name="tv_kmz_dk">孔明珠抵扣</string>
     <string name="tv_not_need">不使用</string>
-    <string name="qt_hy">青铜会员</string>
-    <string name="by_hy">白银会员</string>
-    <string name="hj_hy">黄金会员</string>
-    <string name="zs_hy">钻石会员</string>
+    <string name="qt_hy">月度会员</string>
+    <string name="by_hy">季度会员</string>
+    <string name="hj_hy">年度会员</string>
+    <string name="zs_hy">终身会员</string>
     <string name="experiod_time">有效期：</string>
     <string name="tv_tips_2">2.孔明珠支持真命天书、孔明会员等栏目购买使用。</string>
     <string name="tv_tips_1">1.孔明珠可按一定比率抵扣商品价格。</string>
@@ -660,5 +662,14 @@
     <string name="app_need_permission">功能正常运行需要这些权限</string>
     <string name="scan_failed">扫码失败</string>
     <string name="scan_qr">扫码</string>
+    <string name="pls_give_ratting">请给大师评价</string>
+    <string name="tv_exit">再按一次退出孔明在线</string>
+    <string name="tv_net_tips">请检查网络设置</string>
+    <string name="setting_net">设置</string>
+    <string name="tv_net_tips_1">网络已断开，请连接网络！</string>
+    <string name="tv_ad_tips">请先加载广告</string>
+    <string name="tv_fortune_jn">运势锦囊</string>
+    <string name="tv_fortune_5">（赚孔明珠区域）</string>
+    <string name="tv_fortune_8">看运势得更多孔明珠</string>
 
 </resources>

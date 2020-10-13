@@ -1,31 +1,31 @@
 <resources>
-	<string-array name="calendar_month_string_array">
-		<item>一月</item>
-		<item>二月</item>
-		<item>三月</item>
-		<item>四月</item>
-		<item>五月</item>
-		<item>六月</item>
-		<item>七月</item>
-		<item>八月</item>
-		<item>九月</item>
-		<item>十月</item>
-		<item>十一月</item>
-		<item>十二月</item>
-	</string-array>
-	<string-array name="terrestrial_branch_string_array">
-		<item>子</item>
-		<item>醜</item>
-		<item>寅</item>
-		<item>卯</item>
-		<item>辰</item>
-		<item>巳</item>
-		<item>午</item>
-		<item>未</item>
-		<item>申</item>
-		<item>酉</item>
-		<item>戌</item>
-		<item>亥</item>
+    <string-array name="calendar_month_string_array">
+        <item>一月</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>十一月</item>
+        <item>十二月</item>
+    </string-array>
+    <string-array name="terrestrial_branch_string_array">
+        <item>子</item>
+        <item>醜</item>
+        <item>寅</item>
+        <item>卯</item>
+        <item>辰</item>
+        <item>巳</item>
+        <item>午</item>
+        <item>未</item>
+        <item>申</item>
+        <item>酉</item>
+        <item>戌</item>
+        <item>亥</item>
 
     </string-array>
     <string-array name="terrestrial_branch_string_array_1">
@@ -42,315 +42,316 @@
         <item>戌時</item>
         <item>亥時</item>
 
-	</string-array>
-	<string-array name="calendar_week_string_array">
-		<item>週日</item>
-		<item>週一</item>
-		<item>週二</item>
-		<item>週三</item>
-		<item>週四</item>
-		<item>週五</item>
-		<item>週六</item>
-	</string-array>
-	<string name="placeholder_month">%d 月</string>
+    </string-array>
+    <string-array name="calendar_week_string_array">
+        <item>週日</item>
+        <item>週一</item>
+        <item>週二</item>
+        <item>週三</item>
+        <item>週四</item>
+        <item>週五</item>
+        <item>週六</item>
+    </string-array>
+    <string name="placeholder_month">%d 月</string>
 
-	<string-array name="fortune_stick">
-		<item>運氣</item>
-		<item>愛情</item>
-		<item>事業</item>
-		<item>財運</item>
-		<item>人際</item>
-		<item>健康</item>
-	</string-array>
-	<string-array name="fortune_report">
-		<item>無敵</item>
-		<item>好運</item>
-		<item>平穩</item>
-		<item>還行</item>
-		<item>加油</item>
-	</string-array>
-	<string-array name="fortune_today">
-		<item>運氣指數</item>
-		<item>事業指數</item>
-		<item>愛情指數</item>
-		<item>財運指數</item>
-		<item>人際指數</item>
-		<item>健康指數</item>
-	</string-array>
+    <string-array name="fortune_stick">
+        <item>運氣</item>
+        <item>愛情</item>
+        <item>事業</item>
+        <item>財運</item>
+        <item>人際</item>
+        <item>健康</item>
+    </string-array>
+    <string-array name="fortune_report">
+        <item>無敵</item>
+        <item>好運</item>
+        <item>平穩</item>
+        <item>還行</item>
+        <item>加油</item>
+    </string-array>
+    <string-array name="fortune_today">
+        <item>運氣指數</item>
+        <item>事業指數</item>
+        <item>愛情指數</item>
+        <item>財運指數</item>
+        <item>人際指數</item>
+        <item>健康指數</item>
+    </string-array>
 
 
-	<string-array name="fortune_location">
-		<item>避難位</item>
-		<item>人緣位</item>
-		<item>病床位</item>
-		<item>財運位</item>
-		<item>幸運色</item>
-		<item>幸運數</item>
-	</string-array>
-	<string-array name="fortune_time">
-		<item>今天</item>
-		<item>明天</item>
-		<item>後天</item>
-	</string-array>
+    <string-array name="fortune_location">
+        <item>避難位</item>
+        <item>人緣位</item>
+        <item>病床位</item>
+        <item>財運位</item>
+        <item>幸運色</item>
+        <item>幸運數</item>
+    </string-array>
+    <string-array name="fortune_time">
+        <item>今天</item>
+        <item>明天</item>
+        <item>後天</item>
+    </string-array>
 
-	<string name="app_name_1">孔明在線</string>
-	<string name="app_account">孔明在線賬號</string>
-	<string name="nav_mine">我的</string>
-	<string name="nav_find">發現</string>
-	<string name="nav_master">師傅</string>
-	<string name="nav_calculation">測算</string>
-	<string name="nav_fate_book">命書</string>
-	<string name="nav_fortune">運勢</string>
-	<string name="successful">成功</string>
-	<string name="loading">請求中…</string>
-	<string name="failure_title">您訪問的頁面努力加載中，請耐心等待</string>
-	<string name="hint_input_mobile_number">請輸入手機號</string>
-	<string name="hint_input_mobile_number_1">填寫手機號</string>
-	<string name="hint_input_password">請輸入密碼</string>
-	<string name="login">登錄</string>
-	<string name="go_login">去登錄</string>
-	<string name="forget_password">忘記密碼</string>
-	<string name="forget_password_1">忘記密碼?</string>
-	<string name="register">註冊</string>
-	<string name="tips_login_register">還沒有孔明在線賬號？ </string>
-	<string name="tips_register_login">已有孔明在線賬號？ </string>
-	<string name="hint_input_verification_code">請輸入驗證碼</string>
-	<string name="send_verification_code">發送驗證碼</string>
-	<string name="hint_input_register_password">請輸入密碼「8–20個字符，不可以是純數字」</string>
-	<string name="mobile_register">手機註冊</string>
-	<string name="hint_input_verify_password">再次輸入密碼</string>
-	<string name="hint_input_invite_code">邀請碼（非必填）</string>
-	<string name="pay_ok">支付成功</string>
-	<string name="pay_failed">支付失敗</string>
-	<string name="tv_failed">失敗</string>
-	<string name="pay_ex">支付異常</string>
-	<string name="with">和</string>
-	<string name="register_protocol">《用戶協議》</string>
-	<string name="register_privacy_policy">《隱私政策》</string>
-	<string name="agree">我同意</string>
-	<string name="next">下一步</string>
-	<string name="complete">完成</string>
-	<string name="default_phone_area_code">+86</string>
-	<string name="cancel">取消</string>
-	<string name="hint_search_area_code">請輸入國家或者地區</string>
-	<string name="hint_input_name">請輸入姓名</string>
-	<string name="fortune_report_tips">七日運勢走勢圖</string>
+    <string name="app_name_1">孔明在線</string>
+    <string name="app_account">孔明在線賬號</string>
+    <string name="nav_mine">我的</string>
+    <string name="nav_find">發現</string>
+    <string name="nav_master">師傅</string>
+    <string name="nav_calculation">測算</string>
+    <string name="nav_fate_book">命書</string>
+    <string name="nav_fortune">運勢</string>
+    <string name="successful">成功</string>
+    <string name="loading">請求中…</string>
+    <string name="failure_title">您訪問的頁面努力加載中，請耐心等待</string>
+    <string name="hint_input_mobile_number">請輸入手機號</string>
+    <string name="hint_input_mobile_number_1">填寫手機號</string>
+    <string name="hint_input_password">請輸入密碼</string>
+    <string name="login">登錄</string>
+    <string name="go_login">去登錄</string>
+    <string name="forget_password">忘記密碼</string>
+    <string name="forget_password_1">忘記密碼?</string>
+    <string name="register">註冊</string>
+    <string name="tips_login_register">還沒有孔明在線賬號？ </string>
+    <string name="tips_register_login">已有孔明在線賬號？ </string>
+    <string name="hint_input_verification_code">請輸入驗證碼</string>
+    <string name="send_verification_code">發送驗證碼</string>
+    <string name="hint_input_register_password">請輸入密碼「8–20個字符，不可以是純數字」</string>
+    <string name="mobile_register">手機註冊</string>
+    <string name="hint_input_verify_password">再次輸入密碼</string>
+    <string name="hint_input_invite_code">邀請碼（非必填）</string>
+    <string name="pay_ok">支付成功</string>
+    <string name="pay_failed">支付失敗</string>
+    <string name="tv_failed">失敗</string>
+    <string name="pay_ex">支付異常</string>
+    <string name="with">和</string>
+    <string name="register_protocol">《用戶協議》</string>
+    <string name="register_privacy_policy">《隱私政策》</string>
+    <string name="agree">我同意</string>
+    <string name="next">下一步</string>
+    <string name="complete">完成</string>
+    <string name="default_phone_area_code">+86</string>
+    <string name="cancel">取消</string>
+    <string name="hint_search_area_code">請輸入國家或者地區</string>
+    <string name="hint_input_name">請輸入姓名</string>
+    <string name="fortune_report_tips">七日運勢走勢圖</string>
 
-	<string name="signed_name">姓名:\t</string>
-	<string name="signed_sex">性別:\t</string>
-	<string name="signed_birth_place">出生地點:\t</string>
-	<string name="signed_date_birth">出生日期:\t</string>
-	<string name="man">男</string>
-	<string name="woman">女</string>
-	<string name="enter">進入</string>
-	<string name="quit">退出</string>
-	<string name="signed_micro">微狀:</string>
-	<string name="signed_remember">切記:</string>
-	<string name="start_main">開啟孔明之旅</string>
-	<string name="start_main_1">進入孔明在線</string>
+    <string name="signed_name">姓名:\t</string>
+    <string name="signed_sex">性別:\t</string>
+    <string name="signed_birth_place">出生地點:\t</string>
+    <string name="signed_date_birth">出生日期:\t</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="enter">進入</string>
+    <string name="quit">退出</string>
+    <string name="signed_micro">微狀:</string>
+    <string name="signed_remember">切記:</string>
+    <string name="start_main">開啟孔明之旅</string>
+    <string name="start_main_1">進入孔明在線</string>
 
-	<string name="error_tips">“支付密碼輸入錯誤”</string>
+    <string name="error_tips">“支付密碼輸入錯誤”</string>
 
-	<string name="settings">系統設置</string>
-	<string name="account_security">賬號安全</string>
-	<string name="privacy_policy">隱私政策</string>
-	<string name="terms_details">用戶協議</string>
-	<string name="about_us">關於我們</string>
-	<string name="contact_us">聯繫我們</string>
-	<string name="clear_cache">清除緩存</string>
-	<string name="apply_master">申請師傅</string>
-	<string name="not_applied">未申請</string>
-	<string name="dialog_confirm_clear">確定要清除緩存嗎？ </string>
-	<string name="language">語言</string>
-	<string name="simplified_chinese">簡體中文</string>
-	<string name="traditional_chinese">繁體中文</string>
-	<string name="change_login_password">修改登錄密碼</string>
-	<string name="change_fund_password">修改資金密碼</string>
-	<string name="safety_verification">安全驗證</string>
-	<string name="get_verification_code">獲取驗證碼</string>
-	<string name="alter_password">修改密碼</string>
-	<string name="hint_apply_master">請自我介紹</string>
-	<string name="apply_become_master">申請成為師傅</string>
-	<string name="hint_contact_information">請填寫您的聯繫電話</string>
-	<string name="submit_apply">提交申請</string>
-	<string name="my_record">我的戰績</string>
-	<string name="pay_method">付款方式</string>
-	<string name="now_pay">立即付款</string>
+    <string name="settings">系統設置</string>
+    <string name="account_security">賬號安全</string>
+    <string name="privacy_policy">隱私政策</string>
+    <string name="terms_details">用戶協議</string>
+    <string name="about_us">關於我們</string>
+    <string name="contact_us">聯繫我們</string>
+    <string name="clear_cache">清除緩存</string>
+    <string name="apply_master">申請師傅</string>
+    <string name="not_applied">未申請</string>
+    <string name="tv_customer_service">聯系客服</string>
+    <string name="dialog_confirm_clear">確定要清除緩存嗎？ </string>
+    <string name="language">語言</string>
+    <string name="simplified_chinese">簡體中文</string>
+    <string name="traditional_chinese">繁體中文</string>
+    <string name="change_login_password">修改登錄密碼</string>
+    <string name="change_fund_password">修改資金密碼</string>
+    <string name="safety_verification">安全驗證</string>
+    <string name="get_verification_code">獲取驗證碼</string>
+    <string name="alter_password">修改密碼</string>
+    <string name="hint_apply_master">請自我介紹</string>
+    <string name="apply_become_master">申請成為師傅</string>
+    <string name="hint_contact_information">請填寫您的聯繫電話</string>
+    <string name="submit_apply">提交申請</string>
+    <string name="my_record">我的戰績</string>
+    <string name="pay_method">付款方式</string>
+    <string name="now_pay">立即付款</string>
 
-	<string name="personal_information">個人信息</string>
-	<string name="avatar">頭像</string>
-	<string name="nickname">名稱</string>
-	<string name="live_area">居住地區</string>
-	<string name="mine_user_id">UID</string>
-	<string name="name">姓名</string>
-	<string name="sex">性別</string>
-	<string name="birth_place">出生地點</string>
-	<string name="date_birth">出生日期</string>
-	<string name="hint_alter_nickname">請輸入暱稱</string>
-	<string name="vip_tips_txt">開通會員，尊享待遇</string>
-	<string name="fortune_toptic">運勢課題</string>
-	<string name="fortune_add_fortune">增運提示</string>
-	<string name="vip_opend">已開通</string>
-	<string name="vip_tips">暫不支持會員升級</string>
-	<string name="input_date_birth">請輸入出生日期</string>
+    <string name="personal_information">個人信息</string>
+    <string name="avatar">頭像</string>
+    <string name="nickname">名稱</string>
+    <string name="live_area">居住地區</string>
+    <string name="mine_user_id">UID</string>
+    <string name="name">姓名</string>
+    <string name="sex">性別</string>
+    <string name="birth_place">出生地點</string>
+    <string name="date_birth">出生日期</string>
+    <string name="hint_alter_nickname">請輸入暱稱</string>
+    <string name="vip_tips_txt">開通會員，尊享待遇</string>
+    <string name="fortune_toptic">運勢課題</string>
+    <string name="fortune_add_fortune">增運提示</string>
+    <string name="vip_opend">已開通</string>
+    <string name="vip_tips">暫不支持會員升級</string>
+    <string name="input_date_birth">請輸入出生日期</string>
 
-	<string name="for_whom_ask_question">為誰提問：</string>
-	<string name="self">自己</string>
-	<string name="other">其TA</string>
-	<string name="signed_question_type">問題類型:\t</string>
-	<string name="signed_question_title">問題標題:\t</string>
-	<string name="hint_input_title">請輸入標題</string>
-	<string name="hint_input_question">請輸入問題描述200字內</string>
-	<string name="score">評分</string>
-	<string name="price">價格</string>
-	<string name="ask_things">問事</string>
+    <string name="for_whom_ask_question">為誰提問：</string>
+    <string name="self">自己</string>
+    <string name="other">其TA</string>
+    <string name="signed_question_type">問題類型:\t</string>
+    <string name="signed_question_title">問題標題:\t</string>
+    <string name="hint_input_title">請輸入標題</string>
+    <string name="hint_input_question">請輸入問題描述200字內</string>
+    <string name="score">評分</string>
+    <string name="price">價格</string>
+    <string name="ask_things">問事</string>
 
-	<string name="number_answers">解答數</string>
-	<string name="copy">複製</string>
-	<string name="withdraw_toekn">提幣</string>
-	<string name="deposit_token">充幣</string>
-	<string name="conversion">兌換</string>
-	<string name="transfer">劃轉</string>
-	<string name="financial_records">財務記錄</string>
-	<string name="system_message">系統消息</string>
-	<string name="my_message">我的消息</string>
-	<string name="my_homepage">我的主頁</string>
-	<string name="my_answer">我的解答</string>
-	<string name="consult_now">立即諮詢</string>
-	<string name="view_now">立即查看</string>
-	<string name="my_homepage_1">我的主頁&#8195;></string>
+    <string name="number_answers">解答數</string>
+    <string name="copy">複製</string>
+    <string name="withdraw_toekn">提幣</string>
+    <string name="deposit_token">充幣</string>
+    <string name="conversion">兌換</string>
+    <string name="transfer">劃轉</string>
+    <string name="financial_records">財務記錄</string>
+    <string name="system_message">系統消息</string>
+    <string name="my_message">我的消息</string>
+    <string name="my_homepage">我的主頁</string>
+    <string name="my_answer">我的解答</string>
+    <string name="consult_now">立即諮詢</string>
+    <string name="view_now">立即查看</string>
+    <string name="my_homepage_1">我的主頁&#8195;></string>
 
-	<string name="open_now">立即開通</string>
-	<string name="photo_show">照片展示</string>
-	<string name="master_introduction">師傅介紹</string>
-	<string name="my_specialty">我的擅長</string>
-	<string name="my_service">我的服務</string>
-	<string name="signed_areas_expertise">擅長領域:\t</string>
-	<string name="find_master">找師傅</string>
-	<string name="ask">問</string>
-	<string name="person">人</string>
-	<string name="my_questions">我的問題</string>
-	<string name="my_balance">我的資產</string>
-	<string name="all">全部</string>
-	<string name="receiving_order">接單中</string>
-	<string name="answering">解答中</string>
-	<string name="completed">已完成</string>
-	<string name="closed">已關閉</string>
-	<string name="pay">支付</string>
-	<string name="new_book">新建</string>
-	<string name="edit">編輯</string>
-	<string name="fate_book">命書</string>
-	<string name="enter_fate_book">進入命書</string>
-	<string name="later">稍後</string>
-	<string name="now_ask_questions">現在去提問</string>
-	<string name="payment_successful">支付成功</string>
-	<string name="hint_input_amount">輸入數量</string>
-	<string name="withdraw_address">提幣地址</string>
-	<string name="paste">粘貼</string>
-	<string name="amount">數量</string>
-	<string name="nikeName">暱稱</string>
+    <string name="open_now">立即開通</string>
+    <string name="photo_show">照片展示</string>
+    <string name="master_introduction">師傅介紹</string>
+    <string name="my_specialty">我的擅長</string>
+    <string name="my_service">我的服務</string>
+    <string name="signed_areas_expertise">擅長領域:\t</string>
+    <string name="find_master">找師傅</string>
+    <string name="ask">問</string>
+    <string name="person">人</string>
+    <string name="my_questions">我的問題</string>
+    <string name="my_balance">我的資產</string>
+    <string name="all">全部</string>
+    <string name="receiving_order">接單中</string>
+    <string name="answering">解答中</string>
+    <string name="completed">已完成</string>
+    <string name="closed">已關閉</string>
+    <string name="pay">支付</string>
+    <string name="new_book">新建</string>
+    <string name="edit">編輯</string>
+    <string name="fate_book">命書</string>
+    <string name="enter_fate_book">進入命書</string>
+    <string name="later">稍後</string>
+    <string name="now_ask_questions">現在去提問</string>
+    <string name="payment_successful">支付成功</string>
+    <string name="hint_input_amount">輸入數量</string>
+    <string name="withdraw_address">提幣地址</string>
+    <string name="paste">粘貼</string>
+    <string name="amount">數量</string>
+    <string name="nikeName">暱稱</string>
 
-	<string name="placeholder_available_balance">可用：%s %s</string>
-	<string name="placeholder_handling_fee">手續費 %s</string>
-	<string name="signed_arrival_quantity">到賬數量：</string>
-	<string name="save_rq_code">保存二維碼</string>
-	<string name="deposit_address">提幣地址</string>
-	<string name="copy_link">複製鏈接</string>
-	<string name="chain_type">鏈類型</string>
-	<string name="chain_type_erc_20">ERC 20</string>
-	<string name="invite_now">立即邀請</string>
-	<string name="my_invitation">我的邀請</string>
-	<string name="my_invitation_code">我的邀請碼</string>
-	<string name="total_assets_converted">總資產折合</string>
-	<string name="confirm">確定</string>
-	<string name="hint_paste_address">請輸入或粘貼地址</string>
-	<string name="hint_enter_paste">請輸入或粘貼</string>
-	<string name="hint_input_conversion_amount">輸入兌換數量</string>
-	<string name="tips_conversion">說明：以實際成交匯率為準</string>
-	<string name="return_today">返回今天</string>
-	<string name="default_empty_title">暫無內容</string>
-	<string name="save">保存</string>
-	<string name="alter_nickname">修改暱稱</string>
-	<string name="alter_name">修改姓名</string>
-	<string name="hint_alter_master_introduction">輸入詳情介紹200字。 </string>
-	<string name="hint_alter_name">請輸入姓名</string>
-	<string name="modify_name">修改名字</string>
-	<string name="type">類型</string>
-	<string name="receive_order">接單</string>
-	<string name="service_settings">服務設置</string>
-	<string name="service">服務</string>
-	<string name="photo">照片</string>
-	<string name="payment_method">支付方式</string>
-	<string name="we_chat">微信</string>
-	<string name="alipay">支付寶</string>
+    <string name="placeholder_available_balance">可用：%s %s</string>
+    <string name="placeholder_handling_fee">手續費 %s</string>
+    <string name="signed_arrival_quantity">到賬數量：</string>
+    <string name="save_rq_code">保存二維碼</string>
+    <string name="deposit_address">提幣地址</string>
+    <string name="copy_link">複製鏈接</string>
+    <string name="chain_type">鏈類型</string>
+    <string name="chain_type_erc_20">ERC 20</string>
+    <string name="invite_now">立即邀請</string>
+    <string name="my_invitation">我的邀請</string>
+    <string name="my_invitation_code">我的邀請碼</string>
+    <string name="total_assets_converted">總資產折合</string>
+    <string name="confirm">確定</string>
+    <string name="hint_paste_address">請輸入或粘貼地址</string>
+    <string name="hint_enter_paste">請輸入或粘貼</string>
+    <string name="hint_input_conversion_amount">輸入兌換數量</string>
+    <string name="tips_conversion">說明：以實際成交匯率為準</string>
+    <string name="return_today">返回今天</string>
+    <string name="default_empty_title">暫無內容</string>
+    <string name="save">保存</string>
+    <string name="alter_nickname">修改暱稱</string>
+    <string name="alter_name">修改姓名</string>
+    <string name="hint_alter_master_introduction">輸入詳情介紹200字。 </string>
+    <string name="hint_alter_name">請輸入姓名</string>
+    <string name="modify_name">修改名字</string>
+    <string name="type">類型</string>
+    <string name="receive_order">接單</string>
+    <string name="service_settings">服務設置</string>
+    <string name="service">服務</string>
+    <string name="photo">照片</string>
+    <string name="payment_method">支付方式</string>
+    <string name="we_chat">微信</string>
+    <string name="alipay">支付寶</string>
 
-	<string name="we_chat_pay">微信支付</string>
-	<string name="alipay_pay">支付寶支付</string>
-	<string name="ask_questions">提問題</string>
-	<string name="submit">提交</string>
-	<string name="asked_successfully">提問成功</string>
-	<string name="back_find_page">返回發現頁</string>
-	<string name="my_questions_answer">我的問答</string>
-	<string name="question_additional">師傅前往接單中，請耐心等待</string>
-	<string name="my_inter">我的權益</string>
-	<string name="my_ask">我的問答</string>
+    <string name="we_chat_pay">微信支付</string>
+    <string name="alipay_pay">支付寶支付</string>
+    <string name="ask_questions">提問題</string>
+    <string name="submit">提交</string>
+    <string name="asked_successfully">提問成功</string>
+    <string name="back_find_page">返回發現頁</string>
+    <string name="my_questions_answer">我的問答</string>
+    <string name="question_additional">師傅前往接單中，請耐心等待</string>
+    <string name="my_inter">我的權益</string>
+    <string name="my_ask">我的問答</string>
 
-	<string name="setting_fortune_warning">運勢提醒</string>
-	<string name="setting_recommend_msg">推薦消息</string>
-	<string name="setting_suggestion_feedback">建議反饋</string>
+    <string name="setting_fortune_warning">運勢提醒</string>
+    <string name="setting_recommend_msg">推薦消息</string>
+    <string name="setting_suggestion_feedback">建議反饋</string>
 
-	<string name="my_wallet">我的錢包</string>
-	<string name="wallet">錢包</string>
-	<string name="signed_deposit">充值 ></string>
-	<string name="deposit">充值</string>
-	<string name="signed_my_wallet">我的錢包 ></string>
-	<string name="default_currency_name">孔明珠</string>
-	<string name="default_currency_name_2">孔 明 珠: \t\t</string>
-	<string name="default_currency_name_1">孔明券</string>
-	<string name="translate">劃轉</string>
-	<string name="signed_all_records">全部記錄</string>
-	<string name="payment_kmz">孔明珠支付</string>
-	<string name="remaining_balance">餘額： %s 孔明珠</string>
-	<string name="wait_pay">待支付： %s 元</string>
-	<string name="go_pay">去支付： %s 元</string>
-	<string name="select_pay">選擇支付</string>
-	<string name="total_kmz">當前孔明珠總數</string>
-	<string name="recharg_kmz">充值孔明珠</string>
-	<string name="kmz_deposit">孔明珠充值</string>
-	<string name="give">送</string>
-	<string name="tv_kmz">%s孔明珠</string>
+    <string name="my_wallet">我的錢包</string>
+    <string name="wallet">錢包</string>
+    <string name="signed_deposit">充值 ></string>
+    <string name="deposit">充值</string>
+    <string name="signed_my_wallet">我的錢包 ></string>
+    <string name="default_currency_name">孔明珠</string>
+    <string name="default_currency_name_2">孔 明 珠: \t\t</string>
+    <string name="default_currency_name_1">孔明券</string>
+    <string name="translate">劃轉</string>
+    <string name="signed_all_records">全部記錄</string>
+    <string name="payment_kmz">孔明珠支付</string>
+    <string name="remaining_balance">餘額： %s 孔明珠</string>
+    <string name="wait_pay">待支付： %s 元</string>
+    <string name="go_pay">去支付： %s 元</string>
+    <string name="select_pay">選擇支付</string>
+    <string name="total_kmz">當前孔明珠總數</string>
+    <string name="recharg_kmz">充值孔明珠</string>
+    <string name="kmz_deposit">孔明珠充值</string>
+    <string name="give">送</string>
+    <string name="tv_kmz">%s孔明珠</string>
 
 
 	<string name="member_center_tips">開通會員，尊享待遇</string>
 	<string name="expire">到期</string>
-	<string name="diamonds_vip">鑽石VIP</string>
-	<string name="gold_vip">黃金VIP</string>
-	<string name="silver_vip">白銀VIP</string>
-	<string name="bronze_vip">青銅VIP</string>
-	<string name="diamonds_vip_1">鑽石權益</string>
-	<string name="gold_vip_1">黃金權益</string>
-	<string name="silver_vip_1">白銀權益</string>
-	<string name="bronze_vip_1">青銅權益</string>
+	<string name="diamonds_vip">終身VIP</string>
+	<string name="gold_vip">年度VIP</string>
+	<string name="silver_vip">季度VIP</string>
+	<string name="bronze_vip">月度VIP</string>
+	<string name="diamonds_vip_1">終身權益</string>
+	<string name="gold_vip_1">年度權益</string>
+	<string name="silver_vip_1">季度權益</string>
+	<string name="bronze_vip_1">月度權益</string>
 	<string name="vip_txt_expire">終身尊享</string>
 	<string name="vip_center">會員中心 ></string>
 	<string name="share_friends">分享好友</string>
 	<string name="pay_detail_pay">付款詳細</string>
 
-	<string name="vip_tips_txt_1">恭喜您已成為尊貴的青銅VIP</string>
-	<string name="vip_tips_txt_2">恭喜您已成為尊貴的白銀VIP</string>
-	<string name="vip_tips_txt_3">恭喜您已成為尊貴的黃金VIP</string>
-	<string name="vip_tips_txt_4">恭喜您已成為尊貴的鑽石VIP</string>
+	<string name="vip_tips_txt_1">恭喜您已成為尊貴的月度VIP</string>
+	<string name="vip_tips_txt_2">恭喜您已成為尊貴的季度VIP</string>
+	<string name="vip_tips_txt_3">恭喜您已成為尊貴的年度VIP</string>
+	<string name="vip_tips_txt_4">恭喜您已成為尊貴的終身VIP</string>
 
-	<string name="invite">邀請</string>
-	<string name="signed_my_id">我的ID:</string>
-	<string name="signed_invite_people_id">邀請人ID:</string>
-	<string name="people">人</string>
-	<string name="invite_today">今日邀請</string>
-	<string name="cumulative_invitation">累計邀請</string>
-	<string name="user_id">用戶ID</string>
-	<string name="registration_time">註冊時間</string>
-	<string name="super_partner">超級合夥人</string>
-	<string name="super_shareholder">超級股東</string>
+    <string name="invite">邀請</string>
+    <string name="signed_my_id">我的ID:</string>
+    <string name="signed_invite_people_id">邀請人ID:</string>
+    <string name="people">人</string>
+    <string name="invite_today">今日邀請</string>
+    <string name="cumulative_invitation">累計邀請</string>
+    <string name="user_id">用戶ID</string>
+    <string name="registration_time">註冊時間</string>
+    <string name="super_partner">超級合夥人</string>
+    <string name="super_shareholder">超級股東</string>
 
 
     <string name="suspend_order">暫停接單</string>
@@ -384,7 +385,7 @@
     <string name="tips_rq_code_download">掃一掃識別二維碼下載APP</string>
     <string name="save_album">保存相冊</string>
     <string name="please_fill_transfer_uid">請填寫劃轉UID</string>
-	<string name="please_fill_transfer_uid_1">請輸入UID</string>
+    <string name="please_fill_transfer_uid_1">請輸入UID</string>
     <string name="please_fill_transfer_amount">請填寫劃轉數量</string>
     <string name="hint_enter_amount">請輸入數量</string>
     <string name="status">狀態</string>
@@ -463,6 +464,7 @@
     <string name="perfect_information">去完善资料</string>
     <string name="view_fortune_complete_information">查看运势详情需要先完善资料哦～</string>
     <string name="perfect_information_1">完善资料</string>
+    <string name="cancle_pay">妳確定要取消支付嗎？</string>
     <!--新增 -->
     <string name="tv_daily_recommend">每日推薦</string>
     <string name="tv_share">分享</string>
@@ -601,10 +603,11 @@
     <string name="score_1">非常不满意</string>
     <string name="tv_share_name">%s的命書詳批-</string>
     <string name="tv_share_name_1">%s篇</string>
-    <string name="qt_hy">青铜会员</string>
-    <string name="by_hy">白银会员</string>
-    <string name="hj_hy">黄金会员</string>
-    <string name="zs_hy">钻石会员</string>
+<!--	会员修改-->
+    <string name="qt_hy">月度会员</string>
+    <string name="by_hy">季度会员</string>
+    <string name="hj_hy">年度会员</string>
+    <string name="zs_hy">终身会员</string>
     <string name="experiod_time">有效期：</string>
 
     <string name="tv_kmz_dk">孔明珠抵扣</string>
@@ -651,7 +654,16 @@
     <string name="memeber_for_life">終身會員</string>
     <string name="sure_to_open_notification">是否開啟通知？</string>
     <string name="erweima_saomiao">二維碼掃描</string>
-	<string name="app_need_permission">功能正常運行需要這些權限</string>
-	<string name="scan_failed">掃碼失敗</string>
+    <string name="app_need_permission">功能正常運行需要這些權限</string>
+    <string name="scan_failed">掃碼失敗</string>
     <string name="scan_qr">掃碼</string>
+    <string name="pls_give_ratting">請給大師評價</string>
+    <string name="tv_exit">再按壹次退出孔明在線</string>
+    <string name="tv_net_tips">請檢查網絡設置</string>
+    <string name="setting_net">設置</string>
+    <string name="tv_net_tips_1">網絡已斷開，請連接網絡！</string>
+    <string name="tv_ad_tips">請先加載廣告</string>
+    <string name="tv_fortune_jn">運勢錦囊</string>
+    <string name="tv_fortune_5">（賺孔明珠區域）</string>
+    <string name="tv_fortune_8">看運勢得更多孔明珠</string>
 </resources>

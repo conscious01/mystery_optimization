@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -70,7 +71,7 @@ public class InviteActivity extends BaseActivity implements ShareDialog.OnDialog
 
         // 邀请码
         mTvInviteCode.setText(mUserDetail.getInvite_code().replace("", " ").trim());
-
+        LogUtils.i(mUserDetail.getInvite_qrcode());
         // 邀请码图片
         GlideApp.with(mIvRqCode)
                 .load(mUserDetail.getInvite_qrcode())

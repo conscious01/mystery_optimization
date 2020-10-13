@@ -266,7 +266,7 @@ public class CircleProgress extends View {
 
 
 
-        canvas.drawBitmap(bitmap, getWidth()/5, getHeight()/5, paint);
+        canvas.drawBitmap(bitmap, getWidth()/5-3, getHeight()/5-5, paint);
 
     }
     /**
@@ -362,11 +362,11 @@ public class CircleProgress extends View {
             public void onAnimationUpdate(ValueAnimator animation) {
                 mPercent = (float) animation.getAnimatedValue();
                 mValue = mPercent * mMaxValue;
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onAnimationUpdate: percent = " + mPercent
-                            + ";currentAngle = " + (mSweepAngle * mPercent)
-                            + ";value = " + mValue);
-                }
+//                if (BuildConfig.DEBUG) {
+//                    Log.d(TAG, "onAnimationUpdate: percent = " + mPercent
+//                            + ";currentAngle = " + (mSweepAngle * mPercent)
+//                            + ";value = " + mValue);
+//                }
                 invalidate();
             }
         });

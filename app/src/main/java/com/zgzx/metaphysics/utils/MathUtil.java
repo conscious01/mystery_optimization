@@ -1,5 +1,7 @@
 package com.zgzx.metaphysics.utils;
 
+import android.text.TextUtils;
+
 import com.blankj.utilcode.util.StringUtils;
 
 import java.math.BigDecimal;
@@ -169,16 +171,18 @@ public class MathUtil {
 
     public static String round(float v, int scale) {
 
-        if (v == 0.0||v==0) {
-            return "0.00";
-        }
-
-        if (scale < 0) {
-            throw new IllegalArgumentException("The scale must be a positive integer or zero");
-        }
-        BigDecimal b = new BigDecimal(Double.toString(v));
-        BigDecimal one = new BigDecimal("1");
-        return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue()+"";
+        return KeepDecimalPoint(v, scale);
+//        if (v == 0.0||v==0) {
+//            return "0.00";
+//        }
+//
+//        if (scale < 0) {
+//            throw new IllegalArgumentException("The scale must be a positive integer or zero");
+//        }
+//        BigDecimal b = new BigDecimal(Double.toString(v));
+//        BigDecimal one = new BigDecimal("1");
+//        b.divide(one, scale, BigDecimal.ROUND_HALF_UP).floatValue();
+//        return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue()+"";
 
     }
 
@@ -198,5 +202,68 @@ public class MathUtil {
     }
 
 
+
+    //    四舍五入保留几位小数点的方法
+    public static String KeepDecimalPoint(Double doubleValue, int pointCounts) {
+        if (doubleValue==null) {
+            doubleValue = 0.0;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("%.").append(pointCounts).append("f");
+        return String.format(stringBuilder.toString(), doubleValue);
+    }
+
+
+    public static String KeepDecimalPoint(Integer intValue, int pointCounts) {
+        if (intValue==null) {
+            intValue = 0;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("%.").append(pointCounts).append("f");
+        return String.format(stringBuilder.toString(), Double.valueOf(String.valueOf(intValue)));
+    }
+
+    public static String KeepDecimalPoint(Float floatValue, int pointCounts) {
+        if (floatValue==null) {
+            floatValue = Float.valueOf(0);
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("%.").append(pointCounts).append("f");
+        return String.format(stringBuilder.toString(), Double.valueOf(String.valueOf(floatValue)));
+    }
+
+
+    public static String KeepDecimalPoint(Long longValue, int pointCounts) {
+        if (longValue==null) {
+            longValue = Long.valueOf(0);
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("%.").append(pointCounts).append("f");
+        return String.format(stringBuilder.toString(), Double.valueOf(String.valueOf(longValue)));
+    }
+
+
+    public static String KeepDecimalPoint(String stringValue, int pointCounts) {
+        if (TextUtils.isEmpty(stringValue)) {
+            stringValue = "0";
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("%.").append(pointCounts).append("f");
+        return String.format(stringBuilder.toString(), Double.valueOf(stringValue));
+    }
+
+
+    /**
+     * @param doubleDiscount
+     * @return  获取提问的折扣数字，9.0的话已经去掉 .0
+     */
+    public static String getDiscount(Double doubleDiscount) {
+        double d1 = doubleDiscount * 10;
+        String s1 = String.valueOf(d1);
+        if (s1.endsWith(".0")) {
+            return s1.substring(0, s1.length() - 2);
+        }
+        return s1;
+    }
 
 }

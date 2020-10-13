@@ -27,5 +27,7 @@ public class FortuneBagAdapter extends BaseQuickAdapter<FortuneListImageEntity, 
         GlideApp.with(image_view)
                 .load(item.getUrl())
                 .into(image_view);
+
+
     }
 }

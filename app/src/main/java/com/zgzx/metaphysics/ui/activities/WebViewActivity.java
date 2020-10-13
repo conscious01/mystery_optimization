@@ -10,7 +10,6 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,10 +18,14 @@ import com.jaeger.library.StatusBarUtil;
 import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
+import com.zgzx.metaphysics.model.event.RefreshFourtuneEvent;
 import com.zgzx.metaphysics.ui.core.BaseActivity;
 import com.zgzx.metaphysics.utils.DateUtils;
+import com.zgzx.metaphysics.utils.MyWebViewCLient;
 import com.zgzx.metaphysics.utils.StringUtil;
 import com.zgzx.metaphysics.widgets.JavaScriptinterface;
+
+import org.greenrobot.eventbus.EventBus;
 
 import androidx.appcompat.widget.AppCompatImageView;
 import butterknife.BindView;
@@ -120,22 +123,19 @@ public class WebViewActivity extends BaseActivity {
             }
         });
 
-        mWebView.setWebViewClient(new WebViewClient() {
+        mWebView.setWebViewClient(new MyWebViewCLient(this,mWebView));
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Build.VERSION.SDK_INT < 26 && mWebView != null) {
-                    mWebView.loadUrl(url);
-                    return true;
-                }
-
-                return false;
-            }
-        });
 
 
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().post(new RefreshFourtuneEvent());
+
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initSetting(WebView webView) {
@@ -162,6 +162,8 @@ public class WebViewActivity extends BaseActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.setMixedContentMode(2);
         }
+
+
     }
 
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})

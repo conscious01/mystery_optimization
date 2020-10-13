@@ -22,14 +22,10 @@ import android.widget.ViewFlipper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.bytedance.sdk.openadsdk.AdSlot;
-import com.bytedance.sdk.openadsdk.TTAdConstant;
-import com.bytedance.sdk.openadsdk.TTAdNative;
-import com.bytedance.sdk.openadsdk.TTAdSdk;
-import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mondo.logger.Logger;
+import com.qbw.spm.P;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -44,6 +40,7 @@ import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.HomeController;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.controller.views.impl.ToastRequestStatusView;
+import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.ArticleListEntity;
 import com.zgzx.metaphysics.model.entity.BannerEntity;
 import com.zgzx.metaphysics.model.entity.CalendarDayEntity;
@@ -54,8 +51,10 @@ import com.zgzx.metaphysics.model.entity.FortuneGradeEntity;
 import com.zgzx.metaphysics.model.entity.FortuneListImageEntity;
 import com.zgzx.metaphysics.model.entity.GanEntity;
 import com.zgzx.metaphysics.model.entity.HomeFouncationEntity;
+import com.zgzx.metaphysics.model.event.BookEvent;
+import com.zgzx.metaphysics.model.event.MasterEvent;
 import com.zgzx.metaphysics.model.event.PlayCompleteEvent;
-import com.zgzx.metaphysics.model.event.SupplementInformationEvent;
+import com.zgzx.metaphysics.model.event.UpdateFortuneEvent;
 import com.zgzx.metaphysics.ui.activities.DailyBlessActivity;
 import com.zgzx.metaphysics.ui.activities.FindActivity;
 import com.zgzx.metaphysics.ui.activities.FortuneDetailActivity;
@@ -73,18 +72,22 @@ import com.zgzx.metaphysics.ui.core.BaseRequestFragment;
 import com.zgzx.metaphysics.ui.dialogs.AdVertiseMentDialog;
 import com.zgzx.metaphysics.ui.dialogs.CurrencyDialog;
 import com.zgzx.metaphysics.ui.dialogs.ShareDialog;
+import com.zgzx.metaphysics.ui.dialogs.ShareFortuneDialog;
 import com.zgzx.metaphysics.ui.view.WaveProgressView;
+import com.zgzx.metaphysics.ui.view.itemDecoration.SpaceSilkBagItemDecoration;
 import com.zgzx.metaphysics.utils.AndroidUtil;
 import com.zgzx.metaphysics.utils.AppToast;
 import com.zgzx.metaphysics.utils.LunarCalendarUtil;
-import com.zgzx.metaphysics.utils.image.GlideApp;
 import com.zgzx.metaphysics.widgets.ArcView;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -93,8 +96,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -106,7 +107,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @Description: 主页 (版本2)
  */
 public class V2HomeFragment extends BaseRequestFragment implements HomeController.View,
-        BaseQuickAdapter.OnItemClickListener, ShareDialog.OnDialogClickListener {
+        BaseQuickAdapter.OnItemClickListener, ShareDialog.OnDialogClickListener , ShareFortuneDialog.OnDialogFortuneClickListener {
 
     @BindView(R.id.banner)
     Banner mBanner;
@@ -208,6 +209,8 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
 
     private Animator animator;
     private Animator animator1;
+    private FortuneEntity fortuneEntity;
+
     private List<BannerEntity> bannerEntityList;
     private Handler mFortuneHandler = new Handler() {
         @Override
@@ -263,7 +266,6 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
         getLifecycle().addObserver(mPresenter);
 
         mPresenter.getDailyQuestion(index);
-        mPresenter.fortune();
         initCalendarHourDiZi();
         // 广告图
         initBanner();
@@ -301,19 +303,28 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
         mNestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener)
                 (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
                     int top = mLayoutTitleContainer.getTop();
-                    int color = scrollY > top ? Color.WHITE : Color.TRANSPARENT;
+                    int color = scrollY > top ? Color.parseColor("#FFA3AD87") : Color.parseColor("#FFA3AD87");
 
                     Drawable background = mLayoutTitleContainer.getBackground();
 
                     if (background instanceof ColorDrawable) {
                         // 避免过渡绘制背景颜色
                         if (((ColorDrawable) background).getColor() != color) {
-                            //  mLayoutTitleContainer.setBackgroundColor(color);
+                            mLayoutTitleContainer.setBackgroundColor(color);
                             Logger.i("home fragment color change");
                         }
 
                     } else {
-                        //  mLayoutTitleContainer.setBackgroundColor(color);
+                       // mLayoutTitleContainer.setBackgroundColor(color);
+
+                       //   mLayoutTitleContainer.setBackgroundColor(Color.parseColor("#FFA3AD87"));
+                    }
+
+                    if (scrollY > top){
+                        mArcView.setBackgroundColor(color);
+                        mBanner.stop();
+                    }else {
+                        mBanner.start();
                     }
 
                 });
@@ -380,7 +391,10 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
 
 
     }
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMasterEvent(UpdateFortuneEvent event) {
+      mPresenter.fortune();
+    }
 
     @OnClick(value = {R.id.fortune_layout_1, R.id.tv_share_daily_ask,
             R.id.fate_book_bg, R.id.km_bg, R.id.home_pray_img,
@@ -402,10 +416,12 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
                 mPresenter.getDailyQuestion(index);
                 break;
             case R.id.fate_book_bg://命书
-                ((MainActivity) getActivity()).mBottomNavigation.setSelectedItemId(R.id.nav_book);
+                EventBus.getDefault().post(new BookEvent());
+                ((MainActivity) getActivity()).mNavBottomContainer.setSelectedPosition(1);
                 break;
             case R.id.km_bg://师傅
-                ((MainActivity) getActivity()).mBottomNavigation.setSelectedItemId(R.id.nav_find);
+                EventBus.getDefault().post(new MasterEvent());
+                ((MainActivity) getActivity()).mNavBottomContainer.setSelectedPosition(2);
                 break;
             case R.id.home_pray_img://祈福
                 if (LocalConfigStore.getInstance().isLogin()) {
@@ -428,9 +444,9 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
 //
                 break;
             case R.id.tv_share_fortune://分享运势
-                ShareDialog.show(getActivity(), this,
+                ShareFortuneDialog.show(getActivity(), this,
                         getResources().getString(R.string.today_fortune),
-                        AndroidUtil.view2Bitmap(findViewById(R.id.fortune_layout_1)));
+                        AndroidUtil.view2Bitmap(findViewById(R.id.fortune_layout_1)),fortuneEntityList,fortuneArrayList,fortuneEntity);
 
                 break;
             case R.id.tv_share_today_yj://分享今日宜忌
@@ -490,14 +506,17 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
                         startActivity(WebViewActivity.newIntent(getActivity(), yjzbURL));
 
                     } else if ("zengyunhongbao".equals(entity.getNavite_page_name())) {//增运红包
+                        int times = P.getInt(Constants.add_fortune_times, 0);
                         String hbjfURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
-                                "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=0" + "&status_bar_height=" + 24;
+                                "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=" + times + "&status_bar_height=" + 24;
 
                         startActivity(WebViewActivity.newIntent(getActivity(), hbjfURL));
                     } else if ("mingshu".equals(entity.getNavite_page_name())) {//命书
-                        ((MainActivity) getActivity()).mBottomNavigation.setSelectedItemId(R.id.nav_book);
+                        EventBus.getDefault().post(new BookEvent());
+                        ((MainActivity) getActivity()).mNavBottomContainer.setSelectedPosition(1);
                     } else if ("kongmingzuoguan".equals(entity.getNavite_page_name())) {//孔明做馆
-                        ((MainActivity) getActivity()).mBottomNavigation.setSelectedItemId(R.id.nav_find);
+                        EventBus.getDefault().post(new MasterEvent());
+                        ((MainActivity) getActivity()).mNavBottomContainer.setSelectedPosition(2);
                     } else if ("meiriqifu".equals(entity.getNavite_page_name())) {//每日祈福
                         startActivity(new Intent(getActivity(), DailyBlessActivity.class));
                     } else if (TextUtils.isEmpty(entity.getNavite_page_name())) {
@@ -510,30 +529,55 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
 
     @Override
     public void renderNomalFouncation(List<HomeFouncationEntity.Icon1Bean> data) {
-//        GlideApp.with(getContext())
-//                .load(data.get(0).getIcon())
-//                .into(home_fate_book_img);
-//        GlideApp.with(getContext())
-//                .load(data.get(1).getIcon())
-//                .into(home_master_img);
+
     }
 
     @Override
     public void renderToolsFouncation(List<HomeFouncationEntity.Icon2Bean> data) {
-//        GlideApp.with(getContext())
-//                .load(data.get(0).getIcon())
-//                .into(home_pray_img);
-//        GlideApp.with(getContext())
-//                .load(data.get(1).getIcon())
-//                .into(home_oneiromancy_img);
-//        GlideApp.with(getContext())
-//                .load(data.get(2).getIcon())
-//                .into(home_practise_divination_img);
+
     }
 
     @Override
-    public void renderFouncationBanner(List<HomeFouncationEntity.BannerBean> data) {
-        mBannerTools.setAdapter(new HomeBannerToolsAdapter(data));
+    public void renderFouncationBanner(HomeFouncationEntity.BannerBean bannerBean) {
+
+        List<HomeFouncationEntity.BannerBean> bannerBeans=new ArrayList<>();
+        bannerBeans.add(bannerBean);
+        HomeBannerToolsAdapter adapter=  new HomeBannerToolsAdapter(bannerBeans);
+
+        mBannerTools.setAdapter(adapter);
+        adapter.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(Object data, int position) {
+                if (bannerBean.getNavite_page_name().equals("zhougongjiemeng")) {//周工解梦
+                    String zgjmURL = LocalConfigStore.getInstance().getH5_Base() + "/pages/zhou_gong" +
+                            "/oneiromancy?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&status_bar_height=" + 24;
+
+                    startActivity(WebViewActivity.newIntent(getContext(), zgjmURL));
+
+                } else if ("yijingzhanbu".equals(bannerBean.getNavite_page_name())) {//易经占卜
+                    String yjzbURL = LocalConfigStore.getInstance().getH5_Base() + "/pages/divination" +
+                            "/divination?language=" + LocalConfigStore.getInstance().getAcceptLanguage();
+                    startActivity(WebViewActivity.newIntent(getActivity(), yjzbURL));
+
+                } else if ("zengyunhongbao".equals(bannerBean.getNavite_page_name())) {//增运红包
+                    int times = P.getInt(Constants.add_fortune_times, 0);
+                    String hbjfURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
+                            "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=" + times + "&status_bar_height=" + 24;
+
+                    startActivity(WebViewActivity.newIntent(getActivity(), hbjfURL));
+                } else if ("mingshu".equals(bannerBean.getNavite_page_name())) {//命书
+                    EventBus.getDefault().post(new BookEvent());
+                    ((MainActivity) getActivity()).mNavBottomContainer.setSelectedPosition(1);
+                } else if ("kongmingzuoguan".equals(bannerBean.getNavite_page_name())) {//孔明做馆
+                    EventBus.getDefault().post(new MasterEvent());
+                    ((MainActivity) getActivity()).mNavBottomContainer.setSelectedPosition(2);
+                } else if ("meiriqifu".equals(bannerBean.getNavite_page_name())) {//每日祈福
+                    startActivity(new Intent(getActivity(), DailyBlessActivity.class));
+                } else if (TextUtils.isEmpty(bannerBean.getNavite_page_name())) {
+                    startActivity(WebViewActivity.newIntent(getActivity(), bannerBean.getLink_url()));
+                }
+            }
+        });
     }
 
     @Override
@@ -630,20 +674,26 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
         }
         recycle_fortune_grade.setAdapter(new FortuneGradeAdapter(fortuneGradeEntityList,
                 getActivity()));
+        if (recycle_fortune_bag.getItemDecorationCount() == 0){
+            recycle_fortune_bag.addItemDecoration(new SpaceSilkBagItemDecoration());
+        }
 
         FortuneBagAdapter fortuneBagAdapter =
                 new FortuneBagAdapter(fortuneListImageEntityList);
+
         recycle_fortune_bag.setAdapter(fortuneBagAdapter);
         fortuneBagAdapter.setOnItemClickListener(this);
     }
 
     @Override
     public void renderFortuneTip(FortuneEntity data) {
-        maxProgress = data.getGeneral_comment().getAverage();
+        fortuneEntity=data;
         tv_fortune.setText(getResources().getText(R.string.tv_fortune) + data.getPosition().getFinance());//财运位
         tv_lucky_color.setText(getResources().getText(R.string.tv_lucky_color) + data.getColor());//幸运色
         tv_lucky_number.setText(getResources().getText(R.string.tv_lucky_number) + data.getNumber());//幸运数
         tv_fortune_tips.setText(data.getGeneral_comment().getTips());//幸运提示
+
+        maxProgress = data.getGeneral_comment().getAverage()+data.getGeneral_comment().getAdd_fortune_score();
         mFortuneHandler.sendEmptyMessageDelayed(FLAG_ONE, 10);
 
 
@@ -693,6 +743,8 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
     }
 
 
+
+
     @Override
     public void onAnewRequestNetwork() {
         mPresenter.anewRequest();
@@ -701,31 +753,31 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
     @Subscribe
     public void onEvent(PlayCompleteEvent event) {
         if (event.getType() == 1) {
-            switch (event.getPos())
-            {
-                case 0:
-                    LocalConfigStore.getInstance().setJnType_1(true);
-                    break;
-                case 1:
-                    LocalConfigStore.getInstance().setJnType_2(true);
-                    break;
-                case 2:
-                    LocalConfigStore.getInstance().setJnType_3(true);
-                    break;
-                case 3:
-                    LocalConfigStore.getInstance().setJnType_4(true);
-                    break;
-                case 4:
-                    LocalConfigStore.getInstance().setJnType_5(true);
-                    break;
-                case 5:
-                    LocalConfigStore.getInstance().setJnType_6(true);
-                    break;
-                case 6:
-                    LocalConfigStore.getInstance().setJnType_7(true);
-                    break;
-
-            }
+          //  LocalConfigStore.getInstance().setJnType();
+//            switch (event.getPos()) {
+//                case 0:
+//                    LocalConfigStore.getInstance().setJnType_1(true);
+//                    break;
+//                case 1:
+//                    LocalConfigStore.getInstance().setJnType_2(true);
+//                    break;
+//                case 2:
+//                    LocalConfigStore.getInstance().setJnType_3(true);
+//                    break;
+//                case 3:
+//                    LocalConfigStore.getInstance().setJnType_4(true);
+//                    break;
+//                case 4:
+//                    LocalConfigStore.getInstance().setJnType_5(true);
+//                    break;
+//                case 5:
+//                    LocalConfigStore.getInstance().setJnType_6(true);
+//                    break;
+////                case 6:
+////                    LocalConfigStore.getInstance().setJnType_7(true);
+////                    break;
+//
+//            }
             CurrencyDialog.show(getActivity(), fortuneArrayList[event.getPos()], 1,
                     fortuneEntityList.get(event.getPos()).getNotes(), "", "", "", "", "");
         }
@@ -747,71 +799,72 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
             ganAdapter.selected(position);
             setHourYJ(calendarHourBeanList, position);
         } else if (adapter instanceof FortuneBagAdapter) {
+            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//            if (LocalConfigStore.getInstance().getJnType() < 10) {
+//                switch (position) {
+//                    case 0:
+//
+//                        if (LocalConfigStore.getInstance().getJnType1()) {
+//                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+//                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+//
+//                        } else {
+//                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//                        }
+//
+//
+//                        break;
+//                    case 1:
+//                        if (LocalConfigStore.getInstance().getJnType2()) {
+//                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+//                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+//
+//                        } else {
+//                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//                        }
+//                        break;
+//                    case 2:
+//                        if (LocalConfigStore.getInstance().getJnType3()) {
+//                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+//                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+//
+//                        } else {
+//                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//                        }
+//                        break;
+//                    case 3:
+//                        if (LocalConfigStore.getInstance().getJnType4()) {
+//                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+//                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+//
+//                        } else {
+//                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//                        }
+//                        break;
+//                    case 4:
+////                        if (LocalConfigStore.getInstance().getJnType5()) {
+////                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+////                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+////
+////                        } else {
+//                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//                 //'       }
+//                        break;
+//                    case 5:
+////                        if (LocalConfigStore.getInstance().getJnType6()) {
+////                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+////                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+////
+////                        } else {
+//                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
+//         //               }
+//                        break;
+//                }
 
-            if (LocalConfigStore.getInstance().getJnType()<6){
-                switch (position)
-                {
-                    case 0:
-                        if (LocalConfigStore.getInstance().getJnType1()){
-                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-
-                        }else {
-                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
-                        }
-
-                        break;
-                    case 1:
-                        if (LocalConfigStore.getInstance().getJnType2()){
-                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-
-                        }else {
-                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
-                        }
-                        break;
-                    case 2:
-                        if (LocalConfigStore.getInstance().getJnType3()){
-                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-
-                        }else {
-                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
-                        }
-                        break;
-                    case 3:
-                        if (LocalConfigStore.getInstance().getJnType4()){
-                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-
-                        }else {
-                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
-                        }
-                        break;
-                    case 4:
-                        if (LocalConfigStore.getInstance().getJnType5()){
-                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-
-                        }else {
-                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
-                        }
-                        break;
-                    case 5:
-                        if (LocalConfigStore.getInstance().getJnType6()){
-                            CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                                    fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-
-                        }else {
-                            AdVertiseMentDialog.show(getActivity(), position, getActivity(), 1);
-                        }
-                        break;
-                }
-
-            }else {
-                CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
-                        fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
-            }
+//            } else {
+//                CurrencyDialog.show(getActivity(), fortuneArrayList[position], 1,
+//                        fortuneEntityList.get(position).getNotes(), "", "", "", "", "");
+//            }
 
         }
 
@@ -870,6 +923,13 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
     };
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.fortune(); //更新运势
+
+    }
+
+    @Override
     public void onDialogClick(int i, View v) {
         UMImage image = new UMImage(mContext, AndroidUtil.view2Bitmap(v));
 
@@ -887,7 +947,6 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
                         .share();
                 break;
             case 1:
-
                 new ShareAction(getActivity())
                         .setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)//传入平台
                         .withMedia(image)
@@ -908,4 +967,33 @@ public class V2HomeFragment extends BaseRequestFragment implements HomeControlle
     }
 
 
+    @Override
+    public void onDialogFortuneClick(int i, View v) {
+        UMImage image = new UMImage(mContext, AndroidUtil.view2Bitmap(v));
+
+        switch (i) {
+            case 0:
+
+                if (!AndroidUtil.isWeixinAvilible(getContext())) {
+                    AppToast.showShort("请先安装微信");
+                    return;
+                }
+                new ShareAction(getActivity())
+                        .setPlatform(SHARE_MEDIA.WEIXIN)//传入平台
+                        .withMedia(image)
+                        .setCallback(shareListener)//回调监听器
+                        .share();
+                break;
+            case 1:
+                new ShareAction(getActivity())
+                        .setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)//传入平台
+                        .withMedia(image)
+                        .setCallback(shareListener)//回调监听器
+                        .share();
+                break;
+            case 2:
+                saveImageLocal(v);
+                break;
+        }
+    }
 }

@@ -45,7 +45,7 @@
     <LinearLayout
         android:id="@+id/fortune_layout_1"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
+        android:layout_height="510dp"
         android:layout_marginTop="@dimen/dp_8"
         android:background="@drawable/icon_home_jrys_db"
         android:orientation="vertical">
@@ -56,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_16"
             android:paddingLeft="@dimen/dp_30"
             android:paddingRight="@dimen/dp_30">
 
@@ -86,24 +87,46 @@
 
                 tools:text="幸运数： 7" />
         </LinearLayout>
-       <ImageView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="@dimen/dp_16"
-           android:layout_marginLeft="@dimen/dp_8"
-           android:background="@drawable/icon_ys_title"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_16"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="@dimen/dp_24"
+
+                android:background="@drawable/icon_ys_title"
+                android:gravity="center"
+                android:paddingRight="@dimen/dp_5"
+                android:text="@string/tv_fortune_jn"
+                android:textColor="@color/backgroundColor"
+                android:textSize="@dimen/sp_14" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_fortune_5"
+                android:textColor="#ffa1b174"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_fortune_bag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
+
             android:orientation="horizontal"
-            android:paddingLeft="@dimen/dp_20"
-            android:paddingRight="24dp"
+            android:paddingLeft="@dimen/dp_25"
+            android:paddingRight="@dimen/dp_30"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 
             tools:itemCount="6"
             tools:listitem="@layout/recycle_fortune_bag_item_layout" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,14 +143,14 @@
                 android:background="@drawable/draw_fortune_bg_7"
                 android:padding="@dimen/dp_10"
                 android:singleLine="true"
-                android:text="今天有82%的人在你身后，留意身边小确幸"
+                tools:text="今天有82%的人在你身后，留意身边小确幸"
                 android:textColor="#ff20272f"
                 android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_30"
                 android:background="@drawable/icon_home_jrys_yswzdb" />
 
 
@@ -136,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginLeft="305dp"
-                android:layout_marginRight="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_30"
 
                 android:background="@drawable/icon_home_jrys_yswzdb" />
         </FrameLayout>

@@ -3,13 +3,9 @@ package com.zgzx.metaphysics.ui.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.core.util.Consumer;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.blankj.utilcode.util.LogUtils;
 import com.jaeger.library.StatusBarUtil;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.FateBookIndexController;
@@ -17,12 +13,11 @@ import com.zgzx.metaphysics.controller.PayController;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.controller.views.impl.LayoutRequestStatusView;
 import com.zgzx.metaphysics.controller.views.impl.PayView;
-import com.zgzx.metaphysics.model.LocalDataManager;
 import com.zgzx.metaphysics.model.entity.FateBookTypeEntity;
 import com.zgzx.metaphysics.model.event.BuyFateBookEvent;
 import com.zgzx.metaphysics.model.event.FateBookBuyEvent;
-import com.zgzx.metaphysics.ui.adapters.FateDirectoryAdapter;
 import com.zgzx.metaphysics.ui.adapters.FateBookChapterAdapter;
+import com.zgzx.metaphysics.ui.adapters.FateDirectoryAdapter;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.ui.dialogs.FateBookCatePriceDialog;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
@@ -34,9 +29,9 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
+import androidx.core.util.Consumer;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.OnClick;
-import me.jessyan.autosize.utils.ScreenUtils;
 
 /**
  * 命书索引
@@ -170,6 +165,7 @@ public class FateBookIndexActivity extends BaseRequestActivity implements
 
         } else {
             AppToast.showShort(throwable.getMessage());
+            LogUtils.i(throwable.getMessage());
         }
     }
 

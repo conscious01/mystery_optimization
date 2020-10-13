@@ -109,7 +109,7 @@
         android:layout_marginRight="@dimen/dp_16"
 
         android:background="@drawable/icon_add_futune"
-        android:alpha="0.6"
+        android:alpha="0.5"
         android:gravity="center"
         android:textColor="#ffffffff"
         android:textSize="18sp"
@@ -124,7 +124,7 @@
         android:layout_marginTop="14dp"
         android:textColor="#ffff8335"
         android:textSize="18sp"
-        tools:text="@string/tv_fortune_evaluate" />
+        android:text="@string/tv_fortune_evaluate" />
 
     <TextView
         android:id="@+id/tv_fortune_evaluate"

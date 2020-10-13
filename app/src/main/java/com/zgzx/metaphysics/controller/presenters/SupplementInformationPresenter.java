@@ -73,10 +73,8 @@ public class SupplementInformationPresenter extends RequestPresenter<ISingleRequ
                     .flatMap((Function<BasicResponseEntity<List<String>>,
                                     ObservableSource<BasicResponseEntity<UserDetailEntity>>>) entity ->
 
-//                        String avatarPath = entity.getData().get(0); // 头像地址
-//                        LocalConfigStore.getInstance().saveUserAvatar(avatarPath);
-                                    DataRepository.getInstance()
-                                            .completeInfo(birth_time, entity.getData().get(0),
+
+                                    DataRepository.getInstance().completeInfo(birth_time, entity.getData().get(0),
                                                     name, sex, timestamp, hour,
                                                     calendarType, address)
 
@@ -84,9 +82,7 @@ public class SupplementInformationPresenter extends RequestPresenter<ISingleRequ
                     )
                     .compose(SchedulersTransformer.transformer(mView))
                     .subscribe(new ResponseObserver<>(this, mView, entity -> {
-//                        OrderResultEntity data = entity.getData();
-//                        mView.onApplyResult(data);
-//                        mView.complete();
+
 
                         mView.result(entity.getData());
                         LocalConfigStore.getInstance().completedInfo();
@@ -94,40 +90,6 @@ public class SupplementInformationPresenter extends RequestPresenter<ISingleRequ
                     }));
 
 
-//            Observable.just(avater)
-//                    // 压缩
-////                .map(s -> Luban.with(context).load(new File(path)).get())
-//                    .map(s -> Collections.singletonList(new File(avater)))
-//
-//                    // 上传图片
-//                    .flatMap((Function<List<File>,
-//                            ObservableSource<BasicResponseEntity<List<String>>>>) files ->
-//                            DataRepository.getInstance().upload(files))
-//
-//                    // 完善信息
-//                    .flatMap((Function<BasicResponseEntity<List<String>>,
-//                            ObservableSource<BasicResponseEntity<UserDetailEntity>>>) entity -> {
-//                        String avatarPath = entity.getData().get(0); // 头像地址
-//                        LocalConfigStore.getInstance().saveUserAvatar(avatarPath);
-//                        // 保存至本地
-//                        return DataRepository.getInstance()
-//                                .completeInfo(
-//                                        birth_time,
-//                                        avatarPath,
-//                                        name,
-//                                        sex,
-//                                        timestamp,
-//                                        hour,
-//                                        calendarType,
-//                                        address);
-//                    })
-//
-//                    .compose(SchedulersTransformer.transformer(mView))
-//                    .subscribe(new ResponseObserver<>(this, mView, entity -> {
-//                        mView.result(entity.getData());
-//
-//                        LocalConfigStore.getInstance().completedInfo();
-//                    }));
         } else {
             DataRepository.getInstance()
                     .completeInfo(

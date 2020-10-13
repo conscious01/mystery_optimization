@@ -2,25 +2,21 @@ package com.zgzx.metaphysics.ui.fragments;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.rade_view.utils.Constant;
 import com.zgzx.metaphysics.ui.activities.MasterHomepageActivity;
 import com.zgzx.metaphysics.ui.core.BaseFragment;
+import com.zgzx.metaphysics.widgets.ResizableImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MasterFragment extends BaseFragment {
-    @BindView(R.id.ll_master_top)
-    RelativeLayout llMasterTop;
 
-    @BindView(R.id.chen)
-    ImageView chen;
-    @BindView(R.id.mai)
-    ImageView mai;
+
+    @BindView(R.id.master_bg)
+    ResizableImageView masterBG;
     @BindView(R.id.view_master_chen)
     View viewMasterChen;
     @BindView(R.id.view_master_mai)

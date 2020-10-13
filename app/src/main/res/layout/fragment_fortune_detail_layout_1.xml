@@ -100,27 +100,54 @@
             tools:listitem="@layout/recycle_fortune_deatil_item_grade_layout" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvAddFortune"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_marginRight="@dimen/dp_16"
-        android:background="@drawable/icon_add_futune"
-        android:gravity="center"
-        android:textColor="#ffffffff"
-        android:textSize="18sp"
-        tools:text="@string/tv_add_fortune" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+
+        android:layout_marginRight="@dimen/dp_16">
+
+        <TextView
+            android:id="@+id/tvAddFortune"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:alpha="1"
+            android:background="@drawable/icon_add_futune"
+            android:clickable="false"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+
+            tools:text="@string/tv_add_fortune" />
+
+        <TextView
+            android:id="@+id/tv_added_fortune"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ts_db"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="3dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="6dp"
+            android:textColor="#ffff8335"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:text="+5"
+            tools:visibility="visible" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_8"
         android:layout_marginTop="14dp"
+        android:text="@string/tv_fortune_evaluate"
         android:textColor="#ffff8335"
-        android:textSize="18sp"
-        tools:text="@string/tv_fortune_evaluate" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_fortune_evaluate"
@@ -129,11 +156,12 @@
         android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_8"
         android:layout_marginBottom="@dimen/dp_24"
+        android:maxLines="3"
         android:textColor="#ff706d53"
         android:textSize="16sp"
-        android:singleLine="false"
-        android:maxLines="3"
+
         tools:text="百事皆顺，福清高照，麻烦事都可以迎刃而解
 麻烦事都可以迎刃而解麻烦事都可以迎刃而解麻烦事都可以迎刃而解
-麻烦事都可以迎刃而解麻烦事都可以迎刃而解" />
+麻烦事都可以迎刃而解麻烦事都可以迎刃而解麻烦事都可以迎刃而解麻烦事都可以迎刃而解麻烦事都可以迎刃而解麻烦事都可以迎刃而解" />
+
 </LinearLayout>

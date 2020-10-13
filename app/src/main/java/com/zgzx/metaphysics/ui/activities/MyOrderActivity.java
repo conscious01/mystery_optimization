@@ -2,6 +2,7 @@ package com.zgzx.metaphysics.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class MyOrderActivity extends BaseActivity {
 
     private int mPosition = 0;
 
+    private boolean mIfGoBack2Main;
 
     @Override
     protected void initialize(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MyOrderActivity extends BaseActivity {
         Intent intent = getIntent();
         if (intent != null) {
             mPosition = intent.getIntExtra(Constants.KEY, 0);
+            mIfGoBack2Main = intent.getBooleanExtra(Constants.NEED_GO_MAIN_WHEN_FINISH, false);
         }
 
         String[] titles;
@@ -83,15 +86,51 @@ public class MyOrderActivity extends BaseActivity {
             fragments.add(OrderMyFragment.createInstance(Constants.USER_ORDER_STATUS_WAIT_COMMENT));
             fragments.add(OrderMyFragment.createInstance(Constants.USER_ORDER_STATUS_ALL));
         }
-        ActivityTitleHelper.setTitle(this, title);
+//        ActivityTitleHelper.setTitle(this, title);
+        tvTitle.setText(title);
+        ivArrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mIfGoBack2Main) {
+                    startActivity(new Intent(MyOrderActivity.this, MainActivity.class));
+                    finish();
+                }else {
+                    finish();
+                }
+            }
+        });
         stl.setViewPager(vp, titles, this, fragments);
         stl.setCurrentTab(mPosition);
 
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        recreate();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (mIfGoBack2Main) {
+            startActivity(new Intent(MyOrderActivity.this, MainActivity.class));
+            finish();
+        }else {
+            finish();
+        }
     }
 }

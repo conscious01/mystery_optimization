@@ -10,7 +10,6 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -18,6 +17,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.ui.core.BaseActivity;
+import com.zgzx.metaphysics.utils.MyWebViewCLient;
 import com.zgzx.metaphysics.utils.StringUtil;
 
 import butterknife.BindView;
@@ -76,18 +76,8 @@ public class NewWebViewActivity extends BaseActivity {
             }
         });
         mWebView.addJavascriptInterface(new JsInteration(), "android");
-        mWebView.setWebViewClient(new WebViewClient() {
+        mWebView.setWebViewClient(new MyWebViewCLient(this,mWebView));
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Build.VERSION.SDK_INT < 26 && mWebView != null) {
-                    mWebView.loadUrl(url);
-                    return true;
-                }
-
-                return false;
-            }
-        });
     }
 
 

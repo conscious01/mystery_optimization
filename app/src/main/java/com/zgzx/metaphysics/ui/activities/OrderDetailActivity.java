@@ -24,7 +24,6 @@ import com.zgzx.metaphysics.controller.OrderController;
 import com.zgzx.metaphysics.model.entity.OrderResultEntity;
 import com.zgzx.metaphysics.model.entity.QDetailEntity;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
-import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.DateUtils;
 import com.zgzx.metaphysics.utils.LunarCalendarUtil;
 import com.zgzx.metaphysics.utils.StringUtil;
@@ -108,6 +107,7 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
         return R.layout.order_detail_activity;
     }
 
+    private boolean mIfGoBack2Main;
 
     OrderController.Presenter mPresenter;
 
@@ -134,9 +134,11 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
         if (intent != null) {
             data = (OrderResultEntity) intent.getSerializableExtra(Constants.EXT_TYPE);
             mOrderId = intent.getIntExtra(Constants.KEY, 0);
+            mIfGoBack2Main = intent.getBooleanExtra(Constants.NEED_GO_MAIN_WHEN_FINISH, false);
 
         }
-        ActivityTitleHelper.setTitle(this, R.string.order_detail);
+       // ActivityTitleHelper.setTitle(this, R.string.order_detail);
+        tvTitle.setText(getResources().getString(R.string.order_detail));
         mPresenter = new OrderController.Presenter();
         mPresenter.setModelAndView(this);
         getLifecycle().addObserver(mPresenter);
@@ -156,13 +158,27 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
 
     }
 
-    @OnClick({R.id.tv_go2_pay, R.id.tv_go_2_comment, R.id.tv_refuse_answer, R.id.tv_done_answer})
+    @OnClick({R.id.tv_go2_pay, R.id.tv_go_2_comment, R.id.tv_refuse_answer, R.id.tv_done_answer,R.id.iv_arrow_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_go2_pay:
-                OrderPayActivity.start(this, data, Constants.PAY_ALI);
+//                OrderPayActivity.start(this, data, Constants.PAY_ALI);
+                if (mQDetailEntity==null) {
+                    return;
+                }
+                startActivity(PayMethordMemberActivity.newIntent(OrderDetailActivity.this,
+                        mQDetailEntity.getId(),
+                        Constants.TYPE_QUESTION_PAYING_QUERY));
                 finish();
 
+                break;
+            case R.id.iv_arrow_back:
+                if (mIfGoBack2Main) {
+                    startActivity(new Intent(OrderDetailActivity.this, MainActivity.class));
+                    finish();
+                }else {
+                    finish();
+                }
                 break;
             case R.id.tv_go_2_comment:
                 OrderCommentActivity.start(this, mQDetailEntity.getId());
@@ -200,6 +216,9 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
         view.findViewById(R.id.tv_confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (data==null) {
+                    return;
+                }
                 Long time = new Date().getTime() / 1000;
                 Map<String, Object> map = new HashMap<>();
                 map.put("issue_id", data.getId());
@@ -268,7 +287,7 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
             tvOrderStatusDes.setText(R.string.sorry_cant_answer);
             GlideApp.with(ivStatus).load(R.drawable.order_closed).into(ivStatus);
 
-            etAnswerContent.setText(data.getAnswer_content());
+            etAnswerContent.setText(data.getReason());
             //设置不可以编辑
             etAnswerContent.setFocusable(false);
             etAnswerContent.setFocusableInTouchMode(false);
@@ -321,14 +340,14 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
             tvOrderStatusDes.setText(R.string.user_canceled_);
             GlideApp.with(ivStatus).load(R.drawable.order_success).into(ivStatus);
             tvGo2Comment.setVisibility(View.VISIBLE);
-            tvAnswerContent.setText(data.getAnswer_content());
+            tvAnswerContent.setText(data.getReason());
 
         } else if (orderStatus == Constants.USER_ORDER_STATUS_OVER_TIME) {
             tvOrderStatus.setText(R.string.order_closed);
             tvOrderStatusDes.setText(R.string.over_time_);
             GlideApp.with(ivStatus).load(R.drawable.order_success).into(ivStatus);
             tvGo2Comment.setVisibility(View.VISIBLE);
-            tvAnswerContent.setText(data.getAnswer_content());
+            tvAnswerContent.setText(data.getReason());
 
         } else if (StringUtil.getUserOrderString(orderStatus, OrderDetailActivity.this).equals(getString(R.string.order_status_closed))) {
             tvOrderStatus.setText(R.string.order_closed);
@@ -355,6 +374,12 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
     public void onDoneAnswer() {
         System.out.println("onDoneAnswer");
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 
     private void setBasic(QDetailEntity data) {
@@ -400,6 +425,17 @@ public class OrderDetailActivity extends BaseRequestActivity implements OrderCon
                     ImageViewActivity.start(helper.getView(R.id.iv_avatar).getContext(), item);
                 }
             });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (mIfGoBack2Main) {
+            startActivity(new Intent(OrderDetailActivity.this, MainActivity.class));
+            finish();
+        }else {
+            finish();
         }
     }
 }

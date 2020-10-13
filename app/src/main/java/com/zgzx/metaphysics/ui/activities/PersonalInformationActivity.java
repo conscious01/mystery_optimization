@@ -26,6 +26,7 @@ import com.zgzx.metaphysics.controller.views.core.ISingleRequestView;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.controller.views.impl.DialogRequestStatusView;
 import com.zgzx.metaphysics.model.entity.UserDetailEntity;
+import com.zgzx.metaphysics.model.event.UpdateFortuneEvent;
 import com.zgzx.metaphysics.network.WebApiConstants;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.ui.dialogs.BirthDateDialog;
@@ -36,6 +37,8 @@ import com.zgzx.metaphysics.utils.AppToast;
 import com.zgzx.metaphysics.utils.DateUtils;
 import com.zgzx.metaphysics.utils.image.GlideApp;
 import com.zgzx.metaphysics.utils.image.GlideEngine;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -80,10 +83,14 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
     RadioGroup group_sex;
     @BindView(R.id.save_info)
     Button save_info;
+    @BindView(R.id.sex_img)
+    ImageView sex_img;
+
+
     private AlterUserInfoPresenter mPresenter;
     private int type;
     private int hourTime, sex = 0;
-    private String mNickName, birthTime, diZiTime, path,birth_area;
+    private String mNickName, birthTime, diZiTime, path, birth_area;
     private SupplementInformationPresenter mSupplementInformationPresenter;
     private LoginController.Presenter mLoginPresenter;
 
@@ -96,9 +103,6 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
     public int getContentLayoutId() {
         return R.layout.activity_personal_information;
     }
-
-
-
 
 
     @Override
@@ -122,6 +126,7 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
                 layout_sex.setVisibility(View.GONE);
                 layout_sex_select.setVisibility(View.VISIBLE);
                 save_info.setVisibility(View.VISIBLE);
+                sex_img.setVisibility(View.VISIBLE);
                 save_info.setText(getResources().getString(R.string.start_main_1));
                 // 逻辑
                 GlideApp.with(mIvAvatar)
@@ -147,6 +152,7 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
                 renderUserDetail(entity);
                 layout_sex.setVisibility(View.VISIBLE);
                 layout_sex_select.setVisibility(View.GONE);
+                sex_img.setVisibility(View.GONE);
 
                 break;
         }
@@ -162,13 +168,13 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
 
             // 用户昵称
             mTvNickname.setText(entity.getNickname());
-            sex=entity.getSex();
+            sex = entity.getSex();
             // 性别
             mTvSex.setText(entity.getSex() == WebApiConstants.SEX_WOMAN ? R.string.woman : R.string.man);
 
             // 出生日期
             mTvDateBirth.setText(DateUtils.getTime(entity.getBirth_day(), DateUtils.PATTERN_2));
-            birth_area=entity.getBirth_area();
+            birth_area = entity.getBirth_area();
             // 出生地点
             mTvBirthPlace.setText(entity.getBirth_area());
 
@@ -227,9 +233,9 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
                             mTvDateBirth.setText(time);
                             birthTime = time;
                             if (type == 0) {
-                                mSupplementInformationPresenter.setTime(timestamp, hour + 1, calendarType);
+                                mSupplementInformationPresenter.setTime(timestamp, hour, calendarType);
                             } else if (type == 1) {
-                                mPresenter.setTime(timestamp, hour + 1, calendarType, birthTime,mNickName,sex,birth_area);
+                                mPresenter.setTime(timestamp, hour, calendarType, birthTime, mNickName, sex, birth_area);
                             }
                             break;
                         case 2://阳历
@@ -289,7 +295,7 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
                             if (type == 0) {
                                 mSupplementInformationPresenter.setTime(timestamp, hourTime, calendarType);
                             } else if (type == 1) {
-                                mPresenter.setTime(timestamp, hourTime, calendarType, birthTime,mNickName,sex,birth_area);
+                                mPresenter.setTime(timestamp, hourTime, calendarType, birthTime, mNickName, sex, birth_area);
                             }
 
                             break;
@@ -389,8 +395,8 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
 
     @Override
     public void result(UserDetailEntity result) {
-     //   LocalConfigStore.getInstance().saveUserInfo(result);
-        mLoginPresenter.login(LocalConfigStore.getInstance().getPhoneCode(), LocalConfigStore.getInstance().getPhone(), LocalConfigStore.getInstance().getPassword());
+        //   LocalConfigStore.getInstance().saveUserInfo(result);
+        mLoginPresenter.login(result.getPhone_code(), result.getPhone(), LocalConfigStore.getInstance().getPassword());
 
     }
 
@@ -398,6 +404,7 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
     @Override
     public void successful() {
         AppToast.showLong(getString(R.string.successful));
+        EventBus.getDefault().post(new UpdateFortuneEvent());
     }
 
 
@@ -419,5 +426,6 @@ public class PersonalInformationActivity extends BaseRequestActivity implements 
     public void loginOk(UserDetailEntity userDetailEntity) {
         LocalConfigStore.getInstance().saveUserInfo(userDetailEntity);
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

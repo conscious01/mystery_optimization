@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/rlItem"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvWeek"
+        android:layout_width="26dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:text="一"
+        android:gravity="center"
+        android:textColor="#E7741F"
+        android:textSize="16sp"
+        android:background="@drawable/icon_calendar_unbless">
+    </TextView>
+    <ImageView
+        android:id="@+id/ivStatus"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:src="@drawable/icon_calendar_circle"
+ />
+</LinearLayout>

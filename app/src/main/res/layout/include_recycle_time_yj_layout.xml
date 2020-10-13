@@ -28,7 +28,7 @@
 
             android:id="@+id/recycle_time_yi"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_70"
+            android:layout_height="@dimen/dp_64"
             android:paddingLeft="@dimen/dp_10"
             android:paddingRight="24dp"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -67,13 +67,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_time_ji"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_70"
+            android:layout_height="@dimen/dp_64"
             android:paddingLeft="@dimen/dp_10"
             android:paddingRight="24dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="4"
-             tools:itemCount="8"
-
+            tools:itemCount="8"
             tools:listitem="@layout/recycleview_item_home_text" />
 
     </LinearLayout>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
+import com.zgzx.metaphysics.model.entity.AdCountEntity;
 import com.zgzx.metaphysics.model.entity.AdEntity;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.AreaCodeEntity;
@@ -316,8 +317,9 @@ public class DataRepository implements IDataSource {
     @Override
     public Observable<BasicResponseEntity<FortuneEntity>> personalFortune(int timestamp, int type) {
 //        return mRemoteDataSource.personalFortune();
-        return mLocalDataManager.personalFortune(timestamp, type,
-                mRemoteDataSource.personalFortune(timestamp, type));
+//        return mLocalDataManager.personalFortune(timestamp, type,
+//                mRemoteDataSource.personalFortune(timestamp, type));
+        return  mRemoteDataSource.personalFortune(timestamp, type);
     }
 
     @Override
@@ -464,7 +466,7 @@ public class DataRepository implements IDataSource {
 
     @Override
     public Observable<BasicResponseEntity<HomeDataEntity>> homeData() {
-        return mLocalDataManager.homeData(mRemoteDataSource.homeData());
+        return mRemoteDataSource.homeData();
     }
 
     @Override
@@ -485,10 +487,10 @@ public class DataRepository implements IDataSource {
     }
 
     @Override
-    public Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id ,String ak,
+    public Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id ,int discount_id,String ak,
                                                                      long timestamp,
                                                                      String sign) {
-        return mRemoteDataSource.buyQuestion(pay_type, issue_id,ak,timestamp,sign);
+        return mRemoteDataSource.buyQuestion(pay_type, issue_id,discount_id,ak,timestamp,sign);
     }
 
     @Override
@@ -543,13 +545,13 @@ public class DataRepository implements IDataSource {
     }
 
     @Override
-    public Observable<BasicResponseEntity<OrderResultEntity>> askQuestion(String nickname, int gender,
-                                                                          int master_id, int birth_day,
-                                                                          int birth_hour, int calendar_type,
-                                                                          String birth_area, String content,
-                                                                          String paths,String ak,
-                                                                          long timestamp,
-                                                                          String sign) {
+    public Observable<BasicResponseEntity<OrderLifeBookEntity>> askQuestion(String nickname, int gender,
+                                                                             int master_id, int birth_day,
+                                                                             int birth_hour, int calendar_type,
+                                                                             String birth_area, String content,
+                                                                             String paths, String ak,
+                                                                             long timestamp,
+                                                                             String sign) {
         return mRemoteDataSource.askQuestion(nickname, gender, master_id, birth_day, birth_hour, calendar_type, birth_area, content, paths,ak,timestamp,sign);
     }
 
@@ -572,6 +574,11 @@ public class DataRepository implements IDataSource {
     @Override
     public Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailUser(int issue_id) {
         return mRemoteDataSource.getAnswerDetailUser(issue_id);
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<OrderLifeBookEntity>> getNotPaidQuestionDetail(int issue_id) {
+        return mRemoteDataSource.getNotPaidQuestionDetail(issue_id);
     }
 
     @Override
@@ -648,6 +655,16 @@ public class DataRepository implements IDataSource {
     @Override
     public Observable<BasicResponseEntity<AddfortuneDataEntity>> getAddfortuneData(int timestamp) {
         return mRemoteDataSource.getAddfortuneData(timestamp);
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<String>> getRongToken() {
+        return mRemoteDataSource.getRongToken();
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<AdCountEntity>> getAdCount() {
+        return mRemoteDataSource.getAdCount();
     }
 
     @Override

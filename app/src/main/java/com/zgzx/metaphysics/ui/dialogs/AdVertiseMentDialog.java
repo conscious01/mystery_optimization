@@ -2,10 +2,8 @@ package com.zgzx.metaphysics.ui.dialogs;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 
-import androidx.annotation.NonNull;
-
+import com.blankj.utilcode.util.LogUtils;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdNative;
@@ -16,10 +14,11 @@ import com.lxj.xpopup.core.CenterPopupView;
 import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.model.event.PlayCompleteEvent;
-import com.zgzx.metaphysics.ui.activities.LoginActivity;
 import com.zgzx.metaphysics.utils.AppToast;
 
 import org.greenrobot.eventbus.EventBus;
+
+import androidx.annotation.NonNull;
 
 public class AdVertiseMentDialog extends CenterPopupView {
     private int postion,mType;
@@ -55,33 +54,9 @@ public class AdVertiseMentDialog extends CenterPopupView {
     @Override
     protected void onCreate() {
         super.onCreate();
-        findViewById(R.id.not_play_layout).setOnClickListener(v -> dialog.dismiss());
-        findViewById(R.id.Ad_layout_paly).setOnClickListener(v -> {
-            initTTAd(postion);
-            if (mttRewardVideoAd != null && mIsLoaded) {
+      initTTAd(postion);
 
 
-                //展示广告，并传入广告展示的场景
-                mttRewardVideoAd.showRewardVideoAd(mActivity, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
-                mttRewardVideoAd = null;
-            } else {
-                AppToast.showShort("请先加载广告");
-            }
-            dialog.dismiss();
-        });
-        findViewById(R.id.img_layout_paly).setOnClickListener(v -> {
-            initTTAd(postion);
-            if (mttRewardVideoAd != null && mIsLoaded) {
-
-
-                //展示广告，并传入广告展示的场景
-                mttRewardVideoAd.showRewardVideoAd(mActivity, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
-                mttRewardVideoAd = null;
-            } else {
-                AppToast.showShort("请先加载广告");
-            }
-            dialog.dismiss();
-        });
     }
 
     private void initTTAd(int pos) {
@@ -90,17 +65,17 @@ public class AdVertiseMentDialog extends CenterPopupView {
                 .setAdCount(2)
                 //个性化模板广告需要设置期望个性化模板广告的大小,单位dp,激励视频场景，只要设置的值大于0即可
                 .setExpressViewAcceptedSize(500, 500)
-                .setImageAcceptedSize(1080, 1920)
+                .setImageAcceptedSize(720, 1080)
                 //非必传参数，仅奖励发放服务端回调时需要使用
-                .setUserID("")
+                .setUserID(LocalConfigStore.getInstance().getUserId())
                 //非必传参数，仅奖励发放服务端回调时需要使用
-                .setMediaExtra("")
+                .setMediaExtra(LocalConfigStore.getInstance().getAdCodeId())
                 .build();
-        mTTAdNative.loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
+         mTTAdNative.loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
 
             @Override
             public void onError(int i, String s) {
-                AppToast.showShort(s);
+                LogUtils.i(s);
             }
 
             @Override
@@ -126,12 +101,10 @@ public class AdVertiseMentDialog extends CenterPopupView {
 
                     @Override
                     public void onVideoComplete() {
-                        //   AppToast.showShort("完成");
                     }
 
                     @Override
                     public void onVideoError() {
-                        //     AppToast.showShort("错位");
                     }
 
                     @Override
@@ -149,7 +122,18 @@ public class AdVertiseMentDialog extends CenterPopupView {
             @Override
             public void onRewardVideoCached() {
                 mIsLoaded = true;
-                // AppToast.showShort("缓存");
+                findViewById(R.id.not_play_layout).setOnClickListener(v -> dialog.dismiss());
+                findViewById(R.id.Ad_layout_paly).setOnClickListener(v -> {
+                    if (mttRewardVideoAd != null && mIsLoaded) {
+                        //展示广告，并传入广告展示的场景
+                        mttRewardVideoAd.showRewardVideoAd(mActivity, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
+                        mttRewardVideoAd = null;
+                    } else {
+                       // AppToast.showShort(mContext.getResources().getString(R.string.tv_ad_tips));
+                    }
+                    dialog.dismiss();
+                });
+
             }
         });
     }

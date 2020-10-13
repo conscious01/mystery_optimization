@@ -5,9 +5,11 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,10 +20,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+import com.apng.entity.AnimParams;
 import com.apng.utils.FileUtils;
 import com.apng.view.ApngImageView;
 import com.apng.view.ApngLoader;
+import com.apng.view.ApngSurfaceView;
+import com.github.penfeizhou.animation.apng.APNGAssetLoader;
+import com.github.penfeizhou.animation.apng.APNGDrawable;
 import com.jaeger.library.StatusBarUtil;
+
 import com.kris520.apngdrawable.ApngDrawable;
 import com.kris520.apngdrawable.ApngImageLoadingListener;
 import com.kris520.apngdrawable.ApngImageUtils;
@@ -54,7 +62,9 @@ import java.io.IOException;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.viewpager.widget.ViewPager;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import github.hellocsl.layoutmanager.gallery.GalleryLayoutManager;
@@ -87,7 +97,7 @@ public class FateBookFragment extends BaseRequestFragment implements
     @BindView(R.id.name)
     TextView name;
     @BindView(R.id.kmImgView)
-    ApngImageView kmImgView;
+    ImageView kmImgView;
     @BindView(R.id.kmImgView_start)
     ImageView kmImgView_start;
 
@@ -144,25 +154,7 @@ public class FateBookFragment extends BaseRequestFragment implements
             @Override
             public void onPageScrolled(int position, float positionOffset,
                                        int positionOffsetPixels) {
-                pos = position;
-                tv_zodiac.setText(getResources().getString(R.string.signed_zodiac) + mList.get(position).getAbstractX().getZodiac().getValue());
-                tv_zodiac_detail.setText(getResources().getString(R.string.signed_similar_zodiac) + TextUtils.join(",", mList.get(position).getAbstractX().getZodiac().getMatch()));
-                tv_character.setText(getResources().getString(R.string.signed_character) + mList.get(position).getAbstractX().getBazi().getValue());
-                tv_character_detail.setText(getResources().getString(R.string.signed_similar_character) + TextUtils.join(",", mList.get(position).getAbstractX().getBazi().getMatch()));
-                tv_constellation.setText(getResources().getString(R.string.signed_constellation) + mList.get(position).getAbstractX().getHoroscope().getValue());
-                tv_constellation_detail.setText(getResources().getString(R.string.signed_similar_constellation) + TextUtils.join(",", mList.get(position).getAbstractX().getHoroscope().getMatch()));
-                name.setText(mList.get(position).getReal_name());
 
-                if (position == 0) {
-                    img_left.setVisibility(View.GONE);
-                } else {
-                    img_left.setVisibility(View.VISIBLE);
-                }
-                if (position == mList.size() - 1) {
-                    img_right.setVisibility(View.GONE);
-                } else {
-                    img_right.setVisibility(View.VISIBLE);
-                }
 
             }
 
@@ -194,18 +186,32 @@ public class FateBookFragment extends BaseRequestFragment implements
 
             }
         });
-        if (!LocalConfigStore.getInstance().isLogin()) {
-            fate_book_layout.setVisibility(View.GONE);
-            create_fate_book_layout.setVisibility(View.VISIBLE);
-            File file1 = FileUtils.processApngFile(KM_IMAGE_PATH, getActivity());
-            ApngLoader.getInstance().loadApng(file1.getAbsolutePath(), kmImgView);
-            Animation();
 
-        }
 
         initSoundAndPlayFirst();
-    }
 
+        APNGAssetLoader assetLoader = new APNGAssetLoader(getActivity(), "icon_km_static.png");
+        APNGDrawable apngDrawable = new APNGDrawable(assetLoader);
+        apngDrawable.setLoopLimit(-1);
+
+        kmImgView.setImageDrawable(apngDrawable);
+//        File file1 = FileUtils.processApngFile(KM_IMAGE_PATH, getActivity());
+//        ApngLoader.getInstance().loadApng(file1.getAbsolutePath(), kmImgView);
+        mFragrmentPosition = 1;//fragment创建之后表示在当前页面
+    }
+//    private void playAnim(){
+//        File file = FileUtils.processApngFile(KM_IMAGE_PATH, getActivity());
+//        if(file == null) return;
+//        AnimParams animItem = new AnimParams();
+//         animItem.scaleType=AnimParams.WIDTH_OR_HEIGHT_SCALE_TYPE;
+//        animItem.loopCount = AnimParams.PLAY_4_LOOP;
+//        animItem.imagePath = file.getAbsolutePath();
+//        animItem.isHasBackground=false;
+//        animItem.align=2;
+//
+//        kmImgView.addApngForPlay(animItem);
+//
+//    }
     private MediaPlayer mMediePlayer;
     private static final float BEEP_VOLUME = 0.10f;
     private boolean mPlayControl;
@@ -263,7 +269,9 @@ public class FateBookFragment extends BaseRequestFragment implements
     @Override
     public void onResume() {
         super.onResume();
-        startPlay();
+        if (mFragrmentPosition == 1) {
+            startPlay();
+        }
     }
 
 
@@ -290,7 +298,6 @@ public class FateBookFragment extends BaseRequestFragment implements
             mMediePlayer = null;
         }
     }
-
 
 
     private void playBackGround() {
@@ -331,9 +338,11 @@ public class FateBookFragment extends BaseRequestFragment implements
 
 
     @OnClick({R.id.edit_img, R.id.add_fate_book, R.id.delteImg, R.id.conpleteTextView,
-            R.id.img_right, R.id.img_left})
+            R.id.img_right, R.id.img_left,R.id.kmImgView})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+
+
             case R.id.edit_img:
 
 
@@ -407,18 +416,12 @@ public class FateBookFragment extends BaseRequestFragment implements
 
     // 创建命书
     private void createFateBook() {
-//        if (mList.size() >= Constants.MAX_FATE_BOOK_NUMBER) {
-//            SimpleDialog dialog = new SimpleDialog(getContext());
-//            dialog.setTitle(R.string.create_fate_book_error);
-//            dialog.setPositive(R.string.understood, v -> dialog.dismiss());
-//            new XPopup.Builder(getContext())
-//                    .isDestroyOnDismiss(true)
-//                    .enableShowWhenAppBackground(false)
-//                    .asCustom(dialog)
-//                    .show();
-//        } else {
+
         kmImgView.setVisibility(View.GONE);
         kmImgView_start.setVisibility(View.VISIBLE);
+
+
+
         ApngLoaderStart.loadImage(ApngImageUtils.Scheme.ASSETS.wrap("icon_start_create.png"),
                 kmImgView_start, new ApngImageLoadingListener(new ApngPlayListener() {
                     @Override
@@ -441,8 +444,9 @@ public class FateBookFragment extends BaseRequestFragment implements
                     }
                 }));
 
-        //}
     }
+
+
 
     // 创建命书
     private void createFateBook_noAnmation() {
@@ -477,11 +481,12 @@ public class FateBookFragment extends BaseRequestFragment implements
         fate_book_viewpage.setCurrentItem(pos);
     }
 
-
+    int mFragrmentPosition;
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFragmentChanged(OnFragmentChanged onFragmentChanged) {
+        mFragrmentPosition = onFragmentChanged.getPosition();
         if (isAdded() && !isDetached()) {
-            if (onFragmentChanged.isIfCanPlay()) { //选中命数页面
+            if (onFragmentChanged.getPosition() == 1) { //选中命数页面
                 startPlay();
             } else { //在其他页面
                 pausePlay();
@@ -509,6 +514,11 @@ public class FateBookFragment extends BaseRequestFragment implements
 
         mList = list;
         if (list.size() > 0) {
+            if (list.size()==1){
+                img_right.setVisibility(View.GONE);
+            }else {
+                img_right.setVisibility(View.VISIBLE);
+            }
             if (isCreateNew) {
                 fate_book_layout.setVisibility(View.VISIBLE);
                 create_fate_book_layout.setVisibility(View.GONE);
@@ -525,6 +535,7 @@ public class FateBookFragment extends BaseRequestFragment implements
                 name.setText(list.get(mList.size() - 1).getReal_name());
                 fate_book_viewpage.setAdapter(new FateBookPageAdapter(list));
                 fate_book_viewpage.setCurrentItem(mList.size() - 1);
+                pos=mList.size() - 1;
             } else {
                 fate_book_layout.setVisibility(View.VISIBLE);
                 create_fate_book_layout.setVisibility(View.GONE);
@@ -541,15 +552,19 @@ public class FateBookFragment extends BaseRequestFragment implements
                 name.setText(list.get(0).getReal_name());
                 fate_book_viewpage.setAdapter(new FateBookPageAdapter(list));
                 fate_book_viewpage.setCurrentItem(pos);
+
             }
 
         } else {
             fate_book_layout.setVisibility(View.GONE);
             create_fate_book_layout.setVisibility(View.VISIBLE);
-            File file1 = FileUtils.processApngFile(KM_IMAGE_PATH, getActivity());
-            ApngLoader.getInstance().loadApng(file1.getAbsolutePath(), kmImgView);
-
             Animation();
+//            playAnim();
+//            File file1 = FileUtils.processApngFile(KM_IMAGE_PATH, getActivity());
+//            ApngLoader.getInstance().loadApng(file1.getAbsolutePath(), kmImgView);
+
+
+
         }
 
 
@@ -586,6 +601,7 @@ public class FateBookFragment extends BaseRequestFragment implements
         mPresenter.init();
         edit_img.setVisibility(View.VISIBLE);
         layout_title_container.setVisibility(View.GONE);
+        pos=position;
     }
 
     @Subscribe
@@ -602,6 +618,8 @@ public class FateBookFragment extends BaseRequestFragment implements
     public void failure(Throwable throwable) {
 
     }
+
+
 
     public static class ScaleTransformer implements GalleryLayoutManager.ItemTransformer {
 

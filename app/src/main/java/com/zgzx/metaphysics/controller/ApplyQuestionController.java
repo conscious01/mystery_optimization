@@ -7,7 +7,7 @@ import com.zgzx.metaphysics.controller.core.RequestPresenter;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.model.DataRepository;
 import com.zgzx.metaphysics.model.entity.BasicResponseEntity;
-import com.zgzx.metaphysics.model.entity.OrderResultEntity;
+import com.zgzx.metaphysics.model.entity.OrderLifeBookEntity;
 import com.zgzx.metaphysics.network.rx.ResponseObserver;
 import com.zgzx.metaphysics.network.rx.SchedulersTransformer;
 import com.zgzx.metaphysics.utils.encrypt.HMacMD5Util;
@@ -54,7 +54,7 @@ public interface ApplyQuestionController {
                     .upload(files)
                     // 提交申请
                     .flatMap((Function<BasicResponseEntity<List<String>>,
-                                    ObservableSource<BasicResponseEntity<OrderResultEntity>>>) entity ->{
+                                    ObservableSource<BasicResponseEntity<OrderLifeBookEntity>>>) entity ->{
                                 Long time = new Date().getTime() / 1000;
                                 Map<String, Object> map = new HashMap<>();
                                 map.put("nickname", nickname);
@@ -88,7 +88,7 @@ public interface ApplyQuestionController {
 
                     .compose(SchedulersTransformer.transformer(mView))
                     .subscribe(new ResponseObserver<>(this, mView, entity -> {
-                        OrderResultEntity data = entity.getData();
+                        OrderLifeBookEntity data = entity.getData();
                         mView.onApplyResult(data);
                         mView.complete();
 
@@ -108,7 +108,7 @@ public interface ApplyQuestionController {
                             birth_area, content, null, ak, timestamp, sign)
                     .compose(SchedulersTransformer.transformer(mView))
                     .subscribe(new ResponseObserver<>(this, mView, entity -> {
-                        OrderResultEntity data = entity.getData();
+                        OrderLifeBookEntity data = entity.getData();
                         mView.onApplyResult(data);
                     }));
         }
@@ -131,7 +131,7 @@ public interface ApplyQuestionController {
 
     interface View extends IStatusView {
 
-        void onApplyResult(OrderResultEntity detail);
+        void onApplyResult(OrderLifeBookEntity detail);
 
 
     }

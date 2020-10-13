@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.didi.dokit'
+//apply plugin: 'com.didi.dokit'
+apply plugin: 'com.huawei.agconnect'
 
 
 android {
@@ -39,11 +40,8 @@ android {
         debug {
 //            applicationIdSuffix ".debug"
 
-//            minifyEnabled true
-//            shrinkResources true
-//            zipAlignEnabled true
             signingConfig signingConfigs.release
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             // 应用名称
             resValue("string", "app_name", "${rootProject.ext.config.appName}-测试")
@@ -108,12 +106,15 @@ dependencies {
     implementation project(path: ':rade-view')
     // 时间
     implementation project(path: ':city-time-picker')
-    // apng动图加载menta
-    implementation project(path: ":apng")
+
+    implementation project(path: ':apng')
     implementation project(path: ':library')
     implementation(name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
     implementation(name: 'open_ad_sdk', ext: 'aar')
+
     implementation files('libs\\miPush_SDK_Client_3_8_0.jar')
+
+    implementation files('libs\\oppo-push-2.0.2.jar')
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
     // androidx
     implementation rootProject.ext.androidx["palette"]
@@ -158,8 +159,8 @@ dependencies {
     implementation rootProject.ext.dependencies["rx-android"]
     implementation rootProject.ext.dependencies["rx-binding"]
     implementation rootProject.ext.dependencies["butterknife"]
-    debugImplementation rootProject.ext.dependencies["doraemonkit"]
-    releaseImplementation rootProject.ext.dependencies["doraemonkit-no-op"]
+//    debugImplementation rootProject.ext.dependencies["doraemonkit"]
+//    releaseImplementation rootProject.ext.dependencies["doraemonkit-no-op"]
     annotationProcessor rootProject.ext.dependencies["butterknifeannotationProcessor"]
     implementation rootProject.ext.dependencies["easy-permissions"]
     implementation rootProject.ext.dependencies["qrcode"]
@@ -183,7 +184,9 @@ dependencies {
 
     implementation rootProject.ext.dependencies["flyco"]
     implementation rootProject.ext.dependencies["RatingBar"]
-
+    implementation rootProject.ext.dependencies["meiqia"]
+    implementation rootProject.ext.dependencies["okhttp3"]
+    implementation rootProject.ext.dependencies["lottie"]
 
 //     implementation rootProject.ext.dependencies["apng"]
 //    implementation  rootProject.ext.dependencies["glide-plugin"]
@@ -202,17 +205,25 @@ dependencies {
     //放大图片的库
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 
-    //华为推送
-    implementation 'com.huawei.android.hms:base:2.6.1.301'
-    implementation 'com.huawei.android.hms:push:2.6.1.301'
+    implementation 'com.github.penfeizhou.android.animation:apng:2.4.2'
+
 
     //魅族推送
     implementation 'com.meizu.flyme.internet:push-internal:3.6.+@aar'
 
-    implementation   files("libs/vivo_pushsdk-v2.9.0.0.aar")
-    implementation   files("libs/com.heytap.msp.aar")
+    implementation files("libs/vivo_pushsdk-v2.9.0.0.aar")
+//    implementation files('libs\\oppo_push_2.0.2.jar') //oppo推送
+
 
     implementation 'com.google.zxing:core:3.2.1'
 
+    implementation 'com.android.support.constraint:constraint-layout:2.0.1'
+
+    //华为推送
+    implementation 'com.huawei.android.hms:base:2.6.1.301'
+    implementation 'com.huawei.android.hms:push:2.6.1.301'
+
+    //前后台监听
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 
 }

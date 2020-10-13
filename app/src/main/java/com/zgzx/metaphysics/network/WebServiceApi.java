@@ -2,6 +2,7 @@ package com.zgzx.metaphysics.network;
 
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
+import com.zgzx.metaphysics.model.entity.AdCountEntity;
 import com.zgzx.metaphysics.model.entity.AdEntity;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.AreaCodeEntity;
@@ -550,42 +551,90 @@ public interface WebServiceApi {
     Observable<BasicResponseEntity<MasterCommentEntity>> getMasterComment(@Body MasterCommentParams params);
 
 
+    /**
+     * @param nickname
+     * @param sex
+     * @param master_id
+     * @param birth_day
+     * @param birth_hour
+     * @param calendar_type
+     * @param birth_area
+     * @param content
+     * @param photo_paths
+     * @param ak
+     * @param timestamp
+     * @param sign
+     * @return 提问
+     */
     @POST("/api/v1/dis/add_issue")
     @FormUrlEncoded
-    Observable<BasicResponseEntity<OrderResultEntity>> askQuestion(@Field("nickname") String nickname,
-                                                                   @Field("sex") int sex,
-                                                                   @Field("master_id") int master_id,
-                                                                   @Field("birth_day") int birth_day,
-                                                                   @Field("birth_hour") int birth_hour,
-                                                                   @Field("calendar_type") int calendar_type,
-                                                                   @Field("birth_area") String birth_area,
-                                                                   @Field("content") String content,
-                                                                   @Field("photo_path") String photo_paths,
-                                                                   @Field("ak") String ak,
-                                                                   @Field("timestamp") long timestamp,
-                                                                   @Field("sign") String sign);
+    Observable<BasicResponseEntity<OrderLifeBookEntity>> askQuestion(@Field("nickname") String nickname,
+                                                                      @Field("sex") int sex,
+                                                                      @Field("master_id") int master_id,
+                                                                      @Field("birth_day") int birth_day,
+                                                                      @Field("birth_hour") int birth_hour,
+                                                                      @Field("calendar_type") int calendar_type,
+                                                                      @Field("birth_area") String birth_area,
+                                                                      @Field("content") String content,
+                                                                      @Field("photo_path") String photo_paths,
+                                                                      @Field("ak") String ak,
+                                                                      @Field("timestamp") long timestamp,
+                                                                      @Field("sign") String sign);
 
+    /**
+     * @param pay_type
+     * @param order_no
+     * @param discount_id
+     * @param ak
+     * @param timestamp
+     * @param sign
+     * @return 支付提问费用
+     */
     @POST("/api/v1/pay/prepay/master")
     @FormUrlEncoded
     Observable<BasicResponseEntity<PrePayResult>> buyQuestion(@Field("pay_type") int pay_type,
                                                               @Field("issue_id") int order_no,
-
+                                                              @Field("discount_id") int discount_id,
                                                               @Field("ak") String ak,
                                                               @Field("timestamp") long timestamp,
                                                               @Field("sign") String sign);
 
+    /**
+     * @param orderParams
+     * @return 获取师傅解答列表
+     */
     @POST("/api/v1/dis/query_issue_list_for_master")
     Observable<BasicListResponseEntity<OrderResultEntity>> getOrderMaster(@Body OrderParams orderParams);
 
+    /**
+     * @param orderParams
+     * @return 获取用户解答列表
+     */
     @POST("/api/v1/dis/query_issue_list")
     Observable<BasicListResponseEntity<OrderResultEntity>> getOrderUser(@Body OrderParams orderParams);
 
+    /**
+     * @param questionDetailParams
+     * @return 获取师傅解答详情
+     */
     @POST("/api/v1/dis/query_issue_detail")
     Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailMast(@Body QuestionDetailParams questionDetailParams);
 
+    /**
+     * @param questionDetailParams
+     * @return 获取用户解答详情
+     */
     @POST("/api/v1/dis/query_issue_detail")
     Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailUser(@Body QuestionDetailParams questionDetailParams);
 
+    /**
+     * @param pay_type
+     * @param content
+     * @param ak
+     * @param timestamp
+     * @param sign
+     * @return 回答问题
+     */
     @POST("/api/v1/dis/finished_issue")
     @FormUrlEncoded
     Observable<BasicResponseEntity<String>> doneAnswer(@Field("issue_id") int pay_type,
@@ -594,6 +643,14 @@ public interface WebServiceApi {
                                                        @Field("timestamp") long timestamp,
                                                        @Field("sign") String sign);
 
+    /**
+     * @param pay_type
+     * @param order_no
+     * @param ak
+     * @param timestamp
+     * @param sign
+     * @return 拒绝回答问题
+     */
     @POST("/api/v1/dis/close_issue")
     @FormUrlEncoded
     Observable<BasicResponseEntity<String>> orderRefused(@Field("issue_id") int pay_type,
@@ -602,9 +659,20 @@ public interface WebServiceApi {
                                                          @Field("timestamp") long timestamp,
                                                          @Field("sign") String sign);
 
+    /**
+     * @param commentParams
+     * @return 用户评价
+     */
     @POST("/api/v1/dis/set_score")
     Observable<BasicResponseEntity<String>> orderComment(@Body CommentParams commentParams);
 
+    /**
+     * @param pay_type
+     * @param ak
+     * @param timestamp
+     * @param sign
+     * @return 取消问答订单
+     */
     @POST("/api/v1/dis/cancel_issue")
     @FormUrlEncoded
     Observable<BasicResponseEntity<String>> orderCancel(@Field("issue_id") int pay_type,
@@ -612,19 +680,37 @@ public interface WebServiceApi {
                                                         @Field("timestamp") long timestamp,
                                                         @Field("sign") String sign);
 
+    /**
+     * @param page2Params
+     * @return 获取我的消息
+     */
     @POST("/api/v1/sys/query_system_msg_list")
     Observable<BasicListResponseEntity<MessageEntity.ItemsBean>> getMessage(@Body PageParams page2Params);
 
+    /**
+     * @return 获取我的资产
+     */
     @GET("/api/v1/user/assets")
     Observable<BasicResponseEntity<UserAssetEntity>> getUserAssets();
 
+    /**
+     * @return 获取推送开关们状态
+     */
     @GET("/api/v1/im/get_push_switch")
     Observable<BasicResponseEntity<SwitchStatusEntity>> getSwitchStatus();
 
+    /**
+     * @param switchFortuneParams
+     * @return 更新开关状态们
+     */
     @POST("/api/v1/im/update_push_switch")
     Observable<BasicResponseEntity<String>> updateSwitchFortune(@Body SwitchFortuneParams switchFortuneParams);
 
 
+    /**
+     * @param switchMsgParams
+     * @return 更新开关状态们
+     */
     @POST("/api/v1/im/update_push_switch")
     Observable<BasicResponseEntity<String>> updateSwitchMsg(@Body SwitchMsgParams switchMsgParams);
 
@@ -636,12 +722,40 @@ public interface WebServiceApi {
     @GET("/api/v1/wallet/get_transfer_fee")
     Observable<BasicResponseEntity<Float>> getTranFerFee();
 
+    /**
+     * @param feedBackParams
+     * @return  发送反馈
+     */
     @POST("/api/v1/sys/feedback")
     Observable<BasicResponseEntity<String>> sendFeedBack(@Body FeedBackParams feedBackParams);
 
     @GET("/api/v1/config/get_pangle_ad_config")
     Observable<BasicResponseEntity<AdEntity>> getAdConfig();
 
+    /**
+     * @param timestampParams
+     * @return  获取增运数据
+     */
     @POST("/api/v1/fortune/get_addfortune_data")
     Observable<BasicResponseEntity<AddfortuneDataEntity>> getAddfortuneData(@Body TimestampParams timestampParams);
+
+    /**
+     * @param questionDetailParams
+     * @return 根据提问订单号获取未支付的 问答详情，用作继续支付使用
+     */
+    @POST("/api/v1/dis/query_issue_pending_pay_info")
+    Observable<BasicResponseEntity<OrderLifeBookEntity>> getNotPaidQuestionDetail(@Body QuestionDetailParams questionDetailParams);
+
+    /**
+     * @return 手动获取融云token
+     */
+    @GET("/api/v1/im/get_token")
+    Observable<BasicResponseEntity<String>> getRongToken();
+
+
+    /**
+     * @return 获取广告次数
+     */
+    @GET("/api/v1/ad/get_today_watch_times")
+    Observable<BasicResponseEntity<AdCountEntity>> getAdCount();
 }

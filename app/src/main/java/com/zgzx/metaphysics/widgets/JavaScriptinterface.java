@@ -11,17 +11,22 @@ import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.qbw.spm.P;
 import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.LocalConfigStore;
-import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.model.entity.JSResondEntity;
+import com.zgzx.metaphysics.model.event.BookEvent;
+import com.zgzx.metaphysics.model.event.MasterEvent;
+import com.zgzx.metaphysics.model.event.RefreshFourtuneEvent;
 import com.zgzx.metaphysics.ui.activities.DailyBlessActivity;
 import com.zgzx.metaphysics.ui.activities.FindActivity;
 import com.zgzx.metaphysics.ui.activities.MainActivity;
 import com.zgzx.metaphysics.ui.activities.MyOrderActivity;
 import com.zgzx.metaphysics.ui.activities.OrderDetailActivity;
-import com.zgzx.metaphysics.ui.activities.PayMethodActivity;
+import com.zgzx.metaphysics.ui.activities.PayMethordMemberActivity;
 import com.zgzx.metaphysics.ui.activities.WebViewActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class JavaScriptinterface {
     private static final String TAG = "JavaScriptinterface";
@@ -54,32 +59,40 @@ public class JavaScriptinterface {
                 String navName = jsResondEntity.getNavite_page_name();
                 String link_url = jsResondEntity.getLink_url();
 
-                    if (navName.equals("zhougongjiemeng")){//周公解梦
-                        String zgjmURL = LocalConfigStore.getInstance().getH5_Base() + "/pages/zhou_gong" +
-                                "/oneiromancy?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&status_bar_height=" + 24;
+                if (navName.equals("zhougongjiemeng")) {//周公解梦
+                    String zgjmURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
+                            "/zhou_gong" +
+                            "/oneiromancy?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&status_bar_height=" + 24;
 
-                        activity.startActivity(WebViewActivity.newIntent(activity, zgjmURL, Constants.WEB_VIEW_TYPE_ZGJM));
+                    activity.startActivity(WebViewActivity.newIntent(activity, zgjmURL,
+                            Constants.WEB_VIEW_TYPE_ZGJM));
 
-                    }else if ("yijingzhanbu".equals(navName)){//易经占卜
-                        String yjzbURL = LocalConfigStore.getInstance().getH5_Base() + "/pages/divination" +
-                                "/divination?language=" + LocalConfigStore.getInstance().getAcceptLanguage();
-                        activity.startActivity(WebViewActivity.newIntent(activity, yjzbURL,Constants.WEB_VIEW_TYPE_YJZB));
+                } else if ("yijingzhanbu".equals(navName)) {//易经占卜
+                    String yjzbURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
+                            "/divination" +
+                            "/divination?language=" + LocalConfigStore.getInstance().getAcceptLanguage();
+                    activity.startActivity(WebViewActivity.newIntent(activity, yjzbURL,
+                            Constants.WEB_VIEW_TYPE_YJZB));
 
-                    }else if ("zengyunhongbao".equals(navName)){//增运红包
-                        String hbjfURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
-                                "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=0" + "&status_bar_height=" + 24;
+                } else if ("zengyunhongbao".equals(navName)) {//增运红包
+                    int times = P.getInt(Constants.add_fortune_times, 0);
 
-                        activity.startActivity(WebViewActivity.newIntent(activity, hbjfURL));
-                    }else if ("mingshu".equals(navName)){//命书
-                        ((MainActivity) activity).mBottomNavigation.setSelectedItemId(R.id.nav_book);
-                    }else if ("kongmingzuoguan".equals(navName)){//孔明做馆
-                        ((MainActivity) activity).mBottomNavigation.setSelectedItemId(R.id.nav_find);
-                    }else if ("meiriqifu".equals(navName)){//每日祈福
-                        activity.startActivity(new Intent(activity, DailyBlessActivity.class));
-                    }else if (TextUtils.isEmpty(navName)){
-                        activity.startActivity(WebViewActivity.newIntent(activity, link_url));
-                    }
+                    String hbjfURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
+                            "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=" + times + "&status_bar_height=" + 24;
+
+                    activity.startActivity(WebViewActivity.newIntent(activity, hbjfURL));
+                } else if ("mingshu".equals(navName)) {//命书
+                    EventBus.getDefault().post(new BookEvent());
+                    ((MainActivity) activity).mNavBottomContainer.setSelectedPosition(1);
+                } else if ("kongmingzuoguan".equals(navName)) {//孔明做馆
+                    EventBus.getDefault().post(new MasterEvent());
+                    ((MainActivity) activity).mNavBottomContainer.setSelectedPosition(2);
+                } else if ("meiriqifu".equals(navName)) {//每日祈福
+                    activity.startActivity(new Intent(activity, DailyBlessActivity.class));
+                } else if (TextUtils.isEmpty(navName)) {
+                    activity.startActivity(WebViewActivity.newIntent(activity, link_url));
                 }
+            }
 //                if (jumpType == 1) { //跳转类型  1 h5 2 原生
 //                    activity.startActivity(WebViewActivity.newIntent(activity,
 //                            jsResondEntity.getLink_url()));
@@ -103,7 +116,7 @@ public class JavaScriptinterface {
 //                }
 
 
-     //       }
+            //       }
         });
     }
 
@@ -138,6 +151,7 @@ public class JavaScriptinterface {
             @Override
             public void run() {
                 LogUtils.d(TAG, "closePage");
+
                 activity.finish();
             }
         });
@@ -153,7 +167,7 @@ public class JavaScriptinterface {
                 JsonObject properies = JsonParser.parseString(id).getAsJsonObject();
                 int member_id = properies.get("id").getAsInt();
 
-                activity.startActivity(PayMethodActivity.newIntent(activity, 0, member_id, 1,
+                activity.startActivity(PayMethordMemberActivity.newIntent(activity, 0, member_id, 1,
                         null, 2));
             }
         });

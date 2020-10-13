@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.didichuxing.doraemonkit.DoraemonKit;
 import com.mondo.logger.AndroidLogAdapter;
 import com.mondo.logger.Logger;
 import com.qbw.spm.P;
@@ -15,16 +14,27 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
+import com.zgzx.metaphysics.rongmessage.LuckMessage;
+import com.zgzx.metaphysics.rongmessage.LuckMessageItemProvider;
+import com.zgzx.metaphysics.rongmessage.OrderMessage;
+import com.zgzx.metaphysics.rongmessage.OrderMessageItemProvider;
+import com.zgzx.metaphysics.rongmessage.SystemMessage;
+import com.zgzx.metaphysics.rongmessage.SystemMessageItemProvider;
 import com.zgzx.metaphysics.utils.ActivityNavigateManager;
 import com.zgzx.metaphysics.utils.AppNotificationJava;
 import com.zgzx.metaphysics.utils.CrashHelper;
 
 import java.util.Locale;
 
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
 import io.reactivex.plugins.RxJavaPlugins;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.AnnotationNotFoundException;
 import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.Message;
 import io.rong.push.RongPushClient;
 import io.rong.push.pushconfig.PushConfig;
 
@@ -39,7 +49,8 @@ import static com.zgzx.metaphysics.BuildConfig.FLAVOR;
 public class MetaphysicsApplication extends Application {
     private static final String TAG = "Application";
     //TODO 融云区分线上和测试的key
-    public static String RONG_APPKEY = "sfci50a7sxpfi";
+    public static String RONG_APPKEY_TEST = "sfci50a7sxpfi";
+    public static String RONG_APPKEY_OFFICIAL = "y745wfm8yhp7v";
 
     static {
 
@@ -76,6 +87,9 @@ public class MetaphysicsApplication extends Application {
             }
 
         });
+
+        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationObserver());
+
     }
 
 
@@ -88,8 +102,8 @@ public class MetaphysicsApplication extends Application {
         super.onCreate();
         sInstance = this;
 
-        // 测试、调试工具
-        DoraemonKit.install(this);
+//        // 测试、调试工具
+//        DoraemonKit.install(this);
 
         // 页面导航
         registerActivityLifecycleCallbacks(ActivityNavigateManager.instance());
@@ -98,10 +112,11 @@ public class MetaphysicsApplication extends Application {
         initUM();
         // 处理RxJava取消订阅异常无法抛出导致闪退问题
         initializeRxJavaException();
-        initLanguage();
+        // initLanguage();
         initRongPush();
 
         P.init(this, FLAVOR.equals("web"));
+
 
         //创建影视通知渠道
         AppNotificationJava.createNotificationChannel(this,
@@ -114,16 +129,42 @@ public class MetaphysicsApplication extends Application {
     private void initRongPush() {
 
         PushConfig config = new PushConfig.Builder()
-                .enableMiPush("2882303761518684442", "zluerYz9Ildfw++3K/WJqQ==")
                 .enableHWPush(true)  // 配置华为推送
+                .enableMiPush("2882303761518684442", "5841868418442")
                 .enableMeiZuPush("3337892", "2ea4b23de30841cbbba8252db3204ae6") //配置魅族推送
                 .enableOppoPush("14de4398da8449aaac7e445c11a7a6ab",
                         "1d92ac80c66149d4a0f908833269102c")
                 .enableVivoPush(true)
-
                 .build();
         RongPushClient.setPushConfig(config);
-        RongIMClient.init(this, RONG_APPKEY);
+        RongIMClient.init(this, RONG_APPKEY_TEST);
+
+
+//        注册自定义消息类型
+        //订单
+        try {
+            RongIMClient.registerMessageType(OrderMessage.class);
+        } catch (AnnotationNotFoundException e) {
+            e.printStackTrace();
+        }
+        RongIM.registerMessageTemplate(new OrderMessageItemProvider());
+        //系统
+        try {
+            RongIMClient.registerMessageType(SystemMessage.class);
+        } catch (AnnotationNotFoundException e) {
+            e.printStackTrace();
+        }
+        RongIM.registerMessageTemplate(new SystemMessageItemProvider());
+
+        //运势
+        try {
+            RongIMClient.registerMessageType(LuckMessage.class);
+        } catch (AnnotationNotFoundException e) {
+            e.printStackTrace();
+        }
+        RongIM.registerMessageTemplate(new LuckMessageItemProvider());
+
+
         RongIMClient.setConnectionStatusListener(new RongIMClient.ConnectionStatusListener() {
             /**
              * 连接状态返回回调
@@ -135,31 +176,7 @@ public class MetaphysicsApplication extends Application {
             }
         });
 
-        RongIMClient.getInstance().setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageWrapperListener() {
-            /**
-             * 接收实时或者离线消息。
-             * 注意:
-             * 1. 针对接收离线消息时，服务端会将 200 条消息打成一个包发到客户端，客户端对这包数据进行解析。
-             * 2. hasPackage 标识是否还有剩余的消息包，left 标识这包消息解析完逐条抛送给 App 层后，剩余多少条。
-             * 如何判断离线消息收完：
-             * 1. hasPackage 和 left 都为 0；
-             * 2. hasPackage 为 0 标识当前正在接收最后一包（200条）消息，left 为 0 标识最后一包的最后一条消息也已接收完毕。
-             *
-             * @param message    接收到的消息对象
-             * @param left       每个数据包数据逐条上抛后，还剩余的条数
-             * @param hasPackage 是否在服务端还存在未下发的消息包
-             * @param offline    消息是否离线消息
-             * @return 是否处理消息。 如果 App 处理了此消息，返回 true; 否则返回 false 由 SDK 处理。
-             */
-            @Override
-            public boolean onReceived(final Message message, final int left, boolean hasPackage,
-                                      boolean offline) {
-                LogUtils.aTag("PUSH-application", message);
-                LogUtils.aTag("PUSH-application", message.getContent().toString());
-//                NotificationUtils.sendNoti(getContext(),message);
-                return false;
-            }
-        });
+        RongIMClient.setOnReceiveMessageListener(new MyReceiveMessageListener());
 
     }
 
@@ -207,5 +224,24 @@ public class MetaphysicsApplication extends Application {
     public static Context getContext() {
         return sInstance;
     }
+
+
+    public static boolean mIfAppOpening = false;
+
+    static class ApplicationObserver implements LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_START)
+        void onForeground() {
+            LogUtils.aTag(TAG, "onForeground!");
+            mIfAppOpening = true;
+        }
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+        void onBackground() {
+            LogUtils.aTag(TAG, "onBackground!");
+            mIfAppOpening = false;
+
+        }
+    }
+
 
 }

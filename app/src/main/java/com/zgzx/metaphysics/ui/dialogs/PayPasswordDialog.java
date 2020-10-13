@@ -59,6 +59,7 @@ public class PayPasswordDialog extends CenterPopupView {
                 if (s != null && s.length() == 6) {
                    // dismiss();
                     mConsumer.accept(mEtPassword.getText().toString());
+                    dialog.dismiss();
                 }
 
             }

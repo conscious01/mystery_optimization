@@ -3,6 +3,7 @@ package com.zgzx.metaphysics.ui.activities;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,22 +28,23 @@ import com.zgzx.metaphysics.controller.ApplyQuestionController;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.controller.views.impl.DialogRequestStatusView;
 import com.zgzx.metaphysics.model.entity.MasterDetailEntityNew;
-import com.zgzx.metaphysics.model.entity.OrderResultEntity;
+import com.zgzx.metaphysics.model.entity.OrderLifeBookEntity;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.ui.dialogs.BirthDateDialog;
 import com.zgzx.metaphysics.ui.dialogs.BirthPlaceDialog;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.DateUtils;
+import com.zgzx.metaphysics.utils.MathUtil;
 import com.zgzx.metaphysics.utils.ViewUtils;
 import com.zgzx.metaphysics.utils.encrypt.HMacMD5Util;
 import com.zgzx.metaphysics.utils.image.GlideEngine;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import and.fast.widget.image.add.AddImageLayout;
 import and.fast.widget.image.add.OnAddClickListener;
@@ -122,7 +124,6 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
     private ApplyQuestionController.ApplyQuestionPresenter mPresenter;
 
 
-
     @Override
     public int getContentLayoutId() {
         return R.layout.activity_ask_questions;
@@ -139,11 +140,16 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
     protected void initialize(Bundle savedInstanceState) {
 
 
-        ViewUtils.textViewDifferentColor(getString(R.string.ur_name),"*",tvName, Color.parseColor("#9A3E3E"));
-        ViewUtils.textViewDifferentColor(getString(R.string.ur_gender),"*",tvGender, Color.parseColor("#9A3E3E"));
-        ViewUtils.textViewDifferentColor(getString(R.string.q_boren_location),"*",tvBorn, Color.parseColor("#9A3E3E"));
-        ViewUtils.textViewDifferentColor(getString(R.string.q_bore_location),"*",tvLocation, Color.parseColor("#9A3E3E"));
-        ViewUtils.textViewDifferentColor(getString(R.string.question_detail),"*",tvQDetail, Color.parseColor("#9A3E3E"));
+        ViewUtils.textViewDifferentColor(getString(R.string.ur_name), "*", tvName,
+                Color.parseColor("#9A3E3E"));
+        ViewUtils.textViewDifferentColor(getString(R.string.ur_gender), "*", tvGender,
+                Color.parseColor("#9A3E3E"));
+        ViewUtils.textViewDifferentColor(getString(R.string.q_boren_location), "*", tvBorn,
+                Color.parseColor("#9A3E3E"));
+        ViewUtils.textViewDifferentColor(getString(R.string.q_bore_location), "*", tvLocation,
+                Color.parseColor("#9A3E3E"));
+        ViewUtils.textViewDifferentColor(getString(R.string.question_detail), "*", tvQDetail,
+                Color.parseColor("#9A3E3E"));
 
 
         ActivityTitleHelper.setTitle(this, R.string.ask_a_question);
@@ -154,12 +160,6 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
                     (MasterDetailEntityNew) intent.getSerializableExtra(Constants.EXT_TYPE);
         }
 
-        // 滑动到最底部
-//        KeyboardUtils.registerSoftInputChangedListener(this, height -> {
-//            if (height > 0 && (mEtQuestionTitle.isFocused() || mEtQuestionContent.isFocused())) {
-//                mScrollView.fullScroll(View.FOCUS_DOWN);
-//            }
-//        });
 
         // 添加照片
         mAddImageView.setOnAddClickListener(this);
@@ -180,13 +180,12 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
         mGroupTarget.check(R.id.radio_self);
         mTvAction.setEnabled(true);
         mTvQuestionType.setText("婚姻情感");
-        if (masterDetailEntityNew.getVip_discount()>0) {
-            tvAmount.setText("￥" + masterDetailEntityNew.getPrice() );
-            tvDiscount.setText(getString(R.string.member_1)+((int)(masterDetailEntityNew.getVip_discount()*10))+getString(R.string.discount));
-
-        }else {
+        if (masterDetailEntityNew.getVip_discount() > 0) {
             tvAmount.setText("￥" + masterDetailEntityNew.getPrice());
+            tvDiscount.setText(getString(R.string.member_1) + MathUtil.getDiscount(masterDetailEntityNew.getVip_discount()) + getString(R.string.discount));
 
+        } else {
+            tvAmount.setText("￥" + masterDetailEntityNew.getPrice());
         }
 
         mPresenter = new ApplyQuestionController.ApplyQuestionPresenter();
@@ -216,12 +215,6 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
     }
 
 
-//    @OnClick(R.id.tv_action)
-//    public void onViewClicked(View v) {
-//        startActivity(StateActivity.newIntent(v.getContext(), StateActivity.QUESTION));
-//    }
-
-
     @Override
     public void add() {
         PictureSelector.create(this)
@@ -234,7 +227,18 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
 
                     @Override
                     public void onResult(List<LocalMedia> result) {
-                        mAddImageView.addPath(result.stream().map(LocalMedia::getRealPath).collect(Collectors.toList()));
+                        List<String> pathList = new ArrayList<>();
+                        for (int i = 0; i < result.size(); i++) {
+                            if (!TextUtils.isEmpty(result.get(i).getCompressPath())) {
+                                pathList.add(result.get(i).getCompressPath());
+                            }
+                        }
+                        if (pathList != null && pathList.size() > 0) {
+                            mAddImageView.addPath(pathList);
+                        }
+
+//                        mAddImageView.addPath(result.stream().map(LocalMedia::getRealPath)
+//                        .collect(Collectors.toList()));
                     }
 
                     @Override
@@ -278,7 +282,7 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
                 BirthDateDialog.show(this, (time, timestamp, hour, calendarType) -> {
                     mTvDateBirth.setText(time);
                     mtimestamp = timestamp;
-                    mHour = DateUtils.getRealHour(hour,calendarType);
+                    mHour = DateUtils.getRealHour(hour, calendarType);
                     mcalendarType = calendarType;
 
                 });
@@ -340,8 +344,8 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
             String content = mEtQuestionContent.getText().toString();
             if (!mAddImageView.obtainData().isEmpty()) {
                 mPresenter.applyWithImage(nickName, gender, master_id, birth_day, birth_hour,
-                        calendar_type, birth_area, content, mAddImageView.obtainData(),this
-                ,LocalConfigStore.getInstance().getAk());
+                        calendar_type, birth_area, content, mAddImageView.obtainData(), this
+                        , LocalConfigStore.getInstance().getAk());
 
             } else {
                 Long time = new Date().getTime() / 1000;
@@ -364,15 +368,19 @@ public class AskQuestionsActivity extends BaseRequestActivity implements OnAddCl
                     e.printStackTrace();
                 }
                 mPresenter.apply(nickName, gender, master_id, birth_day, birth_hour,
-                        calendar_type, birth_area, content,LocalConfigStore.getInstance().getAk(),time + LocalConfigStore.getInstance().getTimestamp(),sign1);
+                        calendar_type, birth_area, content,
+                        LocalConfigStore.getInstance().getAk(),
+                        time + LocalConfigStore.getInstance().getTimestamp(), sign1);
             }
         }
     }
 
 
     @Override
-    public void onApplyResult(OrderResultEntity detail) {
-        OrderPayActivity.start(this, detail, Constants.PAY_ALI);
+    public void onApplyResult(OrderLifeBookEntity detail) {
+//        OrderPayActivity.start(this, detail, Constants.PAY_ALI);
+        startActivity(PayMethordMemberActivity.newIntent(this, detail,
+                Constants.TYPE_QUESTION_PAYING));
         finish();
     }
 }

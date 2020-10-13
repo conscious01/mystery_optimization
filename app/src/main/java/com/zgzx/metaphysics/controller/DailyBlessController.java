@@ -23,6 +23,7 @@ public interface DailyBlessController {
                     .subscribe(new ResponseObserver<>(this, mView, entity -> {
                         MonthBlessEntity monthBlessEntity = entity.getData();
                         mView.renderMothsDay(monthBlessEntity.getContinue_day(), monthBlessEntity.getUser_total(), monthBlessEntity.getToday_total());
+                        content.clear();
                         for (int i = 0; i < entity.getData().getMonth_data().size(); i++) {
                             content.add(entity.getData().getMonth_data().get(i).getContent());
                         }

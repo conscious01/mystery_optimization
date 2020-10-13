@@ -47,8 +47,8 @@ public class FortuneFragment2 extends BaseRequestFragment implements FortuneCont
     private FortuneController.Presenter mPresenter;
     private Calendar calendar;
     private int pos;
-    private final static int[] COLORS = new int[]{Color.parseColor("#FFDD88"), Color.parseColor("#FF7F2A")};
-
+    private final static int[] COLORS = new int[]{Color.parseColor("#FF7F2A"), Color.parseColor(
+            "#FFDD88")};
     public static Fragment instance(int pos) {
         FortuneFragment2 fragment = new FortuneFragment2();
         Bundle arguments = new Bundle();
@@ -133,6 +133,11 @@ public class FortuneFragment2 extends BaseRequestFragment implements FortuneCont
         mCircleProgressBar.setGradientColors(COLORS);
         mCircleProgressBar.setValue((float) score);
         mFortuneEvaluate.setText(fortune);
+
+    }
+
+    @Override
+    public void renderPersonalFortune(FortuneEntity.GeneralCommentBean generalCommentBean) {
 
     }
 

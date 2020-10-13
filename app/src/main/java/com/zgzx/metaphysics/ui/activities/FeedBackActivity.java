@@ -2,6 +2,7 @@ package com.zgzx.metaphysics.ui.activities;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.image.GlideEngine;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -130,7 +132,15 @@ public class FeedBackActivity extends BaseRequestActivity implements OnAddClickL
 
                     @Override
                     public void onResult(List<LocalMedia> result) {
-                        addImageView.addPath(result.stream().map(LocalMedia::getRealPath).collect(Collectors.toList()));
+                        List<String> pathList = new ArrayList<>();
+                        for (int i = 0; i < result.size(); i++) {
+                            if (!TextUtils.isEmpty(result.get(i).getCompressPath())) {
+                                pathList.add(result.get(i).getCompressPath());
+                            }
+                        }
+                        if (pathList != null && pathList.size() > 0) {
+                            addImageView.addPath(pathList);
+                        }
                     }
 
                     @Override

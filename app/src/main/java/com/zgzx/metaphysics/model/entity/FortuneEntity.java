@@ -1,22 +1,26 @@
 package com.zgzx.metaphysics.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 运程
  */
-public class FortuneEntity {
+public class FortuneEntity implements Serializable{
+
 
     /**
-     * fortune : {"whole":{"score":46,"notes":"凡事皆能逢凶化吉，会有贵人来帮助。凡事皆能逢凶化吉，会有贵人来帮助。"},"business":{"score":60,"notes":"容易发挥不错的领导能力，应该多做主导，好好运用一下。"},"relation":{"score":40,"notes":"今天的人际关係运势没有特别。"},"health":{"score":10,"notes":"容易产生碰撞，弄伤自己身体，也要注意容易打破东西。会较容易有疲態，建议尽量多点休息保持活力。易有血光之灾或水火之意外。容易偏执或性急，记得不要操之过急及感情用事，要注意六亲和健康。要注意面部头部容易受损，亦要留意与长辈关係，易有爭执。"},"love":{"score":70,"notes":"红鸞星动，桃花畅旺。"},"finances":{"score":50,"notes":"会有破财情况出现，要好好管理支出。支出会比较大，记得不要毫无节制乱花钱。整体财运向好，有机会得意外之财。得财比较辛苦，看钱会很重，而且比较节俭，建议减少无谓开支。可借兄弟姊妹或生意拍挡之力得到不错的财运。"}}
+     * fortune : {"whole":{"score":36,"notes":"凡事皆能逢凶化吉，会有贵人来帮助。凡事皆能逢凶化吉，会有贵人来帮助。","icon":""},"business":{"score":50,"notes":"今天的事业运势没有特别。","icon":""},"relation":{"score":34,"notes":"易犯官司、诉讼，受小人陷害或连累，遇事不讲实话或常会说谎，甚至口出狂言，处事记得小心為上。另外赌性亦会特别强，记得要多多控制自己。小心和父母兄弟、手足拍挡有口舌是非，建议要多多忍让，不要过份坚持己见。","icon":""},"health":{"score":14,"notes":"身体易有损伤。","icon":""},"love":{"score":50,"notes":"已婚者配偶能給到助力，而且与配偶相处和睦。未婚者宜经朋友、同学、同事介绍获得不错的姻缘。","icon":""},"finances":{"score":34,"notes":"情绪容易急躁，亦多是非，另外，耳、鼻、喉、小肠容易感到不适。易遭意外及被朋友连累等不如意之事。","icon":""}}
      * detail : 凡事皆能逢凶化吉，会有贵人来帮助。凡事皆能逢凶化吉，会有贵人来帮助。
-     * topic : {"id":4,"topic":"安全感","pic":"https://tools.foreseers.cn/lesson/lesson4.png","desc":"生命早期的体验教导你，让自己处於一个自然放松状况是不安全的，有时是因为父母之过於紧张，不断强调谨慎的必要。当你失去对自己固有本能的信任，便无法如是地信任实相。结果，你对於生命中的情况觉得没有安全感，很容易紧张，安全感成为生命主要的顾虑...","short_desc":"妄想一步登天跳过许多步骤，野心勃勃，没耐心，缺乏坚持和稳定度。","caution":"去学习改变，改变是唯一不变"}
-     * number : 4
-     * color : 银
-     * color_value : #E8E8E8
-     * date : 2020-08-07
-     * position : {"aviodance":"东","people":"西南","gambling":"东北","sickness":"西北","finance":"北"}
+     * topic : {"id":5,"topic":"恐惧","pic":"https://tools.foreseers.cn/lesson/lesson5.png","desc":"你的限制在於与能量没有连结。你学到的是：归於自己内在的中心和顺从自己并不安全。早在离开摇篮之前－你就接收到「我使人受不了」的讯息：太吵、佔用太多空间、太自私等等，所以就与自己的生命力切断了连结。你為此付出的代价，是对生命感到恐惧...","short_desc":"在依赖与独立的两个极端中摆盪。","caution":"要能节制过度自由"}
+     * number : 6
+     * color : 海军蓝
+     * color_value : #091F5C
+     * date : 2020-09-08
+     * position : {"aviodance":"西北","people":"东","gambling":"西","sickness":"北","finance":"西南"}
      * scope : []
+     * general_comment : {"average":36,"tips":"今天运势只有一般般，凡事小心谨慎！","add_fortune_score":12}
+     * detail_icons : ["https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/fortune/yskt.png","https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/fortune/zyts.png"]
      */
 
     private FortuneBean fortune;
@@ -28,14 +32,8 @@ public class FortuneEntity {
     private String date;
     private PositionBean position;
     private GeneralCommentBean general_comment;
+    private List<?> scope;
     private List<String> detail_icons;
-    public GeneralCommentBean getGeneral_comment() {
-        return general_comment;
-    }
-
-    public void setGeneral_comment(GeneralCommentBean general_comment) {
-        this.general_comment = general_comment;
-    }
 
     public FortuneBean getFortune() {
         return fortune;
@@ -101,6 +99,22 @@ public class FortuneEntity {
         this.position = position;
     }
 
+    public GeneralCommentBean getGeneral_comment() {
+        return general_comment;
+    }
+
+    public void setGeneral_comment(GeneralCommentBean general_comment) {
+        this.general_comment = general_comment;
+    }
+
+    public List<?> getScope() {
+        return scope;
+    }
+
+    public void setScope(List<?> scope) {
+        this.scope = scope;
+    }
+
     public List<String> getDetail_icons() {
         return detail_icons;
     }
@@ -111,12 +125,12 @@ public class FortuneEntity {
 
     public static class FortuneBean {
         /**
-         * whole : {"score":46,"notes":"凡事皆能逢凶化吉，会有贵人来帮助。凡事皆能逢凶化吉，会有贵人来帮助。"}
-         * business : {"score":60,"notes":"容易发挥不错的领导能力，应该多做主导，好好运用一下。"}
-         * relation : {"score":40,"notes":"今天的人际关係运势没有特别。"}
-         * health : {"score":10,"notes":"容易产生碰撞，弄伤自己身体，也要注意容易打破东西。会较容易有疲態，建议尽量多点休息保持活力。易有血光之灾或水火之意外。容易偏执或性急，记得不要操之过急及感情用事，要注意六亲和健康。要注意面部头部容易受损，亦要留意与长辈关係，易有爭执。"}
-         * love : {"score":70,"notes":"红鸞星动，桃花畅旺。"}
-         * finances : {"score":50,"notes":"会有破财情况出现，要好好管理支出。支出会比较大，记得不要毫无节制乱花钱。整体财运向好，有机会得意外之财。得财比较辛苦，看钱会很重，而且比较节俭，建议减少无谓开支。可借兄弟姊妹或生意拍挡之力得到不错的财运。"}
+         * whole : {"score":36,"notes":"凡事皆能逢凶化吉，会有贵人来帮助。凡事皆能逢凶化吉，会有贵人来帮助。","icon":""}
+         * business : {"score":50,"notes":"今天的事业运势没有特别。","icon":""}
+         * relation : {"score":34,"notes":"易犯官司、诉讼，受小人陷害或连累，遇事不讲实话或常会说谎，甚至口出狂言，处事记得小心為上。另外赌性亦会特别强，记得要多多控制自己。小心和父母兄弟、手足拍挡有口舌是非，建议要多多忍让，不要过份坚持己见。","icon":""}
+         * health : {"score":14,"notes":"身体易有损伤。","icon":""}
+         * love : {"score":50,"notes":"已婚者配偶能給到助力，而且与配偶相处和睦。未婚者宜经朋友、同学、同事介绍获得不错的姻缘。","icon":""}
+         * finances : {"score":34,"notes":"情绪容易急躁，亦多是非，另外，耳、鼻、喉、小肠容易感到不适。易遭意外及被朋友连累等不如意之事。","icon":""}
          */
 
         private Bean whole;
@@ -176,13 +190,15 @@ public class FortuneEntity {
 
         public static class Bean {
             /**
-             * score : 46
+             * score : 36
              * notes : 凡事皆能逢凶化吉，会有贵人来帮助。凡事皆能逢凶化吉，会有贵人来帮助。
+             * icon :
              */
 
             private int score;
             private String notes;
             private String icon;
+
             public int getScore() {
                 return score;
             }
@@ -208,16 +224,17 @@ public class FortuneEntity {
             }
         }
 
+
     }
 
     public static class TopicBean {
         /**
-         * id : 4
-         * topic : 安全感
-         * pic : https://tools.foreseers.cn/lesson/lesson4.png
-         * desc : 生命早期的体验教导你，让自己处於一个自然放松状况是不安全的，有时是因为父母之过於紧张，不断强调谨慎的必要。当你失去对自己固有本能的信任，便无法如是地信任实相。结果，你对於生命中的情况觉得没有安全感，很容易紧张，安全感成为生命主要的顾虑...
-         * short_desc : 妄想一步登天跳过许多步骤，野心勃勃，没耐心，缺乏坚持和稳定度。
-         * caution : 去学习改变，改变是唯一不变
+         * id : 5
+         * topic : 恐惧
+         * pic : https://tools.foreseers.cn/lesson/lesson5.png
+         * desc : 你的限制在於与能量没有连结。你学到的是：归於自己内在的中心和顺从自己并不安全。早在离开摇篮之前－你就接收到「我使人受不了」的讯息：太吵、佔用太多空间、太自私等等，所以就与自己的生命力切断了连结。你為此付出的代价，是对生命感到恐惧...
+         * short_desc : 在依赖与独立的两个极端中摆盪。
+         * caution : 要能节制过度自由
          */
 
         private int id;
@@ -278,18 +295,18 @@ public class FortuneEntity {
 
     public static class PositionBean {
         /**
-         * aviodance : 东
-         * people : 西南
-         * gambling : 东北
-         * sickness : 西北
-         * finance : 北
+         * aviodance : 西北
+         * people : 东
+         * gambling : 西
+         * sickness : 北
+         * finance : 西南
          */
 
-        private String aviodance;//避难位
-        private String people;//人缘位
+        private String aviodance;
+        private String people;
         private String gambling;
-        private String sickness;//病床位
-        private String finance;   //财运位
+        private String sickness;
+        private String finance;
 
         public String getAviodance() {
             return aviodance;
@@ -336,10 +353,12 @@ public class FortuneEntity {
         /**
          * average : 36
          * tips : 今天运势只有一般般，凡事小心谨慎！
+         * add_fortune_score : 12
          */
 
         private int average;
         private String tips;
+        private int add_fortune_score;
 
         public int getAverage() {
             return average;
@@ -355,6 +374,14 @@ public class FortuneEntity {
 
         public void setTips(String tips) {
             this.tips = tips;
+        }
+
+        public int getAdd_fortune_score() {
+            return add_fortune_score;
+        }
+
+        public void setAdd_fortune_score(int add_fortune_score) {
+            this.add_fortune_score = add_fortune_score;
         }
     }
 }

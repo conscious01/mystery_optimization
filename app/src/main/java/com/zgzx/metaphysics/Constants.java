@@ -33,7 +33,8 @@ public interface Constants {
 
 
     String EXT_AMOUNT = "AMOUNT";
-    String EXT_TYPE = "TYPE";
+    String EXT_TYPE = "EXT_TYPE";
+    int TYPE_QUESTION_PAYING = 3; //订单跳进去
     String EXT_ID = "ID";
     int HOME_REQUEST_CODE_FORYUNE = 0X002;
     int HOME_REQUEST_CODE_FATE_BOOK = 0X001;
@@ -86,4 +87,8 @@ public interface Constants {
      * 易经占卜
      */
     int WEB_VIEW_TYPE_YJZB = 2;
+    String add_fortune_times = "add_fortune_times";
+    String KYE_QUESTION_ID = "KYE_QUESTION_ID";
+    int TYPE_QUESTION_PAYING_QUERY = 4;
+    String NEED_GO_MAIN_WHEN_FINISH = "NEED_GO_MAIN_WHEN_FINISH";
 }

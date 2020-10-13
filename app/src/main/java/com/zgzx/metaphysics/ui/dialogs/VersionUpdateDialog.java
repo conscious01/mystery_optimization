@@ -79,7 +79,9 @@ public class VersionUpdateDialog extends Dialog implements ICallbackResult<Versi
                         View space = dialog.findViewById(R.id.space);
                         View dialogButCancel = dialog.findViewById(R.id.versionchecklib_version_dialog_cancel);
                         dialogButCancel.setVisibility(data.isForce() ? View.GONE : View.VISIBLE);
+                        dialog.setCancelable(data.isForce()?false:true);
                         space.setVisibility(dialogButCancel.getVisibility());
+
                         return dialog;
                     })
                     // 此处context没实质意义

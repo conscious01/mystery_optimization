@@ -4,6 +4,7 @@ import java.util.List;
 
 public class HomeFouncationEntity {
 
+
     private List<Icon1Bean> icon1;
     private List<Icon2Bean> icon2;
     private List<BannerBean> banner;
@@ -34,16 +35,20 @@ public class HomeFouncationEntity {
 
     public static class Icon1Bean {
         /**
-         * id : 1
-         * name : 运势
-         * icon : https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/index/entry_fortune.png
-         * link_url : https://www.baidu.com/
+         * id : 3
+         * name : 每日祈福
+         * icon : https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/v1_0_0/home_cp_mrqf.png
+         * link_url :
+         * jump_type : 2
+         * navite_page_name : meiriqifu
          */
 
         private int id;
         private String name;
         private String icon;
         private String link_url;
+        private int jump_type;
+        private String navite_page_name;
 
         public int getId() {
             return id;
@@ -75,21 +80,41 @@ public class HomeFouncationEntity {
 
         public void setLink_url(String link_url) {
             this.link_url = link_url;
+        }
+
+        public int getJump_type() {
+            return jump_type;
+        }
+
+        public void setJump_type(int jump_type) {
+            this.jump_type = jump_type;
+        }
+
+        public String getNavite_page_name() {
+            return navite_page_name;
+        }
+
+        public void setNavite_page_name(String navite_page_name) {
+            this.navite_page_name = navite_page_name;
         }
     }
 
     public static class Icon2Bean {
         /**
-         * id : 3
-         * name : 师傅
-         * icon : https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/index/entry_master.png
+         * id : 8
+         * name : 小六壬
+         * icon : http://mystery-oss.oss-cn-hongkong.aliyuncs.com/admin/image/20200924/8e86ca9fc9a02dd779adc68f33cddaf74c07dc6c.png
          * link_url : https://www.baidu.com/
+         * jump_type : 1
+         * navite_page_name :
          */
 
         private int id;
         private String name;
         private String icon;
         private String link_url;
+        private int jump_type;
+        private String navite_page_name;
 
         public int getId() {
             return id;
@@ -121,21 +146,41 @@ public class HomeFouncationEntity {
 
         public void setLink_url(String link_url) {
             this.link_url = link_url;
+        }
+
+        public int getJump_type() {
+            return jump_type;
+        }
+
+        public void setJump_type(int jump_type) {
+            this.jump_type = jump_type;
+        }
+
+        public String getNavite_page_name() {
+            return navite_page_name;
+        }
+
+        public void setNavite_page_name(String navite_page_name) {
+            this.navite_page_name = navite_page_name;
         }
     }
 
     public static class BannerBean {
         /**
-         * id : 8
-         * name : 咨询
-         * icon : https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/index/entry_consult.png
-         * link_url : https://www.baidu.com/
+         * id : 1
+         * name : 真命之书
+         * icon : https://kongming365.oss-cn-shenzhen.aliyuncs.com/mystery/v1_0_0/home_cp_zmzs.png
+         * link_url :
+         * jump_type : 2
+         * navite_page_name : mingshu
          */
 
         private int id;
         private String name;
         private String icon;
         private String link_url;
+        private int jump_type;
+        private String navite_page_name;
 
         public int getId() {
             return id;
@@ -167,6 +212,22 @@ public class HomeFouncationEntity {
 
         public void setLink_url(String link_url) {
             this.link_url = link_url;
+        }
+
+        public int getJump_type() {
+            return jump_type;
+        }
+
+        public void setJump_type(int jump_type) {
+            this.jump_type = jump_type;
+        }
+
+        public String getNavite_page_name() {
+            return navite_page_name;
+        }
+
+        public void setNavite_page_name(String navite_page_name) {
+            this.navite_page_name = navite_page_name;
         }
     }
 }

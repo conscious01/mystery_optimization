@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="详情"
                 android:textColor="#ff75797e"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="wrap_content"

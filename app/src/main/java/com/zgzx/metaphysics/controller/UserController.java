@@ -53,6 +53,17 @@ public interface UserController {
             DataRepository.getInstance().getAdConfig().compose(SchedulersTransformer.transformer())
                     .subscribe(new ResponseObserver<>(this, mView,
                             entity -> mView.onGetAdConfig(entity.getData())));
+
+            DataRepository.getInstance().getAdCount().compose(SchedulersTransformer.transformer())
+                    .subscribe(new ResponseObserver<>(this, mView,
+                            entity -> mView.onRenderCount(entity.getData().getCount())));
+        }
+
+
+        public void getRongToken() {
+            DataRepository.getInstance().getRongToken().compose(SchedulersTransformer.transformer())
+                    .subscribe(new ResponseObserver<>(this, mView,
+                            entity -> mView.onGetRongToken(entity.getData())));
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -71,8 +82,13 @@ public interface UserController {
         void onUserAssets(UserAssetEntity userAssetEntity);
 
         void onGetH5Base(H5BaseEntity h5BaseEntity);
+
         void onGetConfigBase(UrlConfigEntity urlConfigEntity);
+
         void onGetAdConfig(AdEntity urlConfigEntity);
+
+        void onGetRongToken(String rongToken);
+        void onRenderCount(int count);
     }
 
 }

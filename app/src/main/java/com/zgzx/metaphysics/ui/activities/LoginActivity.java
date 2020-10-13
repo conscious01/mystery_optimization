@@ -25,6 +25,7 @@ import com.zgzx.metaphysics.model.entity.UserDetailEntity;
 import com.zgzx.metaphysics.model.event.LoginSuccessEvent;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.ui.dialogs.VersionUpdateDialog;
+
 import com.zgzx.metaphysics.utils.AndroidUtil;
 import com.zgzx.metaphysics.utils.filters.ChineseInputFilter;
 import com.zgzx.metaphysics.utils.watchers.EmptyRule;
@@ -99,6 +100,8 @@ public class LoginActivity extends BaseRequestActivity implements ISingleRequest
                         mTvRegion.getText().toString(),
                         mEtMobileNumber.getText().toString(),
                         mEtPassword.getText().toString());
+                LocalConfigStore.getInstance().saveUserLoginInfo(mEtMobileNumber.getText().toString(),mTvRegion.getText().toString(),
+                        mEtPassword.getText().toString());
                 break;
 
             case R.id.tv_region: // 手机区号
@@ -129,8 +132,7 @@ public class LoginActivity extends BaseRequestActivity implements ISingleRequest
     @Override
     public void result(UserDetailEntity response) {
         LocalConfigStore.getInstance().saveUserInfo(response);
-        LocalConfigStore.getInstance().saveUserLoginInfo(mEtMobileNumber.getText().toString(),mTvRegion.getText().toString(),
-                mEtPassword.getText().toString());
+
         EventBus.getDefault().post(new LoginSuccessEvent());
 
        startActivityAndFinish(new Intent(this, MainActivity.class));

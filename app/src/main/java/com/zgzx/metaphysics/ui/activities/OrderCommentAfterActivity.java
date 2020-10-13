@@ -61,7 +61,6 @@ public class OrderCommentAfterActivity extends BaseActivity implements View.OnCl
         mPoints = getIntent().getFloatExtra(Constants.EXT_TYPE, 5.0f);
         tvPoints.setText((int) mPoints + StringUtil.getScoreDes((int) mPoints, this));
         simpleRatingBar.setRating(mPoints);
-
         tvGo2Home.setOnClickListener(this);
     }
 
@@ -71,8 +70,7 @@ public class OrderCommentAfterActivity extends BaseActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         EventBus.getDefault().post(new Go2HomePageEvent());
-        startActivity(new Intent(OrderCommentAfterActivity.this, MainActivity.class));
-        finish();
+        startActivityAndFinish(new Intent(OrderCommentAfterActivity.this, MainActivity.class));
 
     }
 }

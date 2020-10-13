@@ -34,7 +34,7 @@ public class LineView extends View {
 
     private static final String TAG = "LineView";
     //    private int[] yLables = {5, 8, 11, 14, 17, 20}; //固定y轴数字
-    private int[] yLables = {50, 60, 70, 80, 90}; //固定y轴数字
+    private int[] yLables = {10, 30, 50, 70, 90}; //固定y轴数字
     private Context mContext;
     private List<String> xValues = new ArrayList<>();
     private List<String> yValuesString = new ArrayList<>();
@@ -56,7 +56,7 @@ public class LineView extends View {
     private int textToXYAxisGap = dip2px(10); // xy轴的文字距xy线的距离
     private int lableCountY = yLables.length; // Y轴刻度个数
     private int leftRightExtra = intervalX / 3; //x轴左右向外延伸的长度
-    private float minValueY = 50; // y轴最小值
+    private float minValueY = 10; // y轴最小值
     private float maxValueY = 90; // y轴最大值
     private int bigCircleR = 7; //折线图中的圆圈
     private int smallCircleR = 5; //折线图中为了避免折线穿透的圆圈

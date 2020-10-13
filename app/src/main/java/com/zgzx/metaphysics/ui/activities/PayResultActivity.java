@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.model.entity.PayResultEntity;
+import com.zgzx.metaphysics.model.event.RefreshOrderEvent;
 import com.zgzx.metaphysics.model.event.RefreshUseINFOEvent;
 import com.zgzx.metaphysics.ui.core.BaseActivity;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
@@ -82,13 +83,14 @@ public class PayResultActivity extends BaseActivity {
     public void onViewClicked() {
         EventBus.getDefault().post(new RefreshUseINFOEvent());
         if (mPayResult.getCls() != null) {
-
-//            if (mPayResult.getCls() instanceof MyOrderActivity) {
-//
-//
-//            }
-
-            startActivity(new Intent(PayResultActivity.this, mPayResult.getCls()).putExtra(Constants.KEY, 1));
+            //问答支付成功去我的问答页面，待解答页面，问答支付失败去我的问答待付款页面
+            if (mPayResult.isPayResultBoolean()) {
+                EventBus.getDefault().post(new RefreshOrderEvent());
+                startActivity(new Intent(PayResultActivity.this, mPayResult.getCls()).putExtra(Constants.KEY, 1));
+            } else {
+                EventBus.getDefault().post(new RefreshOrderEvent());
+                startActivity(new Intent(PayResultActivity.this, mPayResult.getCls()).putExtra(Constants.KEY, 0));
+            }
         }
 
         finish();

@@ -4,6 +4,7 @@ package com.zgzx.metaphysics.model;
 import com.zgzx.metaphysics.BuildConfig;
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
+import com.zgzx.metaphysics.model.entity.AdCountEntity;
 import com.zgzx.metaphysics.model.entity.AdEntity;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.AreaCodeEntity;
@@ -117,6 +118,7 @@ public class RemoteDataSource implements IDataSource {
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20,TimeUnit.SECONDS)
                 //.addInterceptor(new EncryptParameterInterceptor())
                 .addInterceptor(new CommonParameterInterceptor())
                 .addNetworkInterceptor(logInterceptor)
@@ -501,10 +503,10 @@ public class RemoteDataSource implements IDataSource {
     }
 
     @Override
-    public Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id, String ak,
+    public Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id,int discount_id, String ak,
                                                                      long timestamp,
                                                                      String sign) {
-        return mWebServiceApi.buyQuestion(pay_type, issue_id, ak, timestamp, sign);
+        return mWebServiceApi.buyQuestion(pay_type, issue_id,discount_id, ak, timestamp, sign);
     }
 
     @Override
@@ -558,17 +560,17 @@ public class RemoteDataSource implements IDataSource {
     }
 
     @Override
-    public Observable<BasicResponseEntity<OrderResultEntity>> askQuestion(String nickname,
-                                                                          int gender,
-                                                                          int master_id,
-                                                                          int birth_day,
-                                                                          int birth_hour,
-                                                                          int calendar_type,
-                                                                          String birth_area,
-                                                                          String content,
-                                                                          String paths,String ak,
-                                                                          long timestamp,
-                                                                          String sign) {
+    public Observable<BasicResponseEntity<OrderLifeBookEntity>> askQuestion(String nickname,
+                                                                             int gender,
+                                                                             int master_id,
+                                                                             int birth_day,
+                                                                             int birth_hour,
+                                                                             int calendar_type,
+                                                                             String birth_area,
+                                                                             String content,
+                                                                             String paths, String ak,
+                                                                             long timestamp,
+                                                                             String sign) {
         return mWebServiceApi.askQuestion(nickname, gender, master_id,
                 birth_day, birth_hour, calendar_type, birth_area, content, paths,ak,timestamp,sign);
     }
@@ -593,6 +595,11 @@ public class RemoteDataSource implements IDataSource {
     public Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailUser(int issue_id) {
         return mWebServiceApi.getAnswerDetailUser(new QuestionDetailParams(issue_id));
 
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<OrderLifeBookEntity>> getNotPaidQuestionDetail(int issue_id) {
+        return mWebServiceApi.getNotPaidQuestionDetail(new QuestionDetailParams(issue_id));
     }
 
     @Override
@@ -670,6 +677,16 @@ public class RemoteDataSource implements IDataSource {
     @Override
     public Observable<BasicResponseEntity<AddfortuneDataEntity>> getAddfortuneData(int timestamp) {
         return mWebServiceApi.getAddfortuneData(new TimestampParams(timestamp));
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<String>> getRongToken() {
+        return mWebServiceApi.getRongToken();
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<AdCountEntity>> getAdCount() {
+        return mWebServiceApi.getAdCount();
     }
 
     @Override

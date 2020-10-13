@@ -15,6 +15,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -49,6 +51,8 @@ import java.util.Locale;
 import java.util.Observer;
 
 import me.jessyan.autosize.utils.ScreenUtils;
+
+import static android.view.View.DRAWING_CACHE_QUALITY_HIGH;
 
 
 public class AndroidUtil {
@@ -112,7 +116,19 @@ public class AndroidUtil {
 //                ? Locale.JAPANESE
 //                : Locale.SIMPLIFIED_CHINESE
                 ;
-
+//        Locale locale = new Locale(languageCountry.getLanguage(), languageCountry.getCountry());
+  //      Locale.setDefault(locale);
+//        Resources res = context.getResources();
+//        if (null != res) {
+//            Configuration config = res.getConfiguration();
+//            if (null != config) {
+//                config.locale = locale;
+//            }
+//            DisplayMetrics dm = res.getDisplayMetrics();
+//            if (null != config && null != dm) {
+//                res.updateConfiguration(config, dm);
+//            }
+//        }
         // 刷新
         Resources resources = context.getResources();
         DisplayMetrics displayMetrics = resources.getDisplayMetrics();
@@ -262,6 +278,10 @@ public class AndroidUtil {
         }
         return stringList.toArray(new String[stringList.size()]);
     }
-
+    public static boolean hasNetwork(Context context) {
+        ConnectivityManager cManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cManager.getActiveNetworkInfo();
+        return info != null && info.isAvailable();
+    }
 
 }

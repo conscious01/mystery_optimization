@@ -2,10 +2,7 @@ package com.zgzx.metaphysics.controller.views.impl;
 
 import android.view.LayoutInflater;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -15,6 +12,9 @@ import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.utils.AppToast;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 分页 View
@@ -141,6 +141,8 @@ public class PaginationView<T> implements IPaginationView<T> {
         } else {
             mSmartRefreshLayout.finishLoadMore();
             AppToast.showLong(throwable.getMessage());
+            LogUtils.i(throwable.getMessage());
+
         }
     }
 

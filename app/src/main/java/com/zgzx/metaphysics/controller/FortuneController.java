@@ -46,8 +46,9 @@ public interface FortuneController {
                                 relation, health));
 
                         // 个人运势
-                        mView.renderPersonalFortune(data.getGeneral_comment().getAverage(),
+                        mView.renderPersonalFortune(data.getGeneral_comment().getAverage() + data.getGeneral_comment().getAdd_fortune_score(),
                                 data.getDetail());
+                        mView.renderPersonalFortune(data.getGeneral_comment());
 
                         mView.renderMoudleImg(data.getDetail_icons());
                         mView.renderFortuneAll(entity.getData());
@@ -104,6 +105,8 @@ public interface FortuneController {
 
         // 个人运程
         void renderPersonalFortune(int score, String fortune);
+
+        void renderPersonalFortune(FortuneEntity.GeneralCommentBean generalCommentBean);
 
         // 功能图片
         void renderMoudleImg(List<String> imgs);

@@ -20,13 +20,7 @@
         android:layout_marginBottom="@dimen/dp_120"
         android:background="@drawable/icon_adver_kmz" />
 
-    <ImageView
-        android:id="@+id/img_layout_paly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/dp_2"
-        android:background="@drawable/icon_ad_play" />
+
 
     <LinearLayout
         android:id="@+id/Ad_layout_paly"
@@ -35,6 +29,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="3dp"
         android:gravity="center"
+        android:background="@drawable/icon_ad_play"
         android:orientation="horizontal">
 
         <ImageView

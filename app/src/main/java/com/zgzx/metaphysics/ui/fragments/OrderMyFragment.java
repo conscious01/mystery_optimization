@@ -15,7 +15,7 @@ import com.zgzx.metaphysics.model.entity.OrderResultEntity;
 import com.zgzx.metaphysics.model.event.RefreshOrderEvent;
 import com.zgzx.metaphysics.ui.activities.OrderCommentActivity;
 import com.zgzx.metaphysics.ui.activities.OrderDetailActivity;
-import com.zgzx.metaphysics.ui.activities.OrderPayActivity;
+import com.zgzx.metaphysics.ui.activities.PayMethordMemberActivity;
 import com.zgzx.metaphysics.ui.adapters.OrderAdapter;
 import com.zgzx.metaphysics.ui.core.BaseRequestFragment;
 import com.zgzx.metaphysics.ui.dialogs.OrderCommonDialog;
@@ -164,8 +164,9 @@ public class OrderMyFragment extends BaseRequestFragment implements
 
     @Override
     public void onGo2Pay(OrderResultEntity item) {
-        OrderPayActivity.start(getContext(), item, Constants.PAY_ALI);
-
+//        OrderPayActivity.start(getContext(), item, Constants.PAY_ALI);
+        startActivity(PayMethordMemberActivity.newIntent(getContext(), item.getId(),
+                Constants.TYPE_QUESTION_PAYING_QUERY));
     }
 
     @Override

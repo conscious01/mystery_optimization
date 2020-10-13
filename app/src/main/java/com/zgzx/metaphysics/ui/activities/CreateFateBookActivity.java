@@ -3,8 +3,11 @@ package com.zgzx.metaphysics.ui.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,12 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+
+import androidx.annotation.NonNull;
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
+
+import com.github.penfeizhou.animation.apng.APNGAssetLoader;
+import com.github.penfeizhou.animation.apng.APNGDrawable;
 import com.jaeger.library.StatusBarUtil;
-import com.kris520.apngdrawable.ApngDrawable;
-import com.kris520.apngdrawable.ApngImageLoadingListener;
-import com.kris520.apngdrawable.ApngImageUtils;
-import com.kris520.apngdrawable.ApngLoaderStart;
-import com.kris520.apngdrawable.ApngPlayListener;
 import com.lxj.xpopup.core.BasePopupView;
 import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.R;
@@ -30,6 +34,8 @@ import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
 import com.zgzx.metaphysics.ui.dialogs.BirthDateDialog;
 import com.zgzx.metaphysics.utils.ActivityTitleHelper;
 import com.zgzx.metaphysics.utils.AppToast;
+
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -62,10 +68,12 @@ public class CreateFateBookActivity extends BaseRequestActivity implements ISing
         return new Intent(context, CreateFateBookActivity.class)
                 .putExtra(Constants.TYPE, type);
     }
+
     @Override
     protected IStatusView createStatusView() {
         return new ToastRequestStatusView(this);
     }
+
     @Override
     protected void initStatusBar() {
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
@@ -81,46 +89,48 @@ public class CreateFateBookActivity extends BaseRequestActivity implements ISing
     protected void initialize(Bundle savedInstanceState) {
 
         ActivityTitleHelper.setTitle(this, R.string.tv_title);
-        ApngLoaderStart.init(this);
+
         iv_arrow_back.setOnClickListener(v -> onBackPressed());
 
         mPresenter = new SupplementInformationPresenter();
         mPresenter.setModelAndView(this);
         getLifecycle().addObserver(mPresenter);
-        ApngLoaderStart.loadImage(ApngImageUtils.Scheme.ASSETS.wrap("icon_create_bg.png"), kmImgView_create, new ApngImageLoadingListener(new ApngPlayListener() {
+        kmImgView_create.setVisibility(View.VISIBLE);
+        APNGAssetLoader assetLoader = new APNGAssetLoader(this, "icon_create_bg.png");
+// 创建 Drawable
+        APNGDrawable apngDrawable = new APNGDrawable(assetLoader);
+        apngDrawable.setLoopLimit(1);
+        apngDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
             @Override
-            public void onAnimationStart(ApngDrawable drawable) {
-
+            public void onAnimationStart(Drawable drawable) {
+                super.onAnimationStart(drawable);
             }
 
             @Override
-            public void onAnimationEnd(ApngDrawable drawable) {
-
-
-            }
-
-            @Override
-            public void onAnimationRepeat(ApngDrawable drawable) {
+            public void onAnimationEnd(Drawable drawable) {
+                super.onAnimationEnd(drawable);
                 kmImgView_create.setVisibility(View.GONE);
                 create_layout.setVisibility(View.VISIBLE);
-                drawable.stop();
 
             }
-        }));
+        });
 
-
+// 设置后自动播放
+        kmImgView_create.setImageDrawable(apngDrawable);
     }
 
-    @OnClick({R.id.mCreateBtn, R.id.edit_date,R.id.iv_arrow_back_layout})
+
+    @OnClick({R.id.mCreateBtn, R.id.edit_date, R.id.iv_arrow_back_layout, R.id.kmImgView_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+
             case R.id.edit_date:
                 // 出生日期
                 BirthDateDialog.show(this, (time, timestamp, hour, calendarType) -> {
                     switch (calendarType) {
                         case 1://农历
                             edit_date.setText(time);
-                            mPresenter.setTime(timestamp, hour+1, calendarType);
+                            mPresenter.setTime(timestamp, hour, calendarType);
                             break;
                         case 2://阳历
                             switch (hour) {
@@ -172,7 +182,7 @@ public class CreateFateBookActivity extends BaseRequestActivity implements ISing
                 createFateBook();
                 break;
             case R.id.iv_arrow_back_layout:
-             onBackPressed();
+                onBackPressed();
                 break;
         }
     }
@@ -198,7 +208,6 @@ public class CreateFateBookActivity extends BaseRequestActivity implements ISing
             AppToast.showLong(getString(R.string.error_selected_birth_date));
             return;
         }
-
 
 
         // 创建命书

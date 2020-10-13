@@ -1,6 +1,7 @@
 package com.zgzx.metaphysics.ui.activities;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -10,26 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
+
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.github.penfeizhou.animation.apng.APNGAssetLoader;
+import com.github.penfeizhou.animation.apng.APNGDrawable;
 import com.haibin.calendarview.CalendarView;
 import com.jaeger.library.StatusBarUtil;
 
+import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.DailyBlessController;
 import com.zgzx.metaphysics.controller.views.core.IStatusView;
 import com.zgzx.metaphysics.controller.views.impl.ToastRequestStatusView;
 import com.zgzx.metaphysics.ui.core.BaseRequestActivity;
-import com.zgzx.metaphysics.ui.dialogs.BlessDialog;
-import com.zgzx.metaphysics.utils.AndroidUtil;
-import com.zgzx.metaphysics.utils.DateUtils;
-
-
-import java.text.ParseException;
+import com.zgzx.metaphysics.widgets.sign.view.DateAdapter;
+import com.zgzx.metaphysics.widgets.sign.view.SignView;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,10 +38,10 @@ import butterknife.OnClick;
 /**
  * 每日祈福
  */
-public class DailyBlessActivity extends BaseRequestActivity implements DailyBlessController.View, CalendarView.OnCalendarSelectListener {
-    @BindView(R.id.mCalendarViewBless)
-    CalendarView mCalendarViewBless;
+public class DailyBlessActivity extends BaseRequestActivity implements DailyBlessController.View {
 
+    @BindView(R.id.signDate)
+    SignView signDate;
     @BindView(R.id.tv_calendar_date)
     TextView tv_calendar_date;
     @BindView(R.id.img_ten)
@@ -51,7 +51,8 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
     ImageView iv_arrow_back;
     @BindView(R.id.img_ge)
     ImageView img_ge;
-
+    @BindView(R.id.bless_btn)
+    ImageView bless_btn;
     @BindView(R.id.tv_bless_day)
     TextView tv_bless_day;
     @BindView(R.id.tv_bless_day_contiune)
@@ -64,7 +65,7 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
             R.drawable.icon_eight, R.drawable.icon_nine};
     private String todays, date;
     private DailyBlessController.Presenter mPresenter;
-
+    private static final String BLESS_IMAGE_PATH = "assets://bless.png";
     private int currentYear;
     private int month;
 
@@ -90,14 +91,9 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
         mPresenter = new DailyBlessController.Presenter();
         mPresenter.setModelAndView(this);
         getLifecycle().addObserver(mPresenter);
-
         initCalendar();
-//        mSendContent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                KeyboardUtils.showSoftInput(v);
-//            }
-//        });
+
+
     }
 
     /**
@@ -116,19 +112,7 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
         }
         mPresenter.init(date);
         tv_calendar_date.setText(currentYear + "年" + month + "月" + getResources().getString(R.string.tv_daily_bless_calendar));
-        mCalendarViewBless.setRange(
-                currentYear - 10,
-                1,
-                1,
-                currentYear + 10,
-                12,
-                31);
-        // 设置日期
-        mCalendarViewBless.scrollToCalendar(
-                currentYear,
-                calendar.get(Calendar.MONTH) + 1,
-                calendar.get(Calendar.DAY_OF_MONTH));
-        mCalendarViewBless.setOnCalendarSelectListener(this);
+
     }
 
     @OnClick(value = {R.id.iv_arrow_back, R.id.tvBtnSend})
@@ -141,8 +125,69 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
             case R.id.tvBtnSend: // 发送祈福
                 if (!TextUtils.isEmpty(mSendContent.getText().toString())) {
                     mPresenter.addMonthParams(mSendContent.getText().toString());
+//                    bless_btn.setVisibility(View.VISIBLE);
+//                    APNGAssetLoader assetLoader = new APNGAssetLoader(this, "bless.png");
+//
+//                    APNGDrawable apngDrawable = new APNGDrawable(assetLoader);
+//                    apngDrawable.setLoopLimit(1);
+//                    apngDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
+//                        @Override
+//                        public void onAnimationStart(Drawable drawable) {
+//                            super.onAnimationStart(drawable);
+//                        }
+//
+//                        @Override
+//                        public void onAnimationEnd(Drawable drawable) {
+//                            super.onAnimationEnd(drawable);
+//
+//
+//                            bless_btn.setVisibility(View.GONE);
+//                        }
+//                    });
+//
+//                    bless_btn.setImageDrawable(apngDrawable);
+
+
                 } else {
                     mPresenter.addMonthParams(mSendContent.getHint().toString());
+//                    bless_btn.setVisibility(View.VISIBLE);
+//                    APNGAssetLoader assetLoader = new APNGAssetLoader(this, "bless.png");
+//
+//                    APNGDrawable apngDrawable = new APNGDrawable(assetLoader);
+//                    apngDrawable.setLoopLimit(1);
+//                    apngDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
+//                        @Override
+//                        public void onAnimationStart(Drawable drawable) {
+//                            super.onAnimationStart(drawable);
+//                        }
+//
+//                        @Override
+//                        public void onAnimationEnd(Drawable drawable) {
+//                            super.onAnimationEnd(drawable);
+//
+//                            mPresenter.addMonthParams(mSendContent.getHint().toString());
+//                            bless_btn.setVisibility(View.GONE);
+//                        }
+//                    });
+//                    bless_btn.setImageDrawable(apngDrawable);
+//                    ApngLoaderStart.loadImage(ApngImageUtils.Scheme.ASSETS.wrap("bless.png"), bless_btn, new ApngImageLoadingListener(new ApngPlayListener() {
+//                        @Override
+//                        public void onAnimationStart(ApngDrawable drawable) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onAnimationEnd(ApngDrawable drawable) {
+//                            mPresenter.addMonthParams(mSendContent.getHint().toString());
+//                        }
+//
+//                        @Override
+//                        public void onAnimationRepeat(ApngDrawable drawable) {
+//                            bless_btn.setVisibility(View.GONE);
+//                            drawable.stop();
+//                        }
+//                    }));
+
                 }
 
                 KeyboardUtils.hideSoftInput(DailyBlessActivity.this);
@@ -154,6 +199,7 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
     public void addBlessSuccess() {
         mPresenter.init(date);
         mSendContent.setText("");
+
         ToastUtils.showShort(getResources().getString(R.string.successful));
     }
 
@@ -162,17 +208,10 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
     @Override
     public void renderMoths(List<String> content) {
         mContents = content;
-        Map<String, com.haibin.calendarview.Calendar> map = new HashMap<>();
+        LocalConfigStore.mContents.clear();
+        LocalConfigStore.mContents.addAll(content);
+        signDate.init();
 
-
-        for (int i = 0; i < content.size(); i++) {
-            map.put(getSchemeCalendar(currentYear, month, i + 1, 0xFF40db25, content.get(i)).toString(),
-                    getSchemeCalendar(currentYear, month, i + 1, 0xFF40db25, content.get(i)));
-        }
-
-
-        //此方法在巨大的数据量上不影响遍历性能，推荐使用
-        mCalendarViewBless.setSchemeDate(map);
 
     }
 
@@ -209,53 +248,6 @@ public class DailyBlessActivity extends BaseRequestActivity implements DailyBles
 
         img_ten.setBackgroundResource(imgs[Integer.valueOf(todays.substring(0, 1))]);
         img_ge.setBackgroundResource(imgs[Integer.valueOf(todays.substring(1))]);
-    }
-
-
-    @Override
-    public void onCalendarOutOfRange(com.haibin.calendarview.Calendar calendar) {
-
-    }
-
-    @Override
-    public void onCalendarSelect(com.haibin.calendarview.Calendar calendar, boolean isClick) {
-        int weekMoth = 1;
-
-        try {
-            weekMoth = DateUtils.getWeeksMonth(calendar.getYear() + "-" + calendar.getMonth() + "-" + calendar.getDay());
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if (!TextUtils.isEmpty(mContents.get(calendar.getDay() - 1))) {
-//              if (!"假".equals(calendar.getScheme())) {
-//                  if (isSelected && !calendar.isCurrentDay()) {
-//                      if (weekMoth>2) {
-
-            if (calendar.getWeek() == 1) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10, -880 + 120 * weekMoth, calendar.getScheme());
-            } else if ((calendar.getWeek() == 2)) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10 + 60 * calendar.getWeek(), -880 + 120 * weekMoth, calendar.getScheme());
-            } else if ((calendar.getWeek() == 3)) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10 + 100 * calendar.getWeek(), -880 + 120 * weekMoth, calendar.getScheme());
-            } else if ((calendar.getWeek() == 4)) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10 + 100 * calendar.getWeek(), -880 + 120 * weekMoth, calendar.getScheme());
-            } else if ((calendar.getWeek() == 5)) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10 + 100 * calendar.getWeek(), -880 + 120 * weekMoth, calendar.getScheme());
-            } else if ((calendar.getWeek() == 6)) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10 + 80 * calendar.getWeek(), -880 + 120 * weekMoth, calendar.getScheme());
-            } else if ((calendar.getWeek() == 7)) {
-                BlessDialog.show(mContext, mCalendarViewBless, 10 + 60 * calendar.getWeek(), -880 + 120 * weekMoth, calendar.getScheme());
-            }
-
-
-//                      }else {
-//        BlessDialog.show(mContext, this, cx - 50, y - mItemHeight * weekMoth , calendar.getScheme());
-//    }
-//                  }
-            // }
-        }
-
     }
 
 

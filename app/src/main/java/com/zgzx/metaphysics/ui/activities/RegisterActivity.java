@@ -203,6 +203,8 @@ public class RegisterActivity extends BaseRequestActivity implements ICallback {
         //startActivity(SupplementInformationActivity.newIntent(this, PERFECT_INFORMATION));
      //   AppToast.showShort(getString(R.string.register_successful));
         startActivity(PersonalInformationActivity.newIntent(this,null,0));
+        finish();
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.zgzx.metaphysics.model;
 
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
+import com.zgzx.metaphysics.model.entity.AdCountEntity;
 import com.zgzx.metaphysics.model.entity.AdEntity;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.AreaCodeEntity;
@@ -478,7 +479,7 @@ public interface IDataSource {
      * @param issue_id
      * @return 提问付款
      */
-    Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id, String ak,
+    Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id,int discount_id, String ak,
                                                               long timestamp,
                                                               String sign);
 
@@ -543,12 +544,12 @@ public interface IDataSource {
      *
      * @return
      */
-    Observable<BasicResponseEntity<OrderResultEntity>> askQuestion(String nickname, int gender,
-                                                                   int master_id, int birth_day,
-                                                                   int birth_hour, int calendar_type,
-                                                                   String birth_area, String content, String paths,String ak,
-                                                                   long timestamp,
-                                                                   String sign
+    Observable<BasicResponseEntity<OrderLifeBookEntity>> askQuestion(String nickname, int gender,
+                                                                      int master_id, int birth_day,
+                                                                      int birth_hour, int calendar_type,
+                                                                      String birth_area, String content, String paths, String ak,
+                                                                      long timestamp,
+                                                                      String sign
     );
 
     Observable<BasicListResponseEntity<OrderResultEntity>> getOrderMaster(int status, int page,
@@ -561,6 +562,9 @@ public interface IDataSource {
     Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailMast(int issue_id);
 
     Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailUser(int issue_id);
+
+    Observable<BasicResponseEntity<OrderLifeBookEntity>> getNotPaidQuestionDetail(int issue_id);
+
 
     Observable<BasicResponseEntity<String>> doneAnswer(int issue_id, String content,String ak,
                                                        long timestamp,
@@ -606,4 +610,12 @@ public interface IDataSource {
      * @return 获取增运数据
      */
     Observable<BasicResponseEntity<AddfortuneDataEntity>> getAddfortuneData(int timestamp);
+
+    Observable<BasicResponseEntity<String>> getRongToken();
+
+    /**
+     * 获取广告次数
+     * @return
+     */
+    Observable<BasicResponseEntity<AdCountEntity>> getAdCount();
 }

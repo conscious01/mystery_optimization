@@ -18,7 +18,8 @@ import butterknife.BindView;
  */
 public class LanguageSettingsActivity extends BaseActivity {
 
-    @BindView(R.id.group_language) RadioGroup mGroupLanguage;
+    @BindView(R.id.group_language)
+    RadioGroup mGroupLanguage;
 
     @Override
     protected int getContentLayoutId() {
@@ -37,7 +38,7 @@ public class LanguageSettingsActivity extends BaseActivity {
 
         // 语言更换
         mGroupLanguage.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId){
+            switch (checkedId) {
                 case R.id.radio_simplified_chinese:
                     AndroidUtil.alertLanguage(this, WebApiConstants.LANGUAGE_ZH_CN);
                     break;
@@ -46,7 +47,7 @@ public class LanguageSettingsActivity extends BaseActivity {
                     AndroidUtil.alertLanguage(this, WebApiConstants.LANGUAGE_ZH_TW);
                     break;
             }
-
+            finish();
             // 重启页面
             Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -66,7 +66,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/dp_16"
-                            android:text="2020年8月祈福日历"
+                            tools:text="2020年8月祈福日历"
                             android:textColor="#ff4d5259"
                             android:textSize="16sp" />
 
@@ -75,29 +75,15 @@
                             android:layout_height="2dp"
                             android:layout_margin="@dimen/dp_16"
                             android:background="@drawable/shape_b9a17b_dash_bg" />
+                      <com.zgzx.metaphysics.widgets.sign.view.SignView
+                          android:id="@+id/signDate"
+                          android:layout_width="match_parent"
+                          android:layout_height="330dp"
+                          android:layout_marginLeft="@dimen/dp_16"
+                          android:layout_marginRight="@dimen/dp_16"
+                          android:background="@drawable/icon_bagua"
+                         />
 
-                        <com.haibin.calendarview.CalendarView
-                            android:id="@+id/mCalendarViewBless"
-                            android:layout_width="match_parent"
-                            android:layout_height="330dp"
-                            android:layout_marginLeft="@dimen/dp_16"
-                            android:layout_marginRight="@dimen/dp_16"
-                            android:background="@drawable/icon_bagua"
-                            app:current_day_text_color="#FFFFE9C1"
-                            app:current_month_text_color="#8D472C"
-
-                            app:month_view="com.zgzx.metaphysics.widgets.calendar.CalendarBlessMothView"
-                            app:month_view_scrollable="false"
-                            app:month_view_show_mode="mode_only_current"
-                            app:scheme_text_color="#333"
-                            app:scheme_text="假"
-                            app:week_background="@android:color/transparent"
-                            app:week_bar_view="com.zgzx.metaphysics.widgets.calendar.CalendarBlessWeekBar"
-                            app:week_start_with="mon"
-                            app:week_view_scrollable="false"
-                            app:year_view_month_margin_top="@dimen/dp_20"
-
-                            />
 
                         <View
                             android:layout_width="match_parent"
@@ -203,7 +189,12 @@
 
             </LinearLayout>
         </ScrollView>
-
+        <ImageView
+            android:id="@+id/bless_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             android:layout_marginBottom="100dp"
+            android:visibility="gone"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"

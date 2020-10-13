@@ -4,11 +4,14 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {url 'http://developer.huawei.com/repo/'}
     }
 
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
-        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.1.8'
+//        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.1.8'
+        classpath 'com.huawei.agconnect:agcp:1.2.0.300'
+
     }
 }
 

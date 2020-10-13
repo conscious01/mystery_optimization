@@ -10,11 +10,11 @@ import com.zgzx.metaphysics.network.rx.SchedulersTransformer;
 public interface BuyQuestionController {
     class Presenter extends RequestPresenter<View> {
 
-        public void request(int pay_type, int member_id, String ak,
+        public void request(int pay_type, int member_id,int discount_id, String ak,
                             long timestamp,
                             String sign) {
             DataRepository.getInstance()
-                    .buyQuestion(pay_type, member_id,ak,timestamp,sign)
+                    .buyQuestion(pay_type, member_id,discount_id,ak,timestamp,sign)
                     .compose(SchedulersTransformer.transformer(mView))
                     .subscribe(new ResponseObserver<>(this, mView, entity -> {
                         mView.buyOk(entity.getData());

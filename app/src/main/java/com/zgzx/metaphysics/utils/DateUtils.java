@@ -99,7 +99,6 @@ public class DateUtils {
                 return hourTime;
 
 
-
         }
         return 1;
     }
@@ -162,5 +161,29 @@ public class DateUtils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return calendar;
+    }
+
+    public static boolean compareDate(String oldTime, String startTime) {
+        SimpleDateFormat df = new SimpleDateFormat(PATTERN_2);
+        Date sd1, sd2;
+
+        try {
+            sd1 = df.parse(oldTime);
+            sd2 = df.parse(startTime);
+            return sd2.after(sd1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static int getWeek(Date date){
+        String[] weeks = {"星期日","星期一","星期二","星期三","星期四","星期五","星期六"};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+//        if(week_index<0){
+//            week_index = 0;
+//        }
+        return week_index;
     }
 }

@@ -2,6 +2,7 @@ package com.zgzx.metaphysics.model;
 
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.DomesticJsonBean;
 import com.zgzx.metaphysics.city_time_picker.xpopupext.bean.ForeignJsonBean;
+import com.zgzx.metaphysics.model.entity.AdCountEntity;
 import com.zgzx.metaphysics.model.entity.AdEntity;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.AreaCodeEntity;
@@ -542,7 +543,9 @@ public class MockRemoteDataSource implements IDataSource {
     }
 
     @Override
-    public Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id, String ak, long timestamp, String sign) {
+    public Observable<BasicResponseEntity<PrePayResult>> buyQuestion(int pay_type, int issue_id,
+                                                                     int discount_id, String ak,
+                                                                     long timestamp, String sign) {
         return null;
     }
 
@@ -600,7 +603,7 @@ public class MockRemoteDataSource implements IDataSource {
     }
 
     @Override
-    public Observable<BasicResponseEntity<OrderResultEntity>> askQuestion(String nickname, int gender, int master_id, int birth_day, int birth_hour, int calendar_type, String birth_area, String content, String paths, String ak, long timestamp, String sign) {
+    public Observable<BasicResponseEntity<OrderLifeBookEntity>> askQuestion(String nickname, int gender, int master_id, int birth_day, int birth_hour, int calendar_type, String birth_area, String content, String paths, String ak, long timestamp, String sign) {
         return null;
     }
 
@@ -623,6 +626,11 @@ public class MockRemoteDataSource implements IDataSource {
 
     @Override
     public Observable<BasicResponseEntity<QDetailEntity>> getAnswerDetailUser(int issue_id) {
+        return null;
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<OrderLifeBookEntity>> getNotPaidQuestionDetail(int issue_id) {
         return null;
     }
 
@@ -695,6 +703,16 @@ public class MockRemoteDataSource implements IDataSource {
 
     @Override
     public Observable<BasicResponseEntity<AddfortuneDataEntity>> getAddfortuneData(int timestamp) {
+        return null;
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<String>> getRongToken() {
+        return null;
+    }
+
+    @Override
+    public Observable<BasicResponseEntity<AdCountEntity>> getAdCount() {
         return null;
     }
 

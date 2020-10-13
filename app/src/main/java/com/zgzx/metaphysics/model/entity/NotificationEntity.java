@@ -2,6 +2,32 @@ package com.zgzx.metaphysics.model.entity;
 
 public class NotificationEntity {
 
+    @Override
+    public String toString() {
+        return "NotificationEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", orderId=" + orderId +
+                ", openType=" + openType +
+                ", time=" + time +
+                ", external='" + external + '\'' +
+                ", pushdata='" + pushdata + '\'' +
+                '}';
+    }
+
+    public NotificationEntity(int id, String title, String content, long orderId, int openType,
+                              long time, String external, String pushdata) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.orderId = orderId;
+        this.openType = openType;
+        this.time = time;
+        this.external = external;
+        this.pushdata = pushdata;
+    }
+
     /**
      * id : 0
      * title : 11111
@@ -16,9 +42,9 @@ public class NotificationEntity {
     private int id;
     private String title;
     private String content;
-    private int orderId;
+    private long orderId;
     private int openType;
-    private int time;
+    private long time;
     private String external;
     private String pushdata;
 
@@ -46,7 +72,7 @@ public class NotificationEntity {
         this.content = content;
     }
 
-    public int getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
 
@@ -62,7 +88,7 @@ public class NotificationEntity {
         this.openType = openType;
     }
 
-    public int getTime() {
+    public long getTime() {
         return time;
     }
 

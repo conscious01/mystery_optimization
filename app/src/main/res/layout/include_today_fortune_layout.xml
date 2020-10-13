@@ -4,26 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/dp_46"
+    android:layout_marginLeft="@dimen/dp_40"
     android:layout_marginTop="@dimen/dp_16"
-    android:layout_marginRight="@dimen/dp_35"
+    android:layout_marginRight="@dimen/dp_42"
     android:orientation="horizontal">
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_fortune_score"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/home_jrys_yszt"-->
-<!--        android:gravity="bottom|center_horizontal"-->
-<!--        android:paddingBottom="@dimen/dp_30"-->
-<!--        android:textColor="@color/backgroundColor"-->
-<!--        android:textSize="32sp"-->
-<!--        android:textStyle="bold"-->
-<!--        tools:text="90" />-->
 
     <com.zgzx.metaphysics.ui.view.WaveProgressView
         android:id="@+id/mWaveProgressView"
-        android:layout_width="138dp"
+        android:layout_width="148dp"
         android:layout_height="178dp"
         android:background="@drawable/icon_dragon_bg"/>
 
@@ -32,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
-        android:paddingLeft="@dimen/dp_37"
-        android:paddingRight="24dp"
+
+
         android:scrollbars="none"
         android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

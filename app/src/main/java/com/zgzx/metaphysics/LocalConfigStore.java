@@ -9,6 +9,8 @@ import com.zgzx.metaphysics.model.LocalDataManager;
 import com.zgzx.metaphysics.model.entity.UserDetailEntity;
 import com.zgzx.metaphysics.network.WebApiConstants;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import io.reactivex.Observable;
@@ -64,7 +66,7 @@ public class LocalConfigStore {
         return sLocalConfigStore;
     }
 
-
+    public static List<String> mContents = new ArrayList<>();
     private String mUserToken;
     private LocalDataManager mLocalDataManager;
     private SharedPreferences mConfigsPreferences
@@ -161,6 +163,10 @@ public class LocalConfigStore {
         return mConfigsPreferences.getString(RONG_TOKEN, "");
     }
 
+    public void setRongToken(String rongToken) {
+        mConfigsPreferences.edit().putString(RONG_TOKEN, rongToken).apply();
+    }
+
     public String getRqCode() {
         return mConfigsPreferences.getString(RQ_CODE, null);
     }
@@ -212,11 +218,20 @@ public class LocalConfigStore {
         return mConfigsPreferences.getInt(JN_TYPE, 0);
     }
 
-    public void setJnType(int i) {
+    public void setJnType() {
         int jntype = getJnType() + 1;
         mConfigsPreferences.edit().putInt(JN_TYPE, jntype).apply();
 
     }
+
+    public void setJnType(int i) {
+        mConfigsPreferences.edit().putInt(JN_TYPE, i).apply();
+    }
+
+
+
+
+
 
     public boolean getJnType1() {
         return mConfigsPreferences.getBoolean(JN_TYPE_1, false);
@@ -292,7 +307,6 @@ public class LocalConfigStore {
 
     public void logout() {
         mUserToken = null;
-
         mConfigsPreferences.edit()
                 .remove(USER_TOKEN)
                 .remove(MOBILE)
@@ -307,8 +321,21 @@ public class LocalConfigStore {
                 .remove(PHONE)
                 .remove(PHONE_CODE)
                 .remove(PAWSSORD).apply();
+
+        setJnType(0);
+        setJnType_1(false);
+        setJnType_2(false);
+        setJnType_3(false);
+        setJnType_4(false);
+        setJnType_5(false);
+        setJnType_6(false);
+
+        setJnType_7(false);
+        setJnType_8(false);
         // 退出登录，清除所有缓存数据
         mLocalDataManager.clear();
+        int times = P.getInt(Constants.add_fortune_times, 0);
+        System.out.println(times);
     }
 
     public void saveUserToken(String token) {
@@ -353,10 +380,7 @@ public class LocalConfigStore {
             mConfigsPreferences.edit()
                     .putString(USER_TOKEN, mUserToken).apply();
         }
-        //后台返回融云token为空的时候不要保存，逻辑应该放在后台判断
-        if (!userDetail.getRc_token().isEmpty()) {
-            mConfigsPreferences.edit().putString(RONG_TOKEN, userDetail.getRc_token());
-        }
+
 
         mConfigsPreferences.edit()
                 .putString(MOBILE, userDetail.getPhone())

@@ -2,19 +2,26 @@ package com.zgzx.metaphysics.ui.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
+import com.qbw.spm.P;
+import com.zgzx.metaphysics.Constants;
 import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.FortuneController;
 import com.zgzx.metaphysics.model.entity.AddfortuneDataEntity;
 import com.zgzx.metaphysics.model.entity.FortuneEntity;
 import com.zgzx.metaphysics.model.entity.FortuneGradeEntity;
+import com.zgzx.metaphysics.model.event.RefreshFourtuneEvent;
 import com.zgzx.metaphysics.rade_view.CircleProgress;
 import com.zgzx.metaphysics.ui.activities.WebViewActivity;
 import com.zgzx.metaphysics.ui.adapters.FortuneDeatailAdapter;
 import com.zgzx.metaphysics.ui.core.BaseRequestFragment;
 import com.zgzx.metaphysics.utils.LunarCalendarUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,13 +54,15 @@ public class FortuneFragment extends BaseRequestFragment implements FortuneContr
     CircleProgress mCircleProgressBar;
     @BindView(R.id.tvAddFortune)
     TextView mAddFortune;//增运
+    @BindView(R.id.tv_added_fortune)
+    TextView tvAddedFortune;
     @BindView(R.id.tv_fortune_evaluate)
     TextView mFortuneEvaluate;//运势总评
     private FortuneController.Presenter mPresenter;
     private Calendar calendar;
     private int pos;
-    private final static int[] COLORS = new int[]{Color.parseColor("#FFDD88"), Color.parseColor(
-            "#FF7F2A")};
+    private final static int[] COLORS = new int[]{Color.parseColor("#FF7F2A"), Color.parseColor(
+            "#FFDD88")};
 
     public static Fragment instance(int pos) {
         FortuneFragment fragment = new FortuneFragment();
@@ -78,15 +87,15 @@ public class FortuneFragment extends BaseRequestFragment implements FortuneContr
         pos = getArguments().getInt(EXT_POS, -1);
         calendar = Calendar.getInstance();
         mPresenter.init((int) (new Date().getTime() / 1000));
-
+        mPresenter.getAddfortuneData((int) (new Date().getTime() / 1000));
         // 当前日历，时间
         initCalendar();
         mAddFortune.setText(getResources().getString(R.string.tv_add_fortune));
         mAddFortune.setOnClickListener(view -> {
                     //红包接服
-                    // TODO 已接红包次数先传递0
+                    int times = P.getInt(Constants.add_fortune_times, 0);
                     String hbjfURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
-                            "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=0" + "&status_bar_height=" + 24;
+                            "/red_packet/red_packet?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&degree=" + times + "&status_bar_height=" + 24;
 
                     startActivity(WebViewActivity.newIntent(getActivity(), hbjfURL));
                 }
@@ -137,11 +146,30 @@ public class FortuneFragment extends BaseRequestFragment implements FortuneContr
 
     @Override
     public void renderPersonalFortune(int score, String fortune) {
+
         mCircleProgressBar.setGradientColors(COLORS);
-        mCircleProgressBar.setValue((float) score);
+        mCircleProgressBar.setValue((float) (score));
         mFortuneEvaluate.setText(fortune);
 
     }
+
+    /**
+     * @param generalCommentBean activity页面请求的接口返回的数据
+     */
+    @Override
+    public void renderPersonalFortune(FortuneEntity.GeneralCommentBean generalCommentBean) {
+        int personalFourtune =
+                generalCommentBean.getAverage() + generalCommentBean.getAdd_fortune_score();
+        mCircleProgressBar.setGradientColors(COLORS);
+        mCircleProgressBar.setValue((float) (personalFourtune));
+        mFortuneEvaluate.setText(generalCommentBean.getTips());
+
+        if (generalCommentBean != null && generalCommentBean.getAdd_fortune_score() > 0) {
+            tvAddedFortune.setVisibility(View.VISIBLE);
+            tvAddedFortune.setText(generalCommentBean.getAdd_fortune_score() + "");
+        }
+    }
+
 
     @Override
     public void renderMoudleImg(List<String> imgs) {
@@ -155,8 +183,28 @@ public class FortuneFragment extends BaseRequestFragment implements FortuneContr
     }
 
     @Override
-    public void onAddFourtune(AddfortuneDataEntity addfortuneDataEntity) {
+    protected boolean useEventBus() {
+        return true;
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRefreshFourtune(RefreshFourtuneEvent refreshFourtuneEvent) {
+        mPresenter.getAddfortuneData((int) (new Date().getTime() / 1000));
+    }
+
+
+    @Override
+    public void onAddFourtune(AddfortuneDataEntity addfortuneDataEntity) {
+        P.putInt(Constants.add_fortune_times, addfortuneDataEntity.getAdd_fortune_times());
+
+        if (addfortuneDataEntity != null && addfortuneDataEntity.getAdd_fortune_score() > 0) {
+            tvAddedFortune.setVisibility(View.VISIBLE);
+            tvAddedFortune.setText("+" + addfortuneDataEntity.getAdd_fortune_score());
+            int addedFourtune =
+                    addfortuneDataEntity.getAdd_fortune_score() + addfortuneDataEntity.getAverage_score();
+            mCircleProgressBar.setValue((float) (addedFourtune));
+
+        }
     }
 
 

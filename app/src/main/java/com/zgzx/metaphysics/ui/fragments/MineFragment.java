@@ -1,7 +1,11 @@
 package com.zgzx.metaphysics.ui.fragments;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -12,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jaeger.library.StatusBarUtil;
+import com.meiqia.core.callback.OnInitCallback;
+import com.meiqia.meiqiasdk.util.MQConfig;
+import com.meiqia.meiqiasdk.util.MQIntentBuilder;
 import com.zgzx.metaphysics.LocalConfigStore;
 import com.zgzx.metaphysics.R;
 import com.zgzx.metaphysics.controller.UserController;
@@ -37,6 +44,7 @@ import com.zgzx.metaphysics.ui.activities.WebViewVipCenter;
 import com.zgzx.metaphysics.ui.core.BaseRequestFragment;
 import com.zgzx.metaphysics.ui.dialogs.SimpleDialog;
 import com.zgzx.metaphysics.utils.AndroidUtil;
+import com.zgzx.metaphysics.utils.AppToast;
 import com.zgzx.metaphysics.utils.DateUtils;
 import com.zgzx.metaphysics.utils.MathUtil;
 import com.zgzx.metaphysics.utils.image.GlideApp;
@@ -46,6 +54,9 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -53,7 +64,7 @@ import butterknife.OnClick;
  * 我的
  */
 public class MineFragment extends BaseRequestFragment implements UserController.View {
-
+    private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
     @BindView(R.id.iv_avatar)
     ImageView mIvAvatar;
     @BindView(R.id.tv_nickname)
@@ -150,8 +161,31 @@ public class MineFragment extends BaseRequestFragment implements UserController.
     protected void initialize(Bundle savedInstanceState) {
         AndroidUtil.addStatusBarHeightPadding(findViewById(R.id.layout_container));
 
-        setUserInfo();
 
+        initMQ();
+    }
+
+    /***
+     * 初始化客服系统
+     */
+    private void initMQ() {
+        MQConfig.init(getActivity(), "9b1aea39b066bca636321d50e85f449d", new OnInitCallback() {
+            @Override
+            public void onSuccess(String clientId) {
+
+            }
+
+            @Override
+            public void onFailure(int code, String message) {
+                AppToast.showShort("错误码：" + code + message);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setUserInfo();
 
     }
 
@@ -188,11 +222,11 @@ public class MineFragment extends BaseRequestFragment implements UserController.
     @OnClick({R.id.layout_setting, R.id.iv_avatar, R.id.master_homepage_layout,
             R.id.layout_msg,
             R.id.tv_uid,
-            R.id.layout_my_ask, R.id.ll_user_info})
+            R.id.layout_my_ask, R.id.ll_user_info, R.id.layout_customer_service})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_avatar:
-/*                if (result.isHas_completed_info()) {
+             /* if (result.isHas_completed_info()) {
                     startActivity(PersonalInformationActivity.newIntent(getContext(), result,1));
                 } else { // 完善用户信息
                     showPerfectInformationDialog();
@@ -208,7 +242,8 @@ public class MineFragment extends BaseRequestFragment implements UserController.
                 break;
 
             case R.id.master_homepage_layout:
-                startActivity(MasterHomepageActivity.newIntent(getContext(),0,LocalConfigStore.getInstance().getUser().getUid()));
+                startActivity(MasterHomepageActivity.newIntent(getContext(), 0,
+                        LocalConfigStore.getInstance().getUser().getUid()));
 //                  startActivity(new Intent(view.getContext(), EditMasterHomepageActivity.class));
                 break;
             case R.id.layout_my_ask://我的问答
@@ -238,7 +273,47 @@ public class MineFragment extends BaseRequestFragment implements UserController.
                     startActivity(LoginActivity.class);
                 }
                 break;
+
+            case R.id.layout_customer_service:
+                conversation();
+                break;
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case WRITE_EXTERNAL_STORAGE_REQUEST_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    conversationWrapper();
+                } else {
+                    AppToast.showShort("请开启权限");
+                }
+                break;
+            }
+        }
+
+    }
+
+    private void conversationWrapper() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
+        } else {
+            conversation();
+        }
+    }
+
+    private void conversation() {
+        Intent intent = new MQIntentBuilder(getActivity())
+                .setCustomizedId(LocalConfigStore.getInstance().getUserId() + "0")
+                .build();
+        startActivity(intent);
     }
 
     @Override
@@ -260,7 +335,7 @@ public class MineFragment extends BaseRequestFragment implements UserController.
             //      mIvEnterMaster.setVisibility(View.VISIBLE);
             mMasterHomepage.setVisibility(View.VISIBLE);
             tvMasterName.setText(getString(R.string.nav_master));
-            tvMasterName.setVisibility(View.GONE);
+            tvMasterName.setVisibility(View.VISIBLE);
             llTags.setVisibility(View.VISIBLE);
         }
         switch (result.getRole()) {
@@ -269,7 +344,8 @@ public class MineFragment extends BaseRequestFragment implements UserController.
                         getResources().getString(R.string.super_shareholder),
                         R.drawable.ic_but_bg_accent);
                 tvCompanion.setText(getString(R.string.super_shareholder));
-                tvCompanion.setVisibility(View.VISIBLE);
+                tvCompanion.setVisibility(View.GONE);
+                tvMasterName.setVisibility(View.GONE);
                 llTags.setVisibility(View.VISIBLE);
 
                 break;
@@ -277,8 +353,8 @@ public class MineFragment extends BaseRequestFragment implements UserController.
                 setPartnerText(tv_invitation, getText(R.string.my_record), iv_super_tv,
                         getResources().getString(R.string.super_partner), R.drawable.ic_but_bg);
                 tvCompanion.setText(getString(R.string.super_partner));
-                tvCompanion.setVisibility(View.VISIBLE);
-
+                tvCompanion.setVisibility(View.GONE);
+                tvMasterName.setVisibility(View.GONE);
                 llTags.setVisibility(View.VISIBLE);
 
                 break;
@@ -322,9 +398,6 @@ public class MineFragment extends BaseRequestFragment implements UserController.
             }
         });
 
-        // 设置页面
-//        mIvSettings.setOnClickListener(v ->
-//                startActivity(SettingsActivity.newIntent(getContext(), result)));
 
         // 邀请
         layout_share.setOnClickListener(v -> {
@@ -336,9 +409,6 @@ public class MineFragment extends BaseRequestFragment implements UserController.
                 }
         );
 
-//        // 我的邀请
-//        layout_invite.setOnClickListener(v ->
-//                startActivity(MyInviteActivity.newIntent(getContext(), result.getRole())));
 
         // 我的邀请
         layout_invite.setOnClickListener(v -> {
@@ -358,7 +428,7 @@ public class MineFragment extends BaseRequestFragment implements UserController.
                 String hyURL = LocalConfigStore.getInstance().getH5_Base() + "/pages" +
                         "/member_center" +
                         "/member?language=" + LocalConfigStore.getInstance().getAcceptLanguage() + "&status_bar_height=" + 24;
-                startActivity(WebViewVipCenter.newIntent(getContext(),1, hyURL));
+                startActivity(WebViewVipCenter.newIntent(getContext(), 1, hyURL));
             } else {
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
@@ -373,6 +443,8 @@ public class MineFragment extends BaseRequestFragment implements UserController.
         tv_vip_type.setText(getText(R.string.vip_tips_txt));
         vip_type_img.setVisibility(View.INVISIBLE);
         view_now_btn.setText(getText(R.string.open_now));
+        tv_end_time.setTextColor(getResources().getColor(R.color.backgroundColor));
+        tv_end_time.setText(getResources().getString(R.string.tv_fortune_8));
         vip_layout.setOnClickListener(v -> {
             String hyURL = LocalConfigStore.getInstance().getH5_Base() + "/pages/member_center" +
                     "/member?language=" + LocalConfigStore.getInstance().getAcceptLanguage() +
@@ -417,6 +489,7 @@ public class MineFragment extends BaseRequestFragment implements UserController.
         tv_vip_type.setText(getText(tv_vip_type_txt));
         vip_type_img.setVisibility(View.VISIBLE);
         tv_end_time.setText(endtime);
+        tv_end_time.setTextColor(Color.parseColor("#ffb87648"));
 //        vip_type_img.setBackgroundResource(vip_type_img_bg);
 //        mIvMasterMark.setVisibility(View.VISIBLE);
 //        mIvMasterMark.setBackgroundResource(type_bg);
@@ -478,7 +551,7 @@ public class MineFragment extends BaseRequestFragment implements UserController.
 
     @Override
     public void onUserAssets(UserAssetEntity userAssetEntity) {
-        tvKmMoeny.setText(MathUtil.round(userAssetEntity.getCoin_available(),2) + "");
+        tvKmMoeny.setText(MathUtil.round(userAssetEntity.getCoin_available(), 2) + "");
         tvKmqMoney.setText((int) userAssetEntity.getCoin_freeze() + getString(R.string.zhang));
         llDetail.setOnClickListener(v ->
                 startActivity(MyWalletActivity.newIntent(getActivity(), userAssetEntity)));
@@ -493,11 +566,22 @@ public class MineFragment extends BaseRequestFragment implements UserController.
     public void onGetConfigBase(UrlConfigEntity urlConfigEntity) {
         long time = new Date().getTime() / 1000;//获取系统时间的10位的时间戳
         long diff = urlConfigEntity.getTimestamp() - time;
-        LocalConfigStore.getInstance().setConfirgUrl(diff, urlConfigEntity.getAk(), urlConfigEntity.getKey());
+        LocalConfigStore.getInstance().setConfirgUrl(diff, urlConfigEntity.getAk(),
+                urlConfigEntity.getKey());
     }
 
     @Override
     public void onGetAdConfig(AdEntity urlConfigEntity) {
+
+    }
+
+    @Override
+    public void onGetRongToken(String rongToken) {
+
+    }
+
+    @Override
+    public void onRenderCount(int count) {
 
     }
 
